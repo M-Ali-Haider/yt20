@@ -56,9 +56,15 @@ const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, sele
                     ) : (
                         <>
                             <div className=" h-[1px] bg-[#DDD] rounded-3xl my-4 md:mx-4 mobile:mx-2 "></div>
-                            <div className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4">
-                                <h1 className="mobile:text-base  md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white">
-                                    Top 20 Hot Videos for you
+                            <div
+                                className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4"
+                                style={{ paddingLeft: '0px' }}
+                            >
+                                <h1
+                                    style={{ fontSize: '26px' }}
+                                    className="mobile:text-base  md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white"
+                                >
+                                    Hot 20 Videos for you
                                 </h1>
                                 <ViewMoreBtn isLoading={isLoading} />
                             </div>

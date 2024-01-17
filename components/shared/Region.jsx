@@ -45,7 +45,7 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
                         >
                             {' '}
                             {/* Region */}
-                            {!!selectedRegion ? `Region: ${selectedRegion}` : `Region: ${country}`}
+                            {!!selectedRegion ? `Region: ${selectedRegion}` : ''}
                         </p>
                         <DownArrowIcon
                             className="DownArrow w-4 dark:color-white color-black"

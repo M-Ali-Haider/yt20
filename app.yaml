@@ -1,0 +1,8 @@
+env_variables:
+    NEXT_PUBLIC_BASE_URL: 'https://savvy-folio-406713.uc.r.appspot.com'
+runtime: nodejs20
+service: youtubetop20-frontend
+handlers:
+    - url: /.*
+      secure: always
+      script: auto

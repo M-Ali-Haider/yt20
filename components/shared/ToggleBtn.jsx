@@ -1,5 +1,5 @@
 'use client'
-import DarkThemeIcon from '@/assets/icons/DarkthemeIcon'
+import DarkThemeIcon from '@/assets/icons/DarkThemeIcon'
 import LightThemeIcon from '@/assets/icons/LightThemeIcon'
 import { Switch } from '@headlessui/react'
 import { memo, useContext } from 'react'

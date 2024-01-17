@@ -4,7 +4,8 @@ import { get } from './axios'
 export const useRegionGlobal = (category = '0', region = 'Global') => {
     const { data, isLoading, refetch } = useQuery({
         queryKey: ['AllVideos', category, region],
-        queryFn: () => get(`/data?region=${!!region ? region : 'Bangladesh'}&category=${category}`),
+        queryFn: () => get(`/data?region=${!!region && region !== undefined ? region : 'Global'}&category=${category}`),
+        // enabled: !!region,
     })
     return { data, isLoading, refetch }
 }

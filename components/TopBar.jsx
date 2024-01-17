@@ -1,15 +1,13 @@
 'use client'
 import CloseIcon from '@/assets/icons/CloseIcon'
 import HamburgerIcon from '@/assets/icons/HamburgerIcon'
+import HomeIcon from '@/assets/icons/HomeIcon'
 import YoutubeIcon from '@/assets/icons/YoutubeIcon'
 import { TopBarList } from '@/utils/constants'
 import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
-import ToggleBtn from './shared/ToggleBtn'
-import HomeIcon from '@/assets/icons/HomeIcon'
-import VideosIcon from '@/assets/icons/VideosIcon'
-import ShortsIcon from '@/assets/icons/ShortsIcon'
 import { ThemeContext } from './Context/ThemeContext'
+import ToggleBtn from './shared/ToggleBtn'
 
 const TopBar = () => {
     const { theme, useTheme } = useContext(ThemeContext)
