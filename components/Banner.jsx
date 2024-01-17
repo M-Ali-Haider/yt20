@@ -5,7 +5,7 @@ import SearchComponent from './shared/SearchBar'
 const Banner = () => {
     return (
         <div className="overflow-hidden md:px-4 mobile:px-[2px] ">
-            <div className=" relative flex flex-col justify-center items-center  ">
+            <div className=" relative flex flex-col justify-center items-center  " style={{ height: '180px' }}>
                 <video
                     autoPlay
                     muted

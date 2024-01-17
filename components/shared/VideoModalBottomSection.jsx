@@ -14,12 +14,7 @@ const PlayVideoDetails = [
 ]
 
 const VideoModalBottomSection = ({ videoId, videoData, isLoadingVideoData, categoryNum, selectedRegion }) => {
-    // console.log('videoId xx', videoId)
     const { data, isLoading } = useRegionGlobal(categoryNum, selectedRegion)
-    // console.log('RelatedVideos Data', data)
-    // console.log('data for TopVideo', data)
-    // const { top_20_videos } = data
-    // console.log('topX', top_20_videos[categoryNum])
 
     const deleteVideoById = useCallback(
         (videos = [], videoID) => {
@@ -38,9 +33,9 @@ const VideoModalBottomSection = ({ videoId, videoData, isLoadingVideoData, categ
             <TopVideos
                 top_20_videos={
                     data?.top_20_videos?.hasOwnProperty(`${categoryNum}`)
-                        ? // ? data?.top_20_videos[`${categoryNum}`]?.slice(-4)
-                          newArr
-                        : []
+                        ? data?.top_20_videos[`${categoryNum}`]?.slice(-4)
+                        : //  ? newArr
+                          []
                 }
                 isLoading={isLoading}
                 selectedCategoryNumber={data?.top_20_videos?.hasOwnProperty(`${categoryNum}`) ? `${categoryNum}` : ''}
