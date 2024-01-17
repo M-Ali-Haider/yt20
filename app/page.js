@@ -10,6 +10,7 @@ import Region from '@/components/shared/Region'
 import { useRegionGlobal } from '@/utils/http'
 import { useEffect, useMemo, useState } from 'react'
 import { geocode } from 'react-geocode'
+import { useParams } from 'next/navigation'
 
 const eNum = {
     Now: '1',
@@ -18,6 +19,7 @@ const eNum = {
     Movies: '4',
 }
 export default function Home() {
+    const params = useParams()
     const [ipAddress, setIpAddress] = useState('')
     const [geoInfo, setGeoInfo] = useState({})
     const getVisitorIp = async () => {
@@ -42,9 +44,7 @@ export default function Home() {
 
     const [selectedCategory, setSelectedCategory] = useState('Now')
     const country = useMemo(() => geoInfo?.country, [geoInfo])
-    console.log('country', country)
     const [selectedRegion, setSelectedRegion] = useState('')
-    console.log('selectedRegion', selectedRegion)
 
     const { data, isLoading } = useRegionGlobal(eNum[selectedCategory], selectedRegion, '')
     const { top_20_videos, hot_20_videos, top_20_shorts, hot_20_shorts } = data || {}
@@ -60,7 +60,7 @@ export default function Home() {
     useEffect(() => {
         getVisitorIp()
         fetchInfoBasedOnIp()
-    }, [ipAddress])
+    }, [ipAddress, params])
 
     useEffect(() => {
         setSelectedRegion(`${country}`)
@@ -70,7 +70,6 @@ export default function Home() {
         <main className="scroll-smooth xl:px-16 2xl:px-32 md:px-1">
             <div className="flex flex-col mobile:gap-2 mobile:pt-20 md:pt-20 lg:pt-24 2xl:pt-30">
                 <Banner />
-
                 <div
                     style={{
                         backgroundColor:

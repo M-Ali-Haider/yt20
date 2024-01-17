@@ -53,7 +53,6 @@ const VideoSection = () => {
     }
 
     const Tags = videoData?.video?.video?.video_tags
-    console.log('Tags', Tags)
 
     return (
         <main className="Main w-full flex flex-col xl:px-6 xl:py-2 ">
