@@ -3,14 +3,13 @@ import Banner from '@/components/Banner'
 import Categories from '@/components/Cateogries'
 import HotShorts from '@/components/HotShorts'
 import HotVideos from '@/components/HotVideos'
-import TopBar from '@/components/TopBar'
 import TopShorts from '@/components/TopShorts'
 import TopVideos from '@/components/TopVideos'
 import Region from '@/components/shared/Region'
 import { useRegionGlobal } from '@/utils/http'
-import { useEffect, useMemo, useState } from 'react'
-import { geocode } from 'react-geocode'
 import { useParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { setRegion } from 'react-geocode'
 
 const eNum = {
     All: '0',
@@ -21,31 +20,32 @@ const eNum = {
 }
 export default function Home() {
     const params = useParams()
-    const [ipAddress, setIpAddress] = useState('')
-    const [geoInfo, setGeoInfo] = useState({})
-    const getVisitorIp = async () => {
-        try {
-            const response = await fetch('https://api.ipify.org')
-            const data = await response.text()
-            setIpAddress(data)
-        } catch (err) {
-            console.log('getVisitorIp err', err)
-        }
-    }
+    // const [ipAddress, setIpAddress] = useState('')
+    // const [geoInfo, setGeoInfo] = useState({})
+    // const getVisitorIp = async () => {
+    //     try {
+    //         const response = await fetch('https://api.ipify.org')
+    //         const data = await response.text()
+    //         setIpAddress(data)
+    //     } catch (err) {
+    //         console.log('getVisitorIp err', err)
+    //     }
+    // }
 
-    const fetchInfoBasedOnIp = async () => {
-        try {
-            const response = await fetch(`http://ip-api.com/json`)
-            const data = await response.json()
-            setGeoInfo(data)
-        } catch (err) {
-            console.log('fetchInfoBasedOnIp err', err)
-        }
-    }
+    // const fetchInfoBasedOnIp = async () => {
+    //     try {
+    //         const response = await fetch(`https://ip-api.com/json`)
+    //         const data = await response.json()
+    //         setGeoInfo(data)
+    //     } catch (err) {
+    //         console.log('fetchInfoBasedOnIp err', err)
+    //     }
+    // }
 
     const [selectedCategory, setSelectedCategory] = useState('All')
-    const country = useMemo(() => geoInfo?.country, [geoInfo])
-    const [selectedRegion, setSelectedRegion] = useState('')
+    // const country = useMemo(() => geoInfo?.country, [geoInfo])
+    const [selectedRegion, setSelectedRegion] = useState('Global')
+    console.log('selectedRegion', selectedRegion)
 
     const { data, isLoading } = useRegionGlobal(eNum[selectedCategory], selectedRegion, '')
     const { top_20_videos, hot_20_videos, top_20_shorts, hot_20_shorts } = data || {}
@@ -58,18 +58,25 @@ export default function Home() {
         }
     }
 
-    useEffect(() => {
-        getVisitorIp()
-        fetchInfoBasedOnIp()
-    }, [ipAddress, params])
+    // useEffect(() => {
+    //     getVisitorIp()
+    //     fetchInfoBasedOnIp()
+    // }, [ipAddress, params])
+
+    // useEffect(() => {
+    //     setSelectedRegion(`${country}`)
+    // }, [ipAddress])
 
     useEffect(() => {
-        setSelectedRegion(`${country}`)
-    }, [ipAddress])
+        setRegion('Global')
+    }, [params])
 
     return (
         <main className="scroll-smooth xl:px-16 2xl:px-32 md:px-1">
-            <div className="flex flex-col mobile:gap-2 mobile:pt-20 md:pt-20 lg:pt-24 2xl:pt-30">
+            <div
+                className="flex flex-col mobile:gap-2 mobile:pt-20 md:pt-20 lg:pt-24 2xl:pt-30"
+                style={{ paddingTop: '4rem', gap: '0px' }}
+            >
                 <Banner />
                 <div
                     style={{
@@ -82,7 +89,7 @@ export default function Home() {
                     <Region
                         selectedRegion={selectedRegion}
                         setSelectedRegion={setSelectedRegion}
-                        country={!!country ? country : '...Loading'}
+                        // country={!!country ? country : '...Loading'}
                     />
 
                     {/* <CountrySelect selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} /> */}

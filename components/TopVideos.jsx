@@ -59,11 +59,17 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
                         </div>
                     ) : (
                         <>
-                            <div className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4">
-                                <h1 className="mobile:text-base md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white">
+                            <div
+                                className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4"
+                                style={{ paddingLeft: '0px' }}
+                            >
+                                <h1
+                                    className="mobile:text-base md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white"
+                                    style={{ fontSize: '26px' }}
+                                >
                                     Top 20 Videos for you
                                 </h1>
-                                <ViewMoreBtn />
+                                {/* <ViewMoreBtn /> */}
                             </div>
                             {!!all_category && all_category.length > 0 ? (
                                 <>

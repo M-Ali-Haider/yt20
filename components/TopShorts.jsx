@@ -19,11 +19,17 @@ const TopShorts = ({ top_20_shorts = [], isLoading, selectedCategoryNumber, sele
                         ) : (
                             <>
                                 <div className=" h-[1px] bg-[#DDD] rounded-3xl my-4 md:mx-4 mobile:mx-2 "></div>
-                                <div className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4">
-                                    <h1 className="mobile:text-base  md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white">
+                                <div
+                                    style={{ paddingLeft: '0px' }}
+                                    className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4"
+                                >
+                                    <h1
+                                        style={{ fontSize: '26px' }}
+                                        className="mobile:text-base  md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white"
+                                    >
                                         Top 20 Shorts for you
                                     </h1>
-                                    <ViewMoreBtn />
+                                    {/* <ViewMoreBtn /> */}
                                 </div>
                                 {!!all_category && all_category.length > 0 ? (
                                     <>
