@@ -4,8 +4,11 @@ import VideoSkeleton from './shared/VideoSkeleton'
 import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
 import LabelTitle from './shared/LabelTitle'
 
-const TopVideos = ({ top_20_videos = [], isLoading }) => {
-    console.log('TOP_VIDEOS DATA', top_20_videos)
+const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, selectedRegion }) => {
+    // console.log('selectedCatgeoryNumber', selectedCategoryNumber)
+    // console.log('selectedRegion', selectedRegion)
+    // console.log('topVideo', top_20_videos)
+    // console.log('TOP_VIDEOS DATA', top_20_videos)
     const all_category = top_20_videos
 
     const timeSince = (postedDate) => {
@@ -71,7 +74,7 @@ const TopVideos = ({ top_20_videos = [], isLoading }) => {
                                                 className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
                                             >
                                                 <Link
-                                                    href={`/play_video/${item?.video.video_id} `}
+                                                    href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}`}
                                                     className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
                                                 >
                                                     <p className="max-w-[1000px] w-full">

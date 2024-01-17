@@ -49,7 +49,7 @@ const TopBar = () => {
                                 <p className="md:text-sm lg:text-base 2xl:text-lg">Home</p>
                             </Link>
                         </div>
-                        <div className="flex group hover:opacity-80 cursor-not-allowed">
+                        {/* <div className="flex group hover:opacity-80 cursor-not-allowed">
                             <div
                                 // href={`/`}
                                 className={
@@ -74,7 +74,7 @@ const TopBar = () => {
                                 </p>
                                 <p className="md:text-sm lg:text-base 2xl:text-lg">Shorts</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <ToggleBtn />

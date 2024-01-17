@@ -1,21 +1,47 @@
 'use client'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import TopVideos from '../TopVideos'
 import VideoDetails from '../VideoDetails'
+import { useRegionGlobal } from '@/utils/http'
 
 const PlayVideoDetails = [
     {
-        name: 'Video Details',
-    },
-    {
         name: 'Related Videos',
     },
+    {
+        name: 'Video Details',
+    },
 ]
-const VideoModalBottomSection = ({ videoData, isLoadingVideoData }) => {
-    const [selected, setSelected] = useState('Video Details')
+
+const VideoModalBottomSection = ({ videoId, videoData, isLoadingVideoData, categoryNum, selectedRegion }) => {
+    const { data, isLoading } = useRegionGlobal(categoryNum, selectedRegion)
+
+    const deleteVideoById = useCallback(
+        (videos = [], videoID) => {
+            const updatedVideos = videos.filter((video) => video?.video_id !== videoID)?.slice(0, 4)
+            return updatedVideos
+        },
+        [data, videoId]
+    )
+    const newArr = deleteVideoById(data?.top_20_videos[categoryNum], videoId)
+    console.log('newArr', newArr)
+
+    const [selected, setSelected] = useState('Related Videos')
     const renderSteps = {
         'Video Details': <VideoDetails videoData={videoData} isLoadingVideoData={isLoadingVideoData} />,
-        'Related Videos': <TopVideos />,
+        'Related Videos': (
+            <TopVideos
+                top_20_videos={
+                    data?.top_20_videos?.hasOwnProperty(`${categoryNum}`)
+                        ? data?.top_20_videos[`${categoryNum}`]?.slice(-4)
+                        : //  ? newArr
+                          []
+                }
+                isLoading={isLoading}
+                selectedCategoryNumber={data?.top_20_videos?.hasOwnProperty(`${categoryNum}`) ? `${categoryNum}` : ''}
+                selectedRegion={selectedRegion}
+            />
+        ),
     }
     return (
         <section>

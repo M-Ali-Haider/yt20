@@ -3,7 +3,7 @@ import Link from 'next/link'
 import VideoSkeleton from './shared/VideoSkeleton'
 import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
 
-const HotVideos = ({ hot_20_videos, isLoading }) => {
+const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, selectedRegion }) => {
     // const all_category = hot_20_videos ? [...hot_20_videos['1']] : []
     const all_category = hot_20_videos
 
@@ -71,7 +71,8 @@ const HotVideos = ({ hot_20_videos, isLoading }) => {
                                                 className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
                                             >
                                                 <Link
-                                                    href={`/play_video/${item?.video.video_id} `}
+                                                    // href={`/play_video/${item?.video.video_id} `}
+                                                    href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}`}
                                                     className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
                                                 >
                                                     <p className="max-w-[1000px] w-full">
