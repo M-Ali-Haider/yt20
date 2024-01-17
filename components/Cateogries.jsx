@@ -57,12 +57,12 @@ export default function Categories({ onCategoryChange, selectedCategory }) {
                         className="DropDown absolute z-10 right-0 mt-2 w-full md:w-72 origin-top-right divide-y font-medium divide-gray-100 rounded-md  shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-[#19191A] bg-white dark:text-white text-black duration-1000 transition-all"
                     >
                         <div className="px-1 py-1 ">
-                            {/* <Menu.Item>
+                            <Menu.Item>
                                 {({ active }) => (
                                     <button
                                         onClick={() => handleCategoryClick('All')}
                                         className={`${
-                                            active
+                                            selectedCategory === 'All'
                                                 ? 'bg-gradient-to-r from-[#E72825] to-[#F37F1F] text-white'
                                                 : 'dark:text-white text-black'
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -70,7 +70,7 @@ export default function Categories({ onCategoryChange, selectedCategory }) {
                                         All
                                     </button>
                                 )}
-                            </Menu.Item> */}
+                            </Menu.Item>
                             <Menu.Item>
                                 {({ active }) => (
                                     <button
