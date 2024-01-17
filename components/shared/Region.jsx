@@ -98,6 +98,29 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
                                     )}
                                 </Menu.Item>
                             </div>
+
+                            {/* Global Region */}
+                            <div>
+                                <Menu.Item>
+                                    {({ active }) => (
+                                        <button
+                                            onClick={() => handleRegionClick(`Global`)}
+                                            className={`${
+                                                active
+                                                    ? 'bg-gradient-to-r from-[#E72825] to-[#F37F1F] text-white'
+                                                    : `dark:text-white text-black ${
+                                                          selectedRegion === 'Global'
+                                                              ? 'bg-gradient-to-r from-[#E72825] to-[#F37F1F] text-white'
+                                                              : 'dark:text-white text-black'
+                                                      }`
+                                            } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                        >
+                                            Global
+                                        </button>
+                                    )}
+                                </Menu.Item>
+                            </div>
+
                             {regions?.map((region, key) => {
                                 return (
                                     <div key={region?.id}>

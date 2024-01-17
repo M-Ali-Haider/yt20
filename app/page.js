@@ -13,6 +13,7 @@ import { geocode } from 'react-geocode'
 import { useParams } from 'next/navigation'
 
 const eNum = {
+    All: '0',
     Now: '1',
     Music: '2',
     Gaming: '3',
@@ -42,7 +43,7 @@ export default function Home() {
         }
     }
 
-    const [selectedCategory, setSelectedCategory] = useState('Now')
+    const [selectedCategory, setSelectedCategory] = useState('All')
     const country = useMemo(() => geoInfo?.country, [geoInfo])
     const [selectedRegion, setSelectedRegion] = useState('')
 
