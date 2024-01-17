@@ -29,7 +29,7 @@ const TopBar = () => {
     return (
         <div className="MainDiv">
             <div
-                className={`flex justify-between w-full z-50 mobile:px-2 mobile:py-3 md:px-4 md:py-4 lg:px-6 lg:py-5 xl:px-5 xl:py-5 2xl:py-5 2xl:px-16 items-center dark:bg-[#19191A] bg-white dark:text-white text-black duration-1000 transition-all fixed 2xl:-mx-32 xl:-mx-16`}
+                className={`flex justify-between w-full z-50 mobile:px-2 mobile:py-3 md:px-4 md:py-4 lg:px-6 lg:py-5 xl:px-5 xl:py-5 2xl:py-5 2xl:px-16 items-center dark:bg-[#19191A] bg-white dark:text-white text-black duration-1000 transition-all fixed`}
             >
                 <a href="/">
                     <YoutubeIcon className="mobile:w-[151px] mobile:h-[26px] md:w-[200px] md:h-[30px] lg:w-[250px] lg:h-[40px] xl:w-[250px] 2xl:w-[230px]" />
