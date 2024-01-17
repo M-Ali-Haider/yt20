@@ -2,7 +2,7 @@ import Link from 'next/link'
 import ShortsSkeleton from './shared/ShortsSkeleton'
 import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
 
-const TopShorts = ({ top_20_shorts, isLoading }) => {
+const TopShorts = ({ top_20_shorts = [], isLoading, selectedCategoryNumber, selectedRegion }) => {
     // console.log('TopShorts', top_20_shorts)
     const all_category = top_20_shorts
     return (
@@ -34,7 +34,8 @@ const TopShorts = ({ top_20_shorts, isLoading }) => {
                                                     className=" mobile:rounded-lg rounded-2xl overflow-hidden box-border "
                                                 >
                                                     <Link
-                                                        href={`/${item.name}`}
+                                                        // href={`/${item.name}`}
+                                                        href={`/play_video/${item?.video.video_id}/${selectedCategoryNumber}/${selectedRegion}`}
                                                         className="flex flex-col dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
                                                     >
                                                         <div>

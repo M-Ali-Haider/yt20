@@ -23,7 +23,7 @@ const Banner = () => {
                             <span className="text-white">20 </span>Videos<span className="text-white"> & </span> Shorts
                         </p>
                     </div>
-                    <SearchComponent className=" self-center mobile:max-w-[90%]" />
+                    {/* <SearchComponent className=" self-center mobile:max-w-[90%]" /> */}
                 </div>
             </div>
         </div>

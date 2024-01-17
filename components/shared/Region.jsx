@@ -5,10 +5,9 @@ import { useGetRegions } from '@/utils/http'
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 
-export default function Region({ selectedRegion, setSelectedRegion }) {
+export default function Region({ selectedRegion, setSelectedRegion, country }) {
     const [search, setSearch] = useState('')
-    const searchString = useDebounce(search, 1000)
-    // console.log('searchString', searchString)
+    const searchString = useDebounce(search, 400)
 
     const { data, isLoading } = useGetRegions(searchString)
     const regions = data?.data
@@ -46,7 +45,7 @@ export default function Region({ selectedRegion, setSelectedRegion }) {
                         >
                             {' '}
                             {/* Region */}
-                            {!!selectedRegion ? `Region: ${selectedRegion}` : 'Region'}
+                            {!!selectedRegion ? `Region: ${selectedRegion}` : `Region: ${country}`}
                         </p>
                         <DownArrowIcon
                             className="DownArrow w-4 dark:color-white color-black"
