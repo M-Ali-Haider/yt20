@@ -5,27 +5,17 @@ import { useParams } from 'next/navigation'
 import YouTube from 'react-youtube'
 import VideoModalBottomSection from './VideoModalBottomSection'
 
+const VideoType = {
+    Top20Videos: 'top_video',
+    Hot20Videos: 'hot_video',
+    Top20Shorts: 'top_short',
+    Hot20Shorts: 'hot_short',
+}
 const VideoSection = () => {
     const {
-        id: [videoId, categoryNum, selectedRegion],
+        id: [videoId, categoryNum, selectedRegion, selectedTitle],
     } = useParams()
-    // const params = useParams()
-    // console.log('params', { videoId, categoryNum, selectedRegion })
-    const { data: videoData, isLoading: isLoadingVideoData } = useVideoById(videoId, 'top_video')
-    // console.log('video data', videoData)
-
-    // const videoLink = `https://www.youtube.com/watch?v=fUJevhTZR6Y`
-    // const videoId = 'your-video-id' // Replace with the actual YouTube video ID
-
-    const opts = {
-        height: '600',
-        width: '100%',
-        // className='w-full mobile:object-cover  xl:h-[580px] xl:rounded-tl-lg xl:rounded-tr-lg',
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-            autoplay: 0,
-        },
-    }
+    const { data: videoData, isLoading: isLoadingVideoData } = useVideoById(videoId, VideoType[selectedTitle])
 
     const onReady = (event) => {
         // access to player in all event handlers via event.target
@@ -55,13 +45,19 @@ const VideoSection = () => {
     const Tags = videoData?.video?.video?.video_tags
 
     return (
-        <main className="Main w-full flex flex-col xl:px-6 xl:py-2 ">
+        <main className="MainYoutube w-full flex flex-col xl:px-6 xl:py-2 ">
             <div
                 className={`YoutubeMainDiv w-full mobile:object-cover  xl:h-[630px] xl:rounded-tl-lg xl:rounded-tr-lg mt-[6rem] mobile:mt-[4.5rem] md:mt-[4.5rem] lg:mt-[5.2rem] 2xl:mt-[6.3rem] overflow-hidden`}
             >
                 <YouTube
                     videoId={videoId}
-                    opts={opts}
+                    opts={{
+                        height: '600px',
+                        width: '100%',
+                        playerVars: {
+                            autoplay: 0,
+                        },
+                    }}
                     onReady={onReady}
                     onPlay={onPlay}
                     onPause={onPause}
@@ -76,7 +72,10 @@ const VideoSection = () => {
             {!isLoadingVideoData ? (
                 <>
                     <div className="VideoSection xl:px-4 xl:py-4 mobile:px-2 mobile:py-2 flex flex-col gap-3 mobile:gap-1 md:gap-4 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33] ">
-                        <h1 className="VideoTitle mobile:text-lg text-[28px] mobile:text-[14px] mobileL:text-[16px] md:text-[24px] font-semibold text-black dark:text-white max-w-full line-clamp-2">
+                        <h1
+                            style={{ marginTop: '2rem' }}
+                            className="VideoTitle mobile:text-lg text-[28px] mobile:text-[14px] mobileL:text-[16px] md:text-[24px] font-semibold text-black dark:text-white max-w-full line-clamp-2"
+                        >
                             {videoData?.video?.video?.video_title}
                         </h1>
                         <div
@@ -102,6 +101,7 @@ const VideoSection = () => {
                             isLoadingVideoData={isLoadingVideoData}
                             categoryNum={categoryNum}
                             selectedRegion={selectedRegion}
+                            selectedTitle={selectedTitle}
                         />
                     </div>
                 </>
