@@ -1,6 +1,4 @@
 const VideoDetails = ({ videoData, isLoadingVideoData }) => {
-    console.log('VIDEO DETAILS')
-    console.log('videoData', videoData, 'video Loading', isLoadingVideoData)
     const timeSince = (postedDate) => {
         const currentDate = new Date()
         const seconds = Math.floor((currentDate - new Date(postedDate)) / 1000)
@@ -31,7 +29,7 @@ const VideoDetails = ({ videoData, isLoadingVideoData }) => {
     return (
         <>
             {!isLoadingVideoData && !!videoData ? (
-                <main className="MainVideoDetailsPage p-5 flex flex-col xl:gap-1.5 mobile:gap-3 md:gap-2 xl:rounded   dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]  ">
+                <main className="MainVideoDetailsPage p-5 flex flex-col gap-[1rem] mobile:gap-[0.5rem] xl:rounded   dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]  ">
                     <span className="text-red-500 dark:text-red-500 pr-2">
                         {videoData?.video?.video?.video_channelTitle}
                     </span>

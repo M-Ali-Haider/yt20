@@ -7,7 +7,7 @@ import { Fragment, useState } from 'react'
 
 export default function Region({ selectedRegion, setSelectedRegion, country }) {
     const [search, setSearch] = useState('')
-    const searchString = useDebounce(search, 400)
+    const searchString = useDebounce(search, 100)
 
     const { data, isLoading } = useGetRegions(searchString)
     const regions = data?.data
@@ -25,10 +25,15 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
     }
 
     return (
-        <div className="z-100 top-16 w-full md:w-72 text-right mobile:px-2 md:px-0  ">
+        <div className="z-100 top-16 w-full md:w-72 text-right mobile:px-2 md:px-0  min-w-[250px]">
             <Menu as="div" className="relative text-left">
                 <div>
-                    <Menu.Button className="d-flex items-center z-100 bg-red-500 inline-flex w-[100%] justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+                    <Menu.Button
+                        style={{
+                            color: 'white',
+                        }}
+                        className="d-flex items-center z-100 bg-red-500 inline-flex w-[100%] justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 min-w-max"
+                    >
                         <CategoryIcon />
                         <p
                             className="Text font-bold"

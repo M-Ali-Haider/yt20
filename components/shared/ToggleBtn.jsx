@@ -42,7 +42,10 @@ const ToggleBtn = ({ open = false }) => {
                     }`}
                 >
                     <LightThemeIcon className="dark:text-black" />
-                    <p className="mobile:text-[14px] md:text-[12px] lg:text-xs xl:text-sm 2xl:text-sm font-semibold dark:text-white">
+                    <p
+                        style={{ color: 'white', fontSize: '12px' }}
+                        className="mobile:text-[14px] md:text-[12px] lg:text-xs xl:text-sm 2xl:text-sm font-semibold"
+                    >
                         Light
                     </p>
                 </span>

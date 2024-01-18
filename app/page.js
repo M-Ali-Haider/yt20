@@ -5,11 +5,15 @@ import HotShorts from '@/components/HotShorts'
 import HotVideos from '@/components/HotVideos'
 import TopShorts from '@/components/TopShorts'
 import TopVideos from '@/components/TopVideos'
+import CarouselSlider from '@/components/shared/CarosuelSlider'
 import Region from '@/components/shared/Region'
 import { useRegionGlobal } from '@/utils/http'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { setRegion } from 'react-geocode'
+import '@/app/(MainCss)/base.css'
+import '@/app/(MainCss)/sandbox.css'
+import '@/app/(MainCss)/embla.css'
 
 const eNum = {
     All: '0',
@@ -71,6 +75,10 @@ export default function Home() {
         setRegion('Global')
     }, [params])
 
+    const OPTIONS = { slidesToScroll: 'auto', containScroll: 'trimSnaps' }
+    const SLIDE_COUNT = 8
+    const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+
     return (
         <main className="scroll-smooth xl:px-16 2xl:px-32 md:px-1">
             <div
@@ -78,6 +86,7 @@ export default function Home() {
                 style={{ paddingTop: '4rem', gap: '0px' }}
             >
                 <Banner />
+
                 <div
                     style={{
                         backgroundColor:
@@ -97,6 +106,14 @@ export default function Home() {
                 </div>
             </div>
 
+            {/* <CarouselSlider
+                slidesArray={
+                    top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
+                        ? top_20_videos[`${eNum[selectedCategory]}`]
+                        : []
+                }
+            /> */}
+
             <div className="Main_Videos_Div">
                 <>
                     <div className="TopVideo_Container">
@@ -113,6 +130,7 @@ export default function Home() {
                                     : ''
                             }
                             selectedRegion={selectedRegion}
+                            selectedTitle="Top20Videos"
                         />
                     </div>
 
@@ -130,6 +148,7 @@ export default function Home() {
                                     : ''
                             }
                             selectedRegion={selectedRegion}
+                            selectedTitle="Hot20Videos"
                         />
                     </div>
 
@@ -147,6 +166,7 @@ export default function Home() {
                                     : ''
                             }
                             selectedRegion={selectedRegion}
+                            selectedTitle="Top20Shorts"
                         />
                     </div>
 
@@ -164,6 +184,7 @@ export default function Home() {
                                     : ''
                             }
                             selectedRegion={selectedRegion}
+                            selectedTitle="Hot20Shorts"
                         />
                     </div>
                 </>
