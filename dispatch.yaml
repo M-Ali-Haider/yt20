@@ -1,0 +1,3 @@
+dispatch:
+    - url: '*youtubetop20.com/*'
+      service: youtubetop20-frontend
