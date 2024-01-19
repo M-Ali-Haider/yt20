@@ -4,7 +4,7 @@ const RightArrowIcon = ({ className, sx }) => {
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="7"
-                height="11"
+                height="9"
                 viewBox="0 0 7 11"
                 fill="none"
                 className={className}
