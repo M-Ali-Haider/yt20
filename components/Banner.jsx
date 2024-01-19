@@ -1,6 +1,10 @@
 'use client'
 
+import useWindowDimensions from "../utils/CustomHooks"
+
 const Banner = () => {
+    const { width: windowWidth } = useWindowDimensions()
+
     return (
         <div className="overflow-hidden md:px-4 mobile:px-[2px] ">
             <div className=" relative flex flex-col justify-center items-center  " style={{ height: '140px' }}>
@@ -14,7 +18,7 @@ const Banner = () => {
                 </video> */}
                 <div
                     className="absolute w-full flex flex-col justify-center mobile:px-1 items-center mobile:gap-[.8rem] md:gap-10 lg:gap-8 2xl:gap-10"
-                    style={{ bottom: '16px' }}
+                    style={{bottom: windowWidth < 500 ? '22px' : windowWidth < 900 ? '14px' : '8px' }}
                 >
                     <div className="flex flex-col items-center px-1 -gap-4 text-center">
                         <p className="dark:text-white text-black mobile:text-[30px] mobileM:text-[33px] md:text-[48px] lg:text-6xl font-normal mobile:gap-5 flex leading-[.9] md:leading-[1.3]">

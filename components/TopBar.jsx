@@ -45,7 +45,7 @@ const TopBar = () => {
                                 <p className="md:w-6 lg:w-7 xl:w-6 2xl:w-6">
                                     <HomeIcon />
                                 </p>
-                                <p className="md:text-sm lg:text-base 2xl:text-lg">Home</p>
+                                <p style={{fontSize:'14px'}} className=" md:text-sm lg:text-base 2xl:text-lg">Home</p>
                             </Link>
                         </div>
                         {/* <div className="flex group hover:opacity-80 cursor-not-allowed">
@@ -114,7 +114,7 @@ const TopBar = () => {
                                 </div>
                             </Link>
                         </div>
-                        <div className="flex items-center justify-start py-2 ">
+                        {/* <div className="flex items-center justify-start py-2 ">
                             <Link href={'/'} passHref>
                                 <div className="flex items-center justify-center gap-x-2 hover:text-red-600 hover:scale-110">
                                     <p className="mobile:w-6">
@@ -149,7 +149,7 @@ const TopBar = () => {
                                     </p>
                                 </div>
                             </Link>
-                        </div>
+                        </div> */}
 
                         <div>
                             <ToggleBtn open={open} />

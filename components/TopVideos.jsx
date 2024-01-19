@@ -54,7 +54,9 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
     return (
         <>
             {top_20_videos.length > 0 ? (
-                <div className="mobile:gap-1 flex flex-col flex mobile:py-1 mobile:px-1 md:px-4 duration-1000 transition-all">
+                <div
+                style={{marginBottom:'1rem'}}
+                 className="mobile:gap-1 flex flex-col flex mobile:py-1 mobile:px-1 md:px-4 duration-1000 transition-all">
                     {isLoading ? (
                         <div className="w-full ark:shadow grid mobile:grid-cols-1 mobileL:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4 gap-4 2xl:gap-4 mobile:px-2 ">
                             {[1, 2, 3, 4].map((item) => {

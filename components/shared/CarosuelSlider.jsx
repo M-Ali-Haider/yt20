@@ -77,7 +77,7 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
             className="Main_Carosuel_Container"
             style={{
                 '--slide-spacing': '1rem',
-                '--slide-size': `${windowWidth < 600 ? '100%' : windowWidth < 900 ? '50%' : '25%'}`,
+                '--slide-size': `${windowWidth < 600 ? '50%' : windowWidth < 900 ? '25%' :windowWidth < 1440 ? '20%' :windowWidth < 1920 ? '16.6%' : '10%'}`,
                 '--slide-height': '19rem',
                 // padding: '1.6rem',
                 // border: '1px solid red',

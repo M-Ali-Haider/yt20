@@ -28,7 +28,7 @@ const VideoModalBottomSection = ({
 
     const deleteVideoById = useCallback(
         (videos = [], videoID) => {
-            const updatedVideos = videos.filter((video) => video?.video_id !== videoID)?.slice(0, 4)
+            const updatedVideos = videos.filter((video) => video?.video_id !== videoID)?.slice(0, 10)
             return updatedVideos
         },
         [data, videoId]
@@ -102,7 +102,7 @@ const VideoModalBottomSection = ({
     return (
         <section>
             <>
-                <div className="ContentAndDividerWrapper w-full px-2">
+                <div className="ContentAndDividerWrapper w-full px-2" style={{ marginBottom: '1rem' }}>
                     <div className="VideoBottomSection flex gap-10 mt-4 mobile:mt-2" style={{ marginBottom: '2rem' }}>
                         {PlayVideoDetails.map((item, index) => (
                             <div className="ItemDiv" key={index}>
