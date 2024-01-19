@@ -107,11 +107,16 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
                                                                 <img
                                                                     src={item?.video.video_thumbnails.url}
                                                                     alt="Avatar"
-                                                                    className="flex w-[80px] h-[80px] object-cover "
+                                                                    className="flex object-cover "
+                                                                    style={{
+                                                                        height: '50px',
+                                                                        borderRadius: '50%',
+                                                                        width: '50px',
+                                                                    }}
                                                                 />
                                                             </div>
                                                             {/* </div> */}
-                                                            <div className="flex flex-col gap-[0.75rem] tablet:gap-[0.5rem] flex-wrap">
+                                                            <div className="flex flex-col gap-[0.25rem] tablet:gap-[0.25rem] flex-wrap">
                                                                 <p className="line-clamp-2 dark:text-white text-black font-medium mobile:text-base mobile:font-semibold md:text-[15px] lg:text-[13px] xl:text-base 2xl:text-[16px]  text-clip overflow-hidden  ">
                                                                     {item?.video.video_title}
                                                                 </p>
@@ -139,6 +144,7 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
                                                 selectedCategoryNumber={selectedCategoryNumber}
                                                 selectedRegion={selectedRegion}
                                                 selectedTitle={selectedTitle}
+                                                for="Videos"
                                             />
                                         </>
                                     )}

@@ -99,6 +99,7 @@ const TopShorts = ({ top_20_shorts = [], isLoading, selectedCategoryNumber, sele
                                                 selectedCategoryNumber={selectedCategoryNumber}
                                                 selectedRegion={selectedRegion}
                                                 selectedTitle={selectedTitle}
+                                                for="Shorts"
                                             />
                                         )}
                                     </>

@@ -117,12 +117,22 @@ const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, sele
                                                                 style={{ width: 'inherit', height: 'inherit' }}
                                                             />
                                                         </p>
-                                                        <div className="flex mobile:py-2 mobile:gap-1 mobile:px-1 md:gap-2 md:min-h-[90px] xl:min-h-[120px]  2xl:min-h-[130px]">
-                                                            <div className="flex w-[90px] h-[90px] bg-cover bg-center rounded-8px">
+                                                        {/* <div className="MainImageAndTextDiv flex mobile:py-2 mobile:gap-1 mobile:px-1 md:gap-2 md:min-h-[90px] xl:min-h-[120px]  2xl:min-h-[130px]"> */}
+                                                        <div
+                                                            style={{ paddingTop: '0.5rem' }}
+                                                            className="MainImageAndTextDiv flex mobile:py-2 gap-[0.5rem]"
+                                                        >
+                                                            {/* <div className="flex w-[90px] h-[90px] bg-cover bg-center rounded-8px"> */}
+                                                            <div className="flex bg-cover bg-center rounded-8px min-w-[50px]">
                                                                 <img
                                                                     src={item?.video.video_thumbnails.url}
                                                                     alt="Avatar"
-                                                                    className="flex w-[80px] h-[80px] object-cover "
+                                                                    className="flex object-cover "
+                                                                    style={{
+                                                                        height: '50px',
+                                                                        borderRadius: '50%',
+                                                                        width: '50px',
+                                                                    }}
                                                                 />
                                                             </div>
                                                             <div className="flex flex-col mobile:gap-[2px] md:gap-1 flex-wrap">
@@ -152,6 +162,7 @@ const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, sele
                                             selectedCategoryNumber={selectedCategoryNumber}
                                             selectedRegion={selectedRegion}
                                             selectedTitle={selectedTitle}
+                                            for="Videos"
                                         />
                                     )}
                                 </>

@@ -3,7 +3,7 @@ import VideoSection from '@/components/shared/VideoSection'
 
 const PlayVideo = () => {
     return (
-        <main className="scroll-smooth xl:px-16 2xl:px-32">
+        <main className="VideoSection scroll-smooth xl:px-8 2xl:px-16">
             <VideoSection />
         </main>
     )

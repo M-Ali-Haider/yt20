@@ -7,7 +7,7 @@ import { DotButton, PrevButton, NextButton } from '@/components/shared/EmblaCaro
 import { ThemeContext } from '../Context/ThemeContext'
 import { usePathname } from 'next/navigation'
 
-const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, selectedTitle }) => {
+const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, selectedTitle, ...props }) => {
     const pathName = usePathname()
     const includePlayVideo = pathName?.includes('play_video')
     const { width: windowWidth } = useWindowDimensions()
@@ -86,59 +86,115 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
         >
             <div className="embla__viewport" ref={emblaRef} style={{ position: 'relative' }}>
                 <div className="embla__container">
-                    {slides.map((item, index) => (
-                        <div className="Slide_Main embla__slide" key={index}>
-                            {/* <img className="embla__slide__img" src={imageByIndex(index)} alt="Your alt text" /> */}
-                            <div
-                                // className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
-                                className="flex flex-col dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
-                                key={index}
-                            >
-                                <Link
-                                    href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
-                                    className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
-                                >
-                                    <p className="max-w-[1000px] w-full">
-                                        <img
-                                            src={`${item?.video.video_thumbnails.url}`}
-                                            alt="Not Found"
-                                            style={{ width: 'inherit', height: 'inherit' }}
-                                        />
-                                    </p>
-                                    <div className="flex mobile:py-2 mobile:gap-1 mobile:px-1 md:gap-2 md:min-h-[90px] xl:min-h-[120px]  2xl:min-h-[130px]">
-                                        <div className="flex w-[90px] h-[90px] bg-cover bg-center rounded-8px">
-                                            <img
-                                                src={item?.video.video_thumbnails.url}
-                                                alt="Avatar"
-                                                className="flex w-[80px] h-[80px] object-cover "
-                                            />
-                                        </div>
-                                        {/* </div> */}
-                                        <div className="flex flex-col mobile:gap-[2px] md:gap-1 flex-wrap">
-                                            <p className="line-clamp-2 dark:text-white text-black font-medium mobile:text-base mobile:font-semibold md:text-[15px] lg:text-[13px] xl:text-base 2xl:text-[16px]  text-clip overflow-hidden  ">
-                                                {/* Title */}
-                                                {item?.video.video_title}
-                                            </p>
-                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-xs md:text-xs lg:text-[9px] xl:text-[13px] font-semibold">
-                                                {/* Channel Title */}
-                                                {item?.video.video_channelTitle}
-                                            </p>
-                                            <div className="flex gap-[2px]">
-                                                <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-[13px] lg:text-[9px]  xl:text-[13px]  font-medium ">
-                                                    {/* Publish */}
-                                                    {timeSince(item?.video?.video_publishedAt)}
+                    <>
+                        {props?.for === 'Videos' ? (
+                            <>
+                                {slides.map((item, index) => (
+                                    <div className="Slide_Main embla__slide" key={index}>
+                                        {/* <img className="embla__slide__img" src={imageByIndex(index)} alt="Your alt text" /> */}
+                                        <div
+                                            // className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
+                                            className="flex flex-col dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
+                                            key={index}
+                                        >
+                                            <Link
+                                                href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
+                                                className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
+                                            >
+                                                <p className="max-w-[1000px] w-full">
+                                                    <img
+                                                        src={`${item?.video.video_thumbnails.url}`}
+                                                        alt="Not Found"
+                                                        style={{ width: 'inherit', height: 'inherit' }}
+                                                    />
                                                 </p>
-                                                <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-[13px] lg:text-[9px]  xl:text-[13px]  font-medium">
-                                                    {/* ViewCount */}
-                                                    {`${views(item?.video.video_viewCount)}`}
-                                                </p>
-                                            </div>
+                                                <div
+                                                    style={{ paddingTop: '0.5rem' }}
+                                                    className="MainImageAndTextDiv flex mobile:py-2 gap-[0.5rem]"
+                                                >
+                                                    <div className="flex bg-cover bg-center rounded-8px min-w-[50px]">
+                                                        <img
+                                                            src={item?.video.video_thumbnails.url}
+                                                            alt="Avatar"
+                                                            className="flex object-cover "
+                                                            style={{
+                                                                height: '50px',
+                                                                borderRadius: '50%',
+                                                                width: '50px',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    {/* </div> */}
+                                                    <div className="flex flex-col mobile:gap-[2px] md:gap-1 flex-wrap">
+                                                        <p className="line-clamp-2 dark:text-white text-black font-medium mobile:text-base mobile:font-semibold md:text-[15px] lg:text-[13px] xl:text-base 2xl:text-[16px]  text-clip overflow-hidden  ">
+                                                            {/* Title */}
+                                                            {item?.video.video_title}
+                                                        </p>
+                                                        <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-xs md:text-xs lg:text-[9px] xl:text-[13px] font-semibold">
+                                                            {/* Channel Title */}
+                                                            {item?.video.video_channelTitle}
+                                                        </p>
+                                                        <div className="flex gap-[2px]">
+                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-[13px] lg:text-[9px]  xl:text-[13px]  font-medium ">
+                                                                {/* Publish */}
+                                                                {timeSince(item?.video?.video_publishedAt)}
+                                                            </p>
+                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-[13px] lg:text-[9px]  xl:text-[13px]  font-medium">
+                                                                {/* ViewCount */}
+                                                                {`${views(item?.video.video_viewCount)}`}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Link>
                                         </div>
                                     </div>
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
+                                ))}
+                            </>
+                        ) : (
+                            <>
+                                {slides.map((item, index) => (
+                                    <div className="Slide_Main embla__slide" key={index}>
+                                        {/* <img className="embla__slide__img" src={imageByIndex(index)} alt="Your alt text" /> */}
+                                        <div
+                                            // className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
+                                            className="flex flex-col dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
+                                            key={index}
+                                        >
+                                            <Link
+                                                href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
+                                                className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
+                                            >
+                                                <p className="max-w-[1000px] w-full">
+                                                    <img
+                                                        src={`${item?.video.video_thumbnails.url}`}
+                                                        alt="Not Found"
+                                                        style={{ width: 'inherit', height: 'inherit' }}
+                                                    />
+                                                </p>
+                                                <div
+                                                    style={{ paddingTop: '0.5rem' }}
+                                                    className="MainImageAndTextDiv flex mobile:py-2 gap-[0.5rem]"
+                                                >
+                                                    <div className="flex p-4 gap-3s pb-4">
+                                                        <div className="flex flex-col gap-1 flex-wrap text-sm">
+                                                            <p className="dark:text-white text-black  mobile:text-base lg:text-[13px] xl:text-base font-semibold  line-clamp-2">
+                                                                {item.video.video_title}
+                                                            </p>
+
+                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-sm lg:text-[9px] xl:text-[11px] text-[18px] font-medium  line-clamp-2">
+                                                                {item.video.video_title}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ))}
+                            </>
+                        )}
+                    </>
                 </div>
                 {!includePlayVideo ? (
                     <>
