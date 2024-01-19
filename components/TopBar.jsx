@@ -2,8 +2,9 @@
 import CloseIcon from '@/assets/icons/CloseIcon'
 import HamburgerIcon from '@/assets/icons/HamburgerIcon'
 import HomeIcon from '@/assets/icons/HomeIcon'
+import ShortsIcon from '@/assets/icons/ShortsIcon'
+import VideosIcon from '@/assets/icons/VideosIcon'
 import YoutubeIcon from '@/assets/icons/YoutubeIcon'
-import { TopBarList } from '@/utils/constants'
 import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import { ThemeContext } from './Context/ThemeContext'
@@ -95,24 +96,61 @@ const TopBar = () => {
                     <div
                         className={`block right-0 left-0 top-16 z-10 md:hidden dark:bg-[#19191A] bg-white dark:text-white text-black w-full py-2 px-8 fixed duration-1000 transition-all `}
                     >
-                        {TopBarList.map((item, index) => (
-                            <div key={index} className="flex items-center justify-start py-2 ">
-                                <Link href={item.name.toLowerCase()} passHref>
-                                    <div className="flex items-center justify-center gap-x-2 hover:text-red-600 hover:scale-110">
-                                        <p className="mobile:w-6">{item.icon}</p>
-                                        <p
-                                            className={
-                                                index === TopBarList.length - 3
-                                                    ? 'mobile:text-[16px] font-[410] text-[#E72825]'
-                                                    : 'mobile:text-[16px] font-[410] '
-                                            }
-                                        >
-                                            {item.name}
-                                        </p>
-                                    </div>
-                                </Link>
-                            </div>
-                        ))}
+                        <div className="flex items-center justify-start py-2 ">
+                            <Link href={'/'} passHref>
+                                <div className="flex items-center justify-center gap-x-2 hover:text-red-600 hover:scale-110">
+                                    <p className="mobile:w-6">
+                                        <HomeIcon />
+                                    </p>
+                                    <p
+                                        className={
+                                            // index === TopBarList.length - 3
+                                            // ? 'mobile:text-[16px] font-[410] text-[#E72825]'
+                                            'mobile:text-[16px] font-[410] '
+                                        }
+                                    >
+                                        Home
+                                    </p>
+                                </div>
+                            </Link>
+                        </div>
+                        <div className="flex items-center justify-start py-2 ">
+                            <Link href={'/'} passHref>
+                                <div className="flex items-center justify-center gap-x-2 hover:text-red-600 hover:scale-110">
+                                    <p className="mobile:w-6">
+                                        <VideosIcon />
+                                    </p>
+                                    <p
+                                        className={
+                                            // index === TopBarList.length - 3
+                                            // ? 'mobile:text-[16px] font-[410] text-[#E72825]'
+                                            'mobile:text-[16px] font-[410] '
+                                        }
+                                    >
+                                        Videos
+                                    </p>
+                                </div>
+                            </Link>
+                        </div>
+                        <div className="flex items-center justify-start py-2 ">
+                            <Link href={'/'} passHref>
+                                <div className="flex items-center justify-center gap-x-2 hover:text-red-600 hover:scale-110">
+                                    <p className="mobile:w-6">
+                                        <ShortsIcon />
+                                    </p>
+                                    <p
+                                        className={
+                                            // index === TopBarList.length - 3
+                                            // ? 'mobile:text-[16px] font-[410] text-[#E72825]'
+                                            'mobile:text-[16px] font-[410] '
+                                        }
+                                    >
+                                        Shorts
+                                    </p>
+                                </div>
+                            </Link>
+                        </div>
+
                         <div>
                             <ToggleBtn open={open} />
                         </div>

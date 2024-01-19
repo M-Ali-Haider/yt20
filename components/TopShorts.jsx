@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import ShortsSkeleton from './shared/ShortsSkeleton'
-import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
-import { useState } from 'react'
 import CaroselSlider from '@/components/shared/CarosuelSlider'
+import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import ShortsSkeleton from './shared/ShortsSkeleton'
 
 const TopShorts = ({ top_20_shorts = [], isLoading, selectedCategoryNumber, selectedRegion, selectedTitle }) => {
     const pathName = usePathname()
@@ -40,7 +40,10 @@ const TopShorts = ({ top_20_shorts = [], isLoading, selectedCategoryNumber, sele
                                         className="flex flex-wrap items-center gap-[0rem] sm:gap-[1rem] w-full my-2 sm:flex-nowrap"
                                         style={{ padding: '0rem 1rem' }}
                                     >
-                                        <h1 className="w-full" style={{ fontSize: '25px', lineHeight: '50px' }}>
+                                        <h1
+                                            className="w-full text-black dark:text-white"
+                                            style={{ fontSize: '25px', lineHeight: '50px' }}
+                                        >
                                             Top 20 Shorts for you
                                         </h1>
                                         {/* <ViewMoreBtn /> */}

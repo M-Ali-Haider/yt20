@@ -2,9 +2,9 @@
 import CaroselSlider from '@/components/shared/CarosuelSlider'
 import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import VideoSkeleton from './shared/VideoSkeleton'
-import { usePathname } from 'next/navigation'
 
 const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, selectedRegion, selectedTitle }) => {
     const pathName = usePathname()
@@ -68,7 +68,10 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
                                     className="flex flex-wrap items-center gap-[0rem] sm:gap-[1rem] w-full my-2 sm:flex-nowrap"
                                     style={{ padding: '0rem 1rem' }}
                                 >
-                                    <h1 className="w-full" style={{ fontSize: '25px', lineHeight: '50px' }}>
+                                    <h1
+                                        className="w-full text-black dark:text-white"
+                                        style={{ fontSize: '25px', lineHeight: '50px' }}
+                                    >
                                         Top 20 Videos for you
                                     </h1>
                                     <ViewMoreBtn

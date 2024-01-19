@@ -1,11 +1,10 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import imageByIndex from './imageByIndex'
-import Link from 'next/link'
+import { NextButton, PrevButton } from '@/components/shared/EmblaCarouselArrowsDotsButtons'
 import useWindowDimensions from '@/utils/CustomHooks'
-import { DotButton, PrevButton, NextButton } from '@/components/shared/EmblaCarouselArrowsDotsButtons'
-import { ThemeContext } from '../Context/ThemeContext'
+import useEmblaCarousel from 'embla-carousel-react'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
+import { ThemeContext } from '../Context/ThemeContext'
 
 const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, selectedTitle, ...props }) => {
     const pathName = usePathname()
@@ -96,16 +95,22 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                             // className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
                                             className="flex flex-col dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
                                             key={index}
+                                            style={{ borderRadius: '4px' }}
                                         >
                                             <Link
                                                 href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
                                                 className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
+                                                style={{ borderRadius: '4px' }}
                                             >
                                                 <p className="max-w-[1000px] w-full">
                                                     <img
                                                         src={`${item?.video.video_thumbnails.url}`}
                                                         alt="Not Found"
-                                                        style={{ width: 'inherit', height: 'inherit' }}
+                                                        style={{
+                                                            width: 'inherit',
+                                                            height: 'inherit',
+                                                            borderRadius: '4px',
+                                                        }}
                                                     />
                                                 </p>
                                                 <div
@@ -160,16 +165,22 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                             // className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
                                             className="flex flex-col dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
                                             key={index}
+                                            style={{ borderRadius: '4px' }}
                                         >
                                             <Link
                                                 href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
                                                 className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
+                                                style={{ borderRadius: '4px' }}
                                             >
                                                 <p className="max-w-[1000px] w-full">
                                                     <img
                                                         src={`${item?.video.video_thumbnails.url}`}
                                                         alt="Not Found"
-                                                        style={{ width: 'inherit', height: 'inherit' }}
+                                                        style={{
+                                                            width: 'inherit',
+                                                            height: 'inherit',
+                                                            borderRadius: '4px',
+                                                        }}
                                                     />
                                                 </p>
                                                 <div

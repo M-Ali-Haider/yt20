@@ -1,10 +1,10 @@
 'use client'
-import Link from 'next/link'
-import VideoSkeleton from './shared/VideoSkeleton'
-import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
 import CaroselSlider from '@/components/shared/CarosuelSlider'
+import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { useParams, usePathname } from 'next/navigation'
+import VideoSkeleton from './shared/VideoSkeleton'
 
 const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, selectedRegion, selectedTitle }) => {
     const pathName = usePathname()
@@ -81,7 +81,10 @@ const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, sele
                                     className="flex flex-wrap items-center gap-[0rem] sm:gap-[1rem] w-full my-2 sm:flex-nowrap"
                                     style={{ paddingLeft: '0px' }}
                                 >
-                                    <h1 className="w-full" style={{ fontSize: '25px', lineHeight: '50px' }}>
+                                    <h1
+                                        className="w-full text-black dark:text-white"
+                                        style={{ fontSize: '25px', lineHeight: '50px' }}
+                                    >
                                         Hot 20 Videos for you
                                     </h1>
                                     {/* <ViewMoreBtn isLoading={isLoading} /> */}
