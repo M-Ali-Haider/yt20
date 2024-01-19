@@ -57,7 +57,7 @@ export default function Categories({ onCategoryChange, selectedCategory }) {
                 >
                     <Menu.Items
                         style={{ left: '0px' }}
-                        className="DropDown absolute z-10 right-0 mt-2 w-full md:w-72 origin-top-right divide-y font-medium divide-gray-100 rounded-md  shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-[#19191A] bg-white dark:text-white text-black duration-1000 transition-all"
+                        className="DropDown absolute z-10 right-0 mt-2 w-full origin-top-right divide-y font-medium divide-gray-100 rounded-md  shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-[#19191A] bg-white dark:text-white text-black duration-1000 transition-all"
                     >
                         <div className="px-1 py-1 ">
                             <Menu.Item>

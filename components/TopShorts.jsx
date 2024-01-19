@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import ShortsSkeleton from './shared/ShortsSkeleton'
-import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
-import { useState } from 'react'
 import CaroselSlider from '@/components/shared/CarosuelSlider'
+import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import ShortsSkeleton from './shared/ShortsSkeleton'
 
 const TopShorts = ({ top_20_shorts = [], isLoading, selectedCategoryNumber, selectedRegion, selectedTitle }) => {
     const pathName = usePathname()
@@ -37,17 +37,23 @@ const TopShorts = ({ top_20_shorts = [], isLoading, selectedCategoryNumber, sele
 
                                 {!includePlayVideo ? (
                                     <div
-                                        style={{ paddingLeft: '0px', marginBottom: '1rem' }}
-                                        className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4"
+                                        className="flex flex-wrap items-center gap-[0rem] sm:gap-[1rem] w-full my-2 sm:flex-nowrap"
+                                        style={{ padding: '0rem 1rem' }}
                                     >
                                         <h1
-                                            style={{ fontSize: '26px' }}
-                                            className="mobile:text-base  md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white"
+                                            className="w-full text-black dark:text-white"
+                                            style={{ fontSize: '25px', lineHeight: '50px' }}
                                         >
                                             Top 20 Shorts for you
                                         </h1>
                                         {/* <ViewMoreBtn /> */}
-                                        <ViewMoreBtn seeMore={seeMore} onClick={seeMoreClicked} />
+                                        <ViewMoreBtn
+                                            className={
+                                                'flex items-center justify-between h-[30px] w-full sm:w-[110px] px-4 rounded-[16px] border border-1 border-red-500 dark:bg-gradient-to-b dark:bg-[#19191A] bg-white text-nowrap capitalize dark:text-white dark:hover:text-red-500 hover:text-red-500 duration-1000 transition-all dark:hover:opacity-100 dark:opacity-90 hover:opacity-90'
+                                            }
+                                            seeMore={seeMore}
+                                            onClick={seeMoreClicked}
+                                        />
                                     </div>
                                 ) : (
                                     ''
@@ -96,6 +102,7 @@ const TopShorts = ({ top_20_shorts = [], isLoading, selectedCategoryNumber, sele
                                                 selectedCategoryNumber={selectedCategoryNumber}
                                                 selectedRegion={selectedRegion}
                                                 selectedTitle={selectedTitle}
+                                                for="Shorts"
                                             />
                                         )}
                                     </>

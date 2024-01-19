@@ -1,10 +1,10 @@
 'use client'
-import Link from 'next/link'
-import VideoSkeleton from './shared/VideoSkeleton'
-import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
 import CaroselSlider from '@/components/shared/CarosuelSlider'
+import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { useParams, usePathname } from 'next/navigation'
+import VideoSkeleton from './shared/VideoSkeleton'
 
 const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, selectedRegion, selectedTitle }) => {
     const pathName = usePathname()
@@ -77,17 +77,24 @@ const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, sele
                             )}
                             {!includePlayVideo ? (
                                 <div
-                                    className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4 mb-4"
+                                    // className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4 mb-4"
+                                    className="flex flex-wrap items-center gap-[0rem] sm:gap-[1rem] w-full my-2 sm:flex-nowrap"
                                     style={{ paddingLeft: '0px' }}
                                 >
                                     <h1
-                                        style={{ fontSize: '26px' }}
-                                        className="mobile:text-base  md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white"
+                                        className="w-full text-black dark:text-white"
+                                        style={{ fontSize: '25px', lineHeight: '50px' }}
                                     >
                                         Hot 20 Videos for you
                                     </h1>
                                     {/* <ViewMoreBtn isLoading={isLoading} /> */}
-                                    <ViewMoreBtn seeMore={seeMore} onClick={seeMoreClicked} />
+                                    <ViewMoreBtn
+                                        className={
+                                            'flex items-center justify-between h-[30px] w-full sm:w-[110px] px-4 rounded-[16px] border border-1 border-red-500 dark:bg-gradient-to-b dark:bg-[#19191A] bg-white text-nowrap capitalize dark:text-white dark:hover:text-red-500 hover:text-red-500 duration-1000 transition-all dark:hover:opacity-100 dark:opacity-90 hover:opacity-90'
+                                        }
+                                        seeMore={seeMore}
+                                        onClick={seeMoreClicked}
+                                    />
                                 </div>
                             ) : (
                                 ''
@@ -113,12 +120,22 @@ const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, sele
                                                                 style={{ width: 'inherit', height: 'inherit' }}
                                                             />
                                                         </p>
-                                                        <div className="flex mobile:py-2 mobile:gap-1 mobile:px-1 md:gap-2 md:min-h-[90px] xl:min-h-[120px]  2xl:min-h-[130px]">
-                                                            <div className="flex w-[90px] h-[90px] bg-cover bg-center rounded-8px">
+                                                        {/* <div className="MainImageAndTextDiv flex mobile:py-2 mobile:gap-1 mobile:px-1 md:gap-2 md:min-h-[90px] xl:min-h-[120px]  2xl:min-h-[130px]"> */}
+                                                        <div
+                                                            style={{ paddingTop: '0.5rem' }}
+                                                            className="MainImageAndTextDiv flex mobile:py-2 gap-[0.5rem]"
+                                                        >
+                                                            {/* <div className="flex w-[90px] h-[90px] bg-cover bg-center rounded-8px"> */}
+                                                            <div className="flex bg-cover bg-center rounded-8px min-w-[50px]">
                                                                 <img
                                                                     src={item?.video.video_thumbnails.url}
                                                                     alt="Avatar"
-                                                                    className="flex w-[80px] h-[80px] object-cover "
+                                                                    className="flex object-cover "
+                                                                    style={{
+                                                                        height: '50px',
+                                                                        borderRadius: '50%',
+                                                                        width: '50px',
+                                                                    }}
                                                                 />
                                                             </div>
                                                             <div className="flex flex-col mobile:gap-[2px] md:gap-1 flex-wrap">
@@ -148,6 +165,7 @@ const HotVideos = ({ hot_20_videos = [], isLoading, selectedCategoryNumber, sele
                                             selectedCategoryNumber={selectedCategoryNumber}
                                             selectedRegion={selectedRegion}
                                             selectedTitle={selectedTitle}
+                                            for="Videos"
                                         />
                                     )}
                                 </>

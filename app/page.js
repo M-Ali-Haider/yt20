@@ -92,7 +92,7 @@ export default function Home() {
                         backgroundColor:
                             'dark:bg-[#19191A] bg-[rgb(0 0 0 / var(--tw-text-opacity))] dark:text-white text-black',
                     }}
-                    className="Main flex mobile:gap-[0.5rem] gap-[1rem] justify-center mobile:flex-col md:flex-row w-full xl:px-4 xl:max-h-[65px] 2xl:max-h-[70px] md:my-2 lg:my-3 mobile:px-2 md:px-4   md:flex dark:bg-[#19191A] bg-white dark:text-[#99A2AD] text-[#737174]"
+                    className="Main flex mobile:gap-[1rem] gap-[1rem] justify-center mobile:flex-col md:flex-row w-full xl:px-4 xl:max-h-[65px] 2xl:max-h-[70px] md:my-2 lg:my-3 mobile:px-2 md:px-4   md:flex dark:bg-[#19191A] bg-white dark:text-[#99A2AD] text-[#737174]"
                 >
                     <Categories onCategoryChange={handleCategoryChange} selectedCategory={selectedCategory} />
                     <Region

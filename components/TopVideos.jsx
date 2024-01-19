@@ -2,9 +2,9 @@
 import CaroselSlider from '@/components/shared/CarosuelSlider'
 import ViewMoreBtn from '@/components/shared/ViewMoreBtn'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import VideoSkeleton from './shared/VideoSkeleton'
-import { usePathname } from 'next/navigation'
 
 const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, selectedRegion, selectedTitle }) => {
     const pathName = usePathname()
@@ -54,10 +54,12 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
     return (
         <>
             {top_20_videos.length > 0 ? (
-                <div className="mobile:gap-1 flex flex-col flex mobile:py-1 mobile:px-1 md:px-4 duration-1000 transition-all">
+                <div
+                style={{marginBottom:'1rem'}}
+                 className="mobile:gap-1 flex flex-col flex mobile:py-1 mobile:px-1 md:px-4 duration-1000 transition-all">
                     {isLoading ? (
                         <div className="w-full ark:shadow grid mobile:grid-cols-1 mobileL:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4 gap-4 2xl:gap-4 mobile:px-2 ">
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
+                            {[1, 2, 3, 4].map((item) => {
                                 return <VideoSkeleton key={item} />
                             })}
                         </div>
@@ -65,16 +67,22 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
                         <>
                             {!includePlayVideo ? (
                                 <div
-                                    className="flex justify-between items-center mobile:py-[2px] mobile:px-3 mobile:mt-3 lg:gap-6 md:pb-1 xl:px-4 mb-4"
-                                    style={{ paddingLeft: '0px' }}
+                                    className="flex flex-wrap items-center gap-[0rem] sm:gap-[1rem] w-full my-2 sm:flex-nowrap"
+                                    style={{ padding: '0rem 1rem' }}
                                 >
                                     <h1
-                                        className="mobile:text-base md:text-[24px] 2xl:text-[22px] font-semibold text-black dark:text-white"
-                                        style={{ fontSize: '26px' }}
+                                        className="w-full text-black dark:text-white"
+                                        style={{ fontSize: '25px', lineHeight: '50px' }}
                                     >
                                         Top 20 Videos for you
                                     </h1>
-                                    <ViewMoreBtn seeMore={seeMore} onClick={seeMoreClicked} />
+                                    <ViewMoreBtn
+                                        className={
+                                            'flex items-center justify-between h-[30px] w-full sm:w-[110px] px-4 rounded-[16px] border border-1 border-red-500 dark:bg-gradient-to-b dark:bg-[#19191A] bg-white text-nowrap capitalize dark:text-white dark:hover:text-red-500 hover:text-red-500 duration-1000 transition-all dark:hover:opacity-100 dark:opacity-90 hover:opacity-90'
+                                        }
+                                        seeMore={seeMore}
+                                        onClick={seeMoreClicked}
+                                    />
                                 </div>
                             ) : (
                                 ''
@@ -104,11 +112,16 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
                                                                 <img
                                                                     src={item?.video.video_thumbnails.url}
                                                                     alt="Avatar"
-                                                                    className="flex w-[80px] h-[80px] object-cover "
+                                                                    className="flex object-cover "
+                                                                    style={{
+                                                                        height: '50px',
+                                                                        borderRadius: '50%',
+                                                                        width: '50px',
+                                                                    }}
                                                                 />
                                                             </div>
                                                             {/* </div> */}
-                                                            <div className="flex flex-col gap-[0.75rem] tablet:gap-[0.5rem] flex-wrap">
+                                                            <div className="flex flex-col gap-[0.25rem] tablet:gap-[0.25rem] flex-wrap">
                                                                 <p className="line-clamp-2 dark:text-white text-black font-medium mobile:text-base mobile:font-semibold md:text-[15px] lg:text-[13px] xl:text-base 2xl:text-[16px]  text-clip overflow-hidden  ">
                                                                     {item?.video.video_title}
                                                                 </p>
@@ -136,6 +149,7 @@ const TopVideos = ({ top_20_videos = [], isLoading, selectedCategoryNumber, sele
                                                 selectedCategoryNumber={selectedCategoryNumber}
                                                 selectedRegion={selectedRegion}
                                                 selectedTitle={selectedTitle}
+                                                for="Videos"
                                             />
                                         </>
                                     )}

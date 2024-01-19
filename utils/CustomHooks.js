@@ -9,16 +9,23 @@ function getWindowDimensions() {
 }
 
 export default function useWindowDimensions() {
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
+    const isClient = typeof window === 'object' // Check if window is defined
+
+    const [windowDimensions, setWindowDimensions] = useState(isClient ? getWindowDimensions() : { width: 0, height: 0 })
 
     useEffect(() => {
-        function handleResize() {
-            setWindowDimensions(getWindowDimensions())
-        }
+        if (isClient) {
+            function handleResize() {
+                setWindowDimensions(getWindowDimensions())
+            }
 
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
+            window.addEventListener('resize', handleResize)
+
+            return () => {
+                window.removeEventListener('resize', handleResize)
+            }
+        }
+    }, [isClient])
 
     return windowDimensions
 }
