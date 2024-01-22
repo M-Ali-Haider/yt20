@@ -33,8 +33,8 @@ const ToggleBtn = ({ open = false }) => {
                 >
                     <DarkThemeIcon />
                     <p
-                        style={{ color: 'white', fontSize: '12px' }}
-                        className="mobile:text-[14px] md:text-[12px] lg:text-sx xl:text-sm 2xl:text-sm font-semibold"
+                        style={{ fontSize: '12px' }}
+                        className="mobile:text-[14px] md:text-[12px] lg:text-sx xl:text-sm 2xl:text-sm font-semibold color-black dark:color-white"
                     >
                         Dark
                     </p>

@@ -1,6 +1,8 @@
+import AvatarImage from '@/components/shared/AvatarImage'
 import { NextButton, PrevButton } from '@/components/shared/EmblaCarouselArrowsDotsButtons'
 import useWindowDimensions from '@/utils/CustomHooks'
 import useEmblaCarousel from 'embla-carousel-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
@@ -77,7 +79,17 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
             className="Main_Carosuel_Container"
             style={{
                 '--slide-spacing': '1rem',
-                '--slide-size': `${windowWidth < 600 ? '50%' : windowWidth < 900 ? '25%' :windowWidth < 1440 ? '20%' :windowWidth < 1920 ? '16.6%' : '10%'}`,
+                '--slide-size': `${
+                    windowWidth < 600
+                        ? '50%'
+                        : windowWidth < 900
+                        ? '25%'
+                        : windowWidth < 1440
+                        ? '20%'
+                        : windowWidth < 1920
+                        ? '16.6%'
+                        : '10%'
+                }`,
                 '--slide-height': '19rem',
                 // padding: '1.6rem',
                 // border: '1px solid red',
@@ -93,17 +105,20 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                         {/* <img className="embla__slide__img" src={imageByIndex(index)} alt="Your alt text" /> */}
                                         <div
                                             // className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
-                                            className="flex flex-col dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
+                                            className="flex flex-col dark:hover:opacity-100 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
                                             key={index}
-                                            style={{ borderRadius: '4px' }}
+                                            style={{
+                                                borderRadius: '4px',
+                                                height: '100%',
+                                            }}
                                         >
                                             <Link
                                                 href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
-                                                className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
+                                                // className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
                                                 style={{ borderRadius: '4px' }}
                                             >
                                                 <p className="max-w-[1000px] w-full">
-                                                    <img
+                                                    {/* <img
                                                         src={`${item?.video.video_thumbnails.url}`}
                                                         alt="Not Found"
                                                         style={{
@@ -111,20 +126,35 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                                             height: 'inherit',
                                                             borderRadius: '4px',
                                                         }}
+                                                    /> */}
+                                                    <Image
+                                                        src={`${item?.video.video_thumbnails.url}`}
+                                                        alt="Not Found"
+                                                        className="flex object-cover"
+                                                        height={100}
+                                                        width={100}
+                                                        style={{
+                                                            objectFit: 'contain',
+                                                            borderRadius: '4px',
+                                                            width: '100%',
+                                                        }}
                                                     />
                                                 </p>
                                                 <div
                                                     style={{ paddingTop: '0.5rem' }}
                                                     className="MainImageAndTextDiv flex mobile:py-2 gap-[0.5rem]"
                                                 >
-                                                    <div className="flex bg-cover bg-center rounded-8px min-w-[50px]">
-                                                        <img
+                                                    <div className="flex bg-cover bg-center rounded-8px">
+                                                        <AvatarImage
                                                             src={item?.video.video_thumbnails.url}
-                                                            alt="Avatar"
-                                                            className="flex object-cover "
                                                             style={{
-                                                                height: '50px',
                                                                 borderRadius: '50%',
+                                                                minWidth: '50px',
+                                                                minHeight: '50px',
+                                                            }}
+                                                            sx={{
+                                                                borderRadius: '50%',
+                                                                minHeight: '50px',
                                                                 width: '50px',
                                                             }}
                                                         />
@@ -139,12 +169,21 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                                             {/* Channel Title */}
                                                             {item?.video.video_channelTitle}
                                                         </p>
-                                                        <div className="flex gap-[2px]">
-                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-[13px] lg:text-[9px]  xl:text-[13px]  font-medium ">
+                                                        <div
+                                                            className="DaysAgo_MainDiv"
+                                                            style={{
+                                                                display: 'flex',
+                                                                flexDirection: 'row',
+                                                                flexWrap: 'wrap',
+                                                                // gap: '4px',
+                                                                justifyContent: 'space-between',
+                                                            }}
+                                                        >
+                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] font-medium mobile:text-[12px] md:text-[12px] lg:text-[9px]  xl:text-[13px]">
                                                                 {/* Publish */}
                                                                 {timeSince(item?.video?.video_publishedAt)}
                                                             </p>
-                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-[13px] lg:text-[9px]  xl:text-[13px]  font-medium">
+                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] font-medium mobile:text-[12px] md:text-[12px] lg:text-[9px]  xl:text-[12px]">
                                                                 {/* ViewCount */}
                                                                 {`${views(item?.video.video_viewCount)}`}
                                                             </p>
@@ -163,24 +202,23 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                         {/* <img className="embla__slide__img" src={imageByIndex(index)} alt="Your alt text" /> */}
                                         <div
                                             // className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
-                                            className="flex flex-col dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
+                                            className="flex flex-col dark:hover:opacity-100 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
                                             key={index}
-                                            style={{ borderRadius: '4px' }}
+                                            style={{ borderRadius: '4px', height: '100%' }}
                                         >
                                             <Link
                                                 href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
-                                                className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
+                                                className="flex flex-col mobile:pb-2 font-light opacity-100 dark:hover:opacity-100 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
                                                 style={{ borderRadius: '4px' }}
                                             >
                                                 <p className="max-w-[1000px] w-full">
-                                                    <img
+                                                    <Image
                                                         src={`${item?.video.video_thumbnails.url}`}
+                                                        className="flex object-cover"
                                                         alt="Not Found"
-                                                        style={{
-                                                            width: 'inherit',
-                                                            height: 'inherit',
-                                                            borderRadius: '4px',
-                                                        }}
+                                                        style={{ width: 'inherit', height: 'inherit' }}
+                                                        height={50}
+                                                        width={50}
                                                     />
                                                 </p>
                                                 <div
@@ -215,7 +253,7 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                 display: 'flex',
                                 alignItems: 'center',
                                 position: 'absolute',
-                                top: '50%',
+                                top: '40%',
                                 transform: 'translateY(-50%)',
                                 left: '0x',
                                 color: '#EF4444',
@@ -245,7 +283,7 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                 display: 'flex',
                                 alignItems: 'center',
                                 position: 'absolute',
-                                top: '50%',
+                                top: '40%',
                                 transform: 'translateY(-50%)',
                                 right: '0px',
                                 color: '#EF4444',
