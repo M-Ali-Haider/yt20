@@ -193,6 +193,7 @@ const VideoComp = ({ videoData = [], isLoading, selectedCategoryNumber, selected
                                                                 <Link
                                                                     href={`/videoPage/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
                                                                     className="flex flex-col dark:hover:opacity-100 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
+                                                                    style={{ height: '100%' }}
                                                                 >
                                                                     <img
                                                                         src={`${item?.video.video_thumbnails.url}`}
@@ -212,11 +213,17 @@ const VideoComp = ({ videoData = [], isLoading, selectedCategoryNumber, selected
                                                                     /> */}
                                                                     <div className="flex p-4 gap-3s pb-4">
                                                                         <div className="flex flex-col gap-1 flex-wrap text-sm">
-                                                                            <p className="dark:text-white text-black  mobile:text-base lg:text-[13px] xl:text-base font-semibold  line-clamp-2">
+                                                                            <p
+                                                                                style={{ minHeight: '30px' }}
+                                                                                className="dark:text-white text-black  mobile:text-base lg:text-[13px] xl:text-base font-semibold  line-clamp-2"
+                                                                            >
                                                                                 {item.video.video_title}
                                                                             </p>
 
-                                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[10px] md:text-sm lg:text-[9px] xl:text-[11px] text-[18px] font-medium  line-clamp-2">
+                                                                            <p
+                                                                                style={{ minHeight: '25px' }}
+                                                                                className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[10px] md:text-sm lg:text-[9px] xl:text-[11px] text-[18px] font-medium  line-clamp-2"
+                                                                            >
                                                                                 {item.video.video_title}
                                                                             </p>
                                                                         </div>
