@@ -18,20 +18,20 @@ const CategoryDropdown = () => {
         closeDropdown()
     }
     return (
-        <div class="relative w-70 inline-block text-left ml-6">
+        <div className="relative w-70 inline-block text-left ml-6">
             <button
                 id="dropdownAvatarNameButton"
                 onClick={toggleDropdown}
                 data-dropdown-toggle="dropdownAvatarName"
-                class="flex items-center justify-between gap-x-2  px-8 rounded-lg w-70 h-14 text-[#99A2AD]
+                className="flex items-center justify-between gap-x-2  px-8 rounded-lg w-70 h-14 text-[#99A2AD]
                bg-white hover:bg-orange-500 hover:text-white dark:hover:text-white md:me-0 "
                 type="button"
             >
-                <span class="sr-only test-[#99A2AD]">Open user menu</span>
+                <span className="sr-only test-[#99A2AD]">Open user menu</span>
                 {/* <FilterCategoryIcon /> */}
                 {selectedCategory}
                 <svg
-                    class="w-2.5 h-2.5 ms-3"
+                    className="w-2.5 h-2.5 ms-3"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -50,16 +50,16 @@ const CategoryDropdown = () => {
             {isOpen && (
                 <div
                     id="dropdownAvatarName"
-                    class="origin-top-right absolute right-0 w-[173px] rounded-md shadow-lg bg-white z-50"
+                    className="origin-top-right absolute right-0 w-[173px] rounded-md shadow-lg bg-white z-50"
                 >
                     <ul
-                        class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        className="py-2 text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="dropdownAvatarNameButton"
                     >
                         <li>
                             <a
                                 href="#"
-                                class="block px-4 py-2 hover:bg-orange-500 hover:text-white"
+                                className="block px-4 py-2 hover:bg-orange-500 hover:text-white"
                                 // onClick={closeDropdown}
                                 onClick={() => handleCategoryClick('Games')}
                             >
@@ -69,7 +69,7 @@ const CategoryDropdown = () => {
                         <li>
                             <a
                                 href="#"
-                                class="block px-4 py-2 hover:bg-orange-500 hover:text-white"
+                                className="block px-4 py-2 hover:bg-orange-500 hover:text-white"
                                 // onClick={closeDropdown}
                                 onClick={() => handleCategoryClick('Music')}
                             >
@@ -79,7 +79,7 @@ const CategoryDropdown = () => {
                         <li>
                             <a
                                 href="#"
-                                class="block px-4 py-2 hover:bg-orange-500 hover:text-white"
+                                className="block px-4 py-2 hover:bg-orange-500 hover:text-white"
                                 // onClick={closeDropdown}
                                 onClick={() => handleCategoryClick('Drama')}
                             >
@@ -87,10 +87,10 @@ const CategoryDropdown = () => {
                             </a>
                         </li>
                     </ul>
-                    <div class="py-2">
+                    <div className="py-2">
                         <a
                             href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-500 hover:text-white"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-500 hover:text-white"
                             //   onClick={closeDropdown}
                             onClick={() => handleCategoryClick('All')}
                         >

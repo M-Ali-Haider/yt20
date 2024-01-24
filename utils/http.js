@@ -5,7 +5,7 @@ export const useRegionGlobal = (category = '0', region = 'Global') => {
     const { data, isLoading, refetch } = useQuery({
         queryKey: ['AllVideos', category, region],
         queryFn: () => get(`/data?region=${!!region && region !== undefined ? region : 'Global'}&category=${category}`),
-        // enabled: !!region,
+        enabled: !!region && !!category,
     })
     return { data, isLoading, refetch }
 }
