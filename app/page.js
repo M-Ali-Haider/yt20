@@ -47,7 +47,7 @@ export default function Home() {
     // const country = useMemo(() => geoInfo?.country, [geoInfo])
     const [selectedRegion, setSelectedRegion] = useState('Global')
     console.log('selectedRegion', selectedRegion)
-    const [startDate, setStartDate] = useState(new Date())
+    const [startDate, setStartDate] = useState('')
 
     const { data, isLoading } = useRegionGlobal(eNum[selectedCategory], selectedRegion, startDate)
     const { top_20_videos, hot_20_videos, top_20_shorts, hot_20_shorts } = data || {}

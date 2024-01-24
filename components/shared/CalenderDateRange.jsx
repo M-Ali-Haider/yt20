@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 const CalendarDateRange = ({ startDate, setStartDate }) => {
     const [isOpen, setIsOpen] = useState(false)
-    const [selectedDate, setSelectedDate] = useState(new Date(startDate))
+    const [selectedDate, setSelectedDate] = useState()
 
     const today = new Date()
     
@@ -16,7 +16,7 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
 
     // Calculate 7 days after today
     const tempMaxDate = new Date(today)
-    const maxDate = tempMaxDate.setDate(today.getDate() + 7)
+    const maxDate = tempMaxDate.setDate(today.getDate() - 1)
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen)
@@ -50,7 +50,7 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
             >
                 {/* <FilterDateIcon /> */}
                 <CategoryIcon className="h-[27px]" />
-                <p className="SelectADateDiv font-bold">{selectedDate ? selectedDate.toDateString() : 'Select Date'}</p>
+                <p className="SelectADateDiv font-bold">{!!selectedDate ? selectedDate.toDateString() : 'Select Date'}</p>
                 <svg
                     className="w-2.5 h-2.5 ms-3"
                     aria-hidden="true"
