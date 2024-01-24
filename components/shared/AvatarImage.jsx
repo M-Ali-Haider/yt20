@@ -14,8 +14,8 @@ const AvatarImage = ({ src, style, sx }) => {
                 alt={'image'}
                 style={{
                     ...sx,
-                    minHeight: windowWidth < 1024 ? '40px' : windowWidth < 900 ? '35px' : '50px',
-                    width: windowWidth < 1024 ? '40px' : windowWidth < 900 ? '35px' : '50px',
+                    minHeight: windowWidth < 1024 ? '40px' : windowWidth < 1024 && windowWidth < 900 ? '35px' : '50px',
+                    width: windowWidth < 1024 ? '40px' : windowWidth < 1024 && windowWidth < 900 ? '35px' : '50px',
                 }}
             />
         </div>

@@ -6,8 +6,6 @@ import { ThemeContext } from './Context/ThemeContext'
 
 export default function Categories({ onCategoryChange, selectedCategory }) {
     const { theme } = useContext(ThemeContext)
-    // console.log('Categories theme:', theme)
-    // console.log('selectedCategoryXXX', selectedCategory)
     const handleCategoryClick = (category) => {
         onCategoryChange(category)
     }

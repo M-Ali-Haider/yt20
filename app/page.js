@@ -1,19 +1,15 @@
 'use client'
+import '@/app/(MainCss)/base.css'
+import '@/app/(MainCss)/embla.css'
+import '@/app/(MainCss)/sandbox.css'
 import Banner from '@/components/Banner'
 import Categories from '@/components/Cateogries'
-import HotShorts from '@/components/HotShorts'
-import HotVideos from '@/components/HotVideos'
-import TopShorts from '@/components/TopShorts'
-import TopVideos from '@/components/TopVideos'
-import CarouselSlider from '@/components/shared/CarosuelSlider'
+import VideoComp from '@/components/MainComponents/VideoComp'
 import Region from '@/components/shared/Region'
 import { useRegionGlobal } from '@/utils/http'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { setRegion } from 'react-geocode'
-import '@/app/(MainCss)/base.css'
-import '@/app/(MainCss)/sandbox.css'
-import '@/app/(MainCss)/embla.css'
 
 const eNum = {
     All: '0',
@@ -95,99 +91,66 @@ export default function Home() {
                     className="Main flex mobile:gap-[1rem] gap-[1rem] justify-center mobile:flex-col md:flex-row w-full xl:px-4 xl:max-h-[65px] 2xl:max-h-[70px] md:my-2 lg:my-3 mobile:px-2 md:px-4   md:flex dark:bg-[#19191A] bg-white dark:text-[#99A2AD] text-[#737174]"
                 >
                     <Categories onCategoryChange={handleCategoryChange} selectedCategory={selectedCategory} />
-                    <Region
-                        selectedRegion={selectedRegion}
-                        setSelectedRegion={setSelectedRegion}
-                        // country={!!country ? country : '...Loading'}
-                    />
-
-                    {/* <CountrySelect selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} /> */}
-                    {/* <CalendarDateRange setStartDate={setStartDate} /> */}
+                    <Region selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} />
                 </div>
             </div>
 
-            {/* <CarouselSlider
-                slidesArray={
-                    top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                        ? top_20_videos[`${eNum[selectedCategory]}`]
-                        : []
-                }
-            /> */}
-
             <div className="Main_Videos_Div">
-                <>
-                    <div className="TopVideo_Container">
-                        <TopVideos
-                            top_20_videos={
-                                top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                                    ? top_20_videos[`${eNum[selectedCategory]}`]
-                                    : []
-                            }
-                            isLoading={isLoading}
-                            selectedCategoryNumber={
-                                top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                                    ? `${eNum[selectedCategory]}`
-                                    : ''
-                            }
-                            selectedRegion={selectedRegion}
-                            selectedTitle="Top20Videos"
-                        />
-                    </div>
+                <VideoComp
+                    videoData={
+                        top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
+                            ? top_20_videos[`${eNum[selectedCategory]}`]
+                            : []
+                    }
+                    isLoading={isLoading}
+                    selectedCategoryNumber={
+                        top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
+                    }
+                    selectedRegion={selectedRegion}
+                    selectedTitle="Top20Videos"
+                />
 
-                    <div className="HotVideo_Container">
-                        <HotVideos
-                            hot_20_videos={
-                                hot_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                                    ? hot_20_videos[`${eNum[selectedCategory]}`]
-                                    : []
-                            }
-                            isLoading={isLoading}
-                            selectedCategoryNumber={
-                                hot_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                                    ? `${eNum[selectedCategory]}`
-                                    : ''
-                            }
-                            selectedRegion={selectedRegion}
-                            selectedTitle="Hot20Videos"
-                        />
-                    </div>
+                <VideoComp
+                    videoData={
+                        hot_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
+                            ? hot_20_videos[`${eNum[selectedCategory]}`]
+                            : []
+                    }
+                    isLoading={isLoading}
+                    selectedCategoryNumber={
+                        hot_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
+                    }
+                    selectedRegion={selectedRegion}
+                    selectedTitle="Hot20Videos"
+                />
 
-                    <div className="TopShorts_Container">
-                        <TopShorts
-                            top_20_shorts={
-                                top_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                                    ? top_20_shorts[`${eNum[selectedCategory]}`]
-                                    : []
-                            }
-                            isLoading={isLoading}
-                            selectedCategoryNumber={
-                                top_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                                    ? `${eNum[selectedCategory]}`
-                                    : ''
-                            }
-                            selectedRegion={selectedRegion}
-                            selectedTitle="Top20Shorts"
-                        />
-                    </div>
+                <VideoComp
+                    videoData={
+                        top_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`)
+                            ? top_20_shorts[`${eNum[selectedCategory]}`]
+                            : []
+                    }
+                    isLoading={isLoading}
+                    selectedCategoryNumber={
+                        top_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
+                    }
+                    selectedRegion={selectedRegion}
+                    selectedTitle="Top20Shorts"
+                />
 
-                    <div className="HotShorts_Container">
-                        <HotShorts
-                            hot_20_shorts={
-                                hot_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                                    ? hot_20_shorts[`${eNum[selectedCategory]}`]
-                                    : []
-                            }
-                            isLoading={isLoading}
-                            selectedCategoryNumber={
-                                hot_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                                    ? `${eNum[selectedCategory]}`
-                                    : ''
-                            }
-                            selectedRegion={selectedRegion}
-                            selectedTitle="Hot20Shorts"
-                        />
-                    </div>
-                </>
+                <VideoComp
+                    videoData={
+                        hot_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`)
+                            ? hot_20_shorts[`${eNum[selectedCategory]}`]
+                            : []
+                    }
+                    isLoading={isLoading}
+                    selectedCategoryNumber={
+                        hot_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
+                    }
+                    selectedRegion={selectedRegion}
+                    selectedTitle="Hot20Shorts"
+                />
             </div>
         </main>
     )

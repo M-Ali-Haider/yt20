@@ -2,7 +2,6 @@ import AvatarImage from '@/components/shared/AvatarImage'
 import { NextButton, PrevButton } from '@/components/shared/EmblaCarouselArrowsDotsButtons'
 import useWindowDimensions from '@/utils/CustomHooks'
 import useEmblaCarousel from 'embla-carousel-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
@@ -10,7 +9,7 @@ import { ThemeContext } from '../Context/ThemeContext'
 
 const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, selectedTitle, ...props }) => {
     const pathName = usePathname()
-    const includePlayVideo = pathName?.includes('play_video')
+    const includePlayVideo = pathName?.includes('videoPage')
     const { width: windowWidth } = useWindowDimensions()
     const { theme } = useContext(ThemeContext)
     const slides = slidesArray
@@ -102,9 +101,7 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                             <>
                                 {slides.map((item, index) => (
                                     <div className="Slide_Main embla__slide" key={index}>
-                                        {/* <img className="embla__slide__img" src={imageByIndex(index)} alt="Your alt text" /> */}
                                         <div
-                                            // className="MovieDiv w-full overflow-hidden box-border mobile:rounded-lg  mobile:min-h-[208px]  "
                                             className="flex flex-col dark:hover:opacity-100 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF9] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]"
                                             key={index}
                                             style={{
@@ -113,12 +110,11 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                             }}
                                         >
                                             <Link
-                                                href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
-                                                // className="flex flex-col mobile:pb-2 font-light dark:hover:opacity-100 dark:opacity-90 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
+                                                href={`/videoPage/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
                                                 style={{ borderRadius: '4px' }}
                                             >
                                                 <p className="max-w-[1000px] w-full">
-                                                    {/* <img
+                                                    <img
                                                         src={`${item?.video.video_thumbnails.url}`}
                                                         alt="Not Found"
                                                         style={{
@@ -126,8 +122,8 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                                             height: 'inherit',
                                                             borderRadius: '4px',
                                                         }}
-                                                    /> */}
-                                                    <Image
+                                                    />
+                                                    {/* <Image
                                                         src={`${item?.video.video_thumbnails.url}`}
                                                         alt="Not Found"
                                                         className="flex object-cover"
@@ -138,7 +134,7 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                                             borderRadius: '4px',
                                                             width: '100%',
                                                         }}
-                                                    />
+                                                    /> */}
                                                 </p>
                                                 <div
                                                     style={{ paddingTop: '0.5rem' }}
@@ -149,7 +145,8 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                                             src={item?.video.video_thumbnails.url}
                                                             style={{
                                                                 borderRadius: '50%',
-                                                                minWidth: '50px',
+                                                                // minWidth: '50px',
+                                                                minWidth: 'max-content',
                                                                 minHeight: '50px',
                                                             }}
                                                             sx={{
@@ -160,9 +157,15 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                                         />
                                                     </div>
                                                     {/* </div> */}
-                                                    <div className="flex flex-col mobile:gap-[2px] md:gap-1 flex-wrap">
+                                                    <div className="flex flex-col mobile:gap-[2px] md:gap-1 flex-wrap pr-4">
+                                                        {/* <p */}
+                                                        {/* style={{ lineHeight: '18px' }} */}
+                                                        {/* className="line-clamp-2 dark:text-white text-black font-medium mobile:text-base mobile:font-semibold md:text-[15px] lg:text-[13px] xl:text-base 2xl:text-[16px]  text-clip overflow-hidden" */}
+                                                        {/* > */}
+                                                        {/* Title */}
+                                                        {/* {item?.video.video_title} */}
+                                                        {/* </p> */}
                                                         <p className="line-clamp-2 dark:text-white text-black font-medium mobile:text-base mobile:font-semibold md:text-[15px] lg:text-[13px] xl:text-base 2xl:text-[16px]  text-clip overflow-hidden  ">
-                                                            {/* Title */}
                                                             {item?.video.video_title}
                                                         </p>
                                                         <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-xs md:text-xs lg:text-[9px] xl:text-[13px] font-semibold">
@@ -175,7 +178,7 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                                                 display: 'flex',
                                                                 flexDirection: 'row',
                                                                 flexWrap: 'wrap',
-                                                                // gap: '4px',
+                                                                gap: '2px',
                                                                 justifyContent: 'space-between',
                                                             }}
                                                         >
@@ -207,31 +210,40 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                             style={{ borderRadius: '4px', height: '100%' }}
                                         >
                                             <Link
-                                                href={`/play_video/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
+                                                href={`/videoPage/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
                                                 className="flex flex-col mobile:pb-2 font-light opacity-100 dark:hover:opacity-100 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
                                                 style={{ borderRadius: '4px' }}
                                             >
                                                 <p className="max-w-[1000px] w-full">
-                                                    <Image
+                                                    {/* <Image
                                                         src={`${item?.video.video_thumbnails.url}`}
                                                         className="flex object-cover"
                                                         alt="Not Found"
                                                         style={{ width: 'inherit', height: 'inherit' }}
                                                         height={50}
                                                         width={50}
+                                                    /> */}
+                                                    <img
+                                                        src={`${item?.video.video_thumbnails.url}`}
+                                                        alt="Not Found"
+                                                        style={{
+                                                            width: 'inherit',
+                                                            height: 'inherit',
+                                                        }}
                                                     />
                                                 </p>
                                                 <div
                                                     style={{ paddingTop: '0.5rem' }}
                                                     className="MainImageAndTextDiv flex mobile:py-2 gap-[0.5rem]"
                                                 >
-                                                    <div className="flex p-4 gap-3s pb-4">
+                                                    <div className="flex p-0 md:p-4 gap-3s md:pb-4 ">
                                                         <div className="flex flex-col gap-1 flex-wrap text-sm">
                                                             <p className="dark:text-white text-black  mobile:text-base lg:text-[13px] xl:text-base font-semibold  line-clamp-2">
                                                                 {item.video.video_title}
                                                             </p>
 
-                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-sm lg:text-[9px] xl:text-[11px] text-[18px] font-medium  line-clamp-2">
+                                                            {/* <p className="dark:text-[#FFFFFF99] text-[#00000099] mobile:text-[13px] md:text-sm lg:text-[9px] xl:text-[11px] text-[18px] font-medium  line-clamp-2"> */}
+                                                            <p className="dark:text-[#FFFFFF99] text-[#00000099] font-sm mobile:text-[10px] md:text-[12px] lg:text-[9px]  xl:text-[13px]">
                                                                 {item.video.video_title}
                                                             </p>
                                                         </div>
