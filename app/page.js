@@ -10,6 +10,7 @@ import { useRegionGlobal } from '@/utils/http'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { setRegion } from 'react-geocode'
+import CalendarDateRange from '../components/shared/CalenderDateRange'
 
 const eNum = {
     All: '0',
@@ -46,8 +47,9 @@ export default function Home() {
     // const country = useMemo(() => geoInfo?.country, [geoInfo])
     const [selectedRegion, setSelectedRegion] = useState('Global')
     console.log('selectedRegion', selectedRegion)
+    const [startDate, setStartDate] = useState(new Date())
 
-    const { data, isLoading } = useRegionGlobal(eNum[selectedCategory], selectedRegion, '')
+    const { data, isLoading } = useRegionGlobal(eNum[selectedCategory], selectedRegion, startDate)
     const { top_20_videos, hot_20_videos, top_20_shorts, hot_20_shorts } = data || {}
 
     const handleCategoryChange = (category) => {
@@ -88,10 +90,14 @@ export default function Home() {
                         backgroundColor:
                             'dark:bg-[#19191A] bg-[rgb(0 0 0 / var(--tw-text-opacity))] dark:text-white text-black',
                     }}
-                    className="Main flex mobile:gap-[1rem] gap-[1rem] justify-center mobile:flex-col md:flex-row w-full xl:px-4 xl:max-h-[65px] 2xl:max-h-[70px] md:my-2 lg:my-3 mobile:px-2 md:px-4   md:flex dark:bg-[#19191A] bg-white dark:text-[#99A2AD] text-[#737174]"
+                    className="Main flex tablet:gap-[1rem] gap-[0rem] justify-center mobile:flex-col md:flex-row w-full xl:px-4 xl:max-h-[65px] 2xl:max-h-[70px] md:my-2 lg:my-3 mobile:px-2 md:px-4   md:flex dark:bg-[#19191A] bg-white dark:text-[#99A2AD] text-[#737174]"
                 >
                     <Categories onCategoryChange={handleCategoryChange} selectedCategory={selectedCategory} />
                     <Region selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} />
+                    <CalendarDateRange 
+                        startDate={startDate}
+                        setStartDate={setStartDate}
+                    />
                 </div>
             </div>
 

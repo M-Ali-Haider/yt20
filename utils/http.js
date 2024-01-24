@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { get } from './axios'
 
-export const useRegionGlobal = (category = '0', region = 'Global') => {
+export const useRegionGlobal = (category = '0', region = 'Global', startDate = '') => {
     const { data, isLoading, refetch } = useQuery({
-        queryKey: ['AllVideos', category, region],
+        queryKey: ['AllVideos', category, region, startDate],
         queryFn: () => get(`/data?region=${!!region && region !== undefined ? region : 'Global'}&category=${category}`),
         enabled: !!region && !!category,
     })
