@@ -32,7 +32,7 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
                         style={{
                             color: 'white',
                         }}
-                        className="d-flex items-center h-[36px] tablet:h-[46px] z-100 bg-red-500 inline-flex w-[90px] tablet:w-[100%] justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 min-w-max"
+                        className="d-flex items-center h-[36px] tablet:h-[46px] z-100 bg-red-500 inline-flex w-full justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 min-w-max"
                     >
                         <CategoryIcon />
                         <p
