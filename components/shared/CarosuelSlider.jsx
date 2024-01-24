@@ -212,7 +212,10 @@ const CaroselSlider = ({ slidesArray, selectedCategoryNumber, selectedRegion, se
                                             <Link
                                                 href={`/videoPage/${item?.video_id}/${selectedCategoryNumber}/${selectedRegion}/${selectedTitle}`}
                                                 className="flex flex-col mobile:pb-2 font-light opacity-100 dark:hover:opacity-100 hover:opacity-90 hover:transition-transform duration-900 dark:bg-gradient-to-b dark:from-[#232121] dark:to-[#1c1b1b33]  bg-gradient-to-b from-[#fff] to-[#EDEEF0] hover:bg-gradient-to-b hover:from-[#fff] hover:to-[#fff]   "
-                                                style={{ borderRadius: '4px' }}
+                                                style={{
+                                                    borderRadius: '4px',
+                                                    height: '-webkit-fill-available',
+                                                }}
                                             >
                                                 <p className="max-w-[1000px] w-full">
                                                     {/* <Image
