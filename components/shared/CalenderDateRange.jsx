@@ -1,72 +1,95 @@
-// import { transformDateFormat } from '@/utils/globalFunctions'
-// import { useState } from 'react'
-// import DatePicker from 'react-datepicker'
-// import 'react-datepicker/dist/react-datepicker.css'
+import CategoryIcon from '@/assets/icons/CategoryIcon'
+import { transformDateFormat } from '@/utils/globalFunctions'
+import { useState } from 'react'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
-// const CalenderDateRange = ({ setStartDate }) => {
-//     const [isOpen, setIsOpen] = useState(false)
-//     const [selectedDate, setSelectedDate] = useState(null)
+const CalendarDateRange = ({ startDate, setStartDate }) => {
+    const [isOpen, setIsOpen] = useState(false)
+    const [selectedDate, setSelectedDate] = useState(new Date(startDate))
 
-//     const toggleDropdown = () => {
-//         setIsOpen(!isOpen)
-//     }
+    const today = new Date()
+    
+    // Calculate 7 days before today
+    const tempMinDate = new Date(today)
+    const minDate = tempMinDate.setDate(today.getDate() - 7)
 
-//     const closeDropdown = () => {
-//         setIsOpen(false)
-//     }
+    // Calculate 7 days after today
+    const tempMaxDate = new Date(today)
+    const maxDate = tempMaxDate.setDate(today.getDate() + 7)
 
-//     const handleDateChange = (date) => {
-//         setSelectedDate(date)
-//         console.log(date)
-//         const newStartDate = transformDateFormat(date)
-//         console.log('newStartDate:', newStartDate)
-//         setStartDate(newStartDate)
-//         closeDropdown()
-//     }
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen)
+    }
 
-//     return (
-//         <div className="relative inline-block text-left">
-//             <button
-//                 id="dropdownAvatarNameButton"
-//                 onClick={toggleDropdown}
-//                 className=" bg-red-500 inline-flex w-[240px] justify-between rounded-md px-4 py-2 text-base font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
-//                 type="button"
-//                 style={{
-//                     height: '52px',
-//                     display: 'flex',
-//                     alignItems: 'center',
-//                 }}
-//             >
-//                 <span className="sr-only">Open user menu</span>
-//                 {/* <FilterDateIcon /> */}
-//                 {selectedDate ? selectedDate.toDateString() : 'Select Date'}
-//                 <svg
-//                     className="w-2.5 h-2.5 ms-3"
-//                     aria-hidden="true"
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     fill="none"
-//                     viewBox="0 0 10 6"
-//                 >
-//                     <path
-//                         stroke="currentColor"
-//                         strokeLinecap="round"
-//                         strokeLinejoin="round"
-//                         strokeWidth="2"
-//                         d="m1 1 4 4 4-4"
-//                     />
-//                 </svg>
-//             </button>
+    const closeDropdown = () => {
+        setIsOpen(false)
+    }
 
-//             {isOpen && (
-//                 <div
-//                     id="dropdownAvatarName"
-//                     className="z-100 absolute right-0 mt-2 dark:bg-[#19191A] bg-white dark:text-white text-black  rounded-md"
-//                 >
-//                     <DatePicker selected={selectedDate} onChange={handleDateChange} inline fixedHeight />
-//                 </div>
-//             )}
-//         </div>
-//     )
-// }
+    const handleDateChange = (date) => {
+        setSelectedDate(date)
+        const newStartDate = transformDateFormat(date)
+        setStartDate(newStartDate)
+        closeDropdown()
+    }
 
-// export default CalenderDateRange
+    return (
+        <div className="relative inline-block text-left px-2 tablet:px-0"
+        >
+            <button
+                id="dropdownAvatarNameButton"
+                onClick={toggleDropdown}
+                className="d-flex items-center z-100 h-[36px] tablet:h-[46px] bg-red-500 inline-flex w-[100%] justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-white  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 min-w-max"
+                type="button"
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    zIndex: '10',
+                    minWidth: '250px',
+                }}
+            >
+                {/* <FilterDateIcon /> */}
+                <CategoryIcon className="h-[27px]" />
+                <p className="SelectADateDiv font-bold">{selectedDate ? selectedDate.toDateString() : 'Select Date'}</p>
+                <svg
+                    className="w-2.5 h-2.5 ms-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                >
+                    <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="m1 1 4 4 4-4"
+                    />
+                </svg>
+            </button>
+
+            {isOpen && (
+                <div
+                    id="dropdownAvatarName"
+                    className="z-100 absolute right-0 mt-2 dark:bg-[#19191A] bg-white dark:text-white text-black  rounded-md"
+                    style={{ zIndex: '10' }}
+                >
+                    <DatePicker
+                        wrapperClassName="DatePickerComp w-full"
+                        onChange={handleDateChange}
+                        inline
+                        fixedHeight
+                        dropdownMode="select"
+                        selected={selectedDate}
+                        startDate={selectedDate}
+                        minDate={minDate}
+                        maxDate={maxDate}
+                    />
+                  
+                </div>
+            )}
+        </div>
+    )
+}
+
+export default CalendarDateRange
