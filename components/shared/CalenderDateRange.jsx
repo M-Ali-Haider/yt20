@@ -69,9 +69,9 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
                 <DownArrowIcon
                             className="DownArrow w-4 dark:color-white color-black"
                             sx={{
-                                height: isAboveTablet ? '20px !important' : '10px !important',
-                                width: isAboveTablet ? '20px !important' : '10px !important',
-                                // display: !isAboveTablet ? 'none' : ''
+                                height: isAboveTablet ? '20px' : '10px',
+                                width: isAboveTablet ? '20px' : '10px',
+                                color: 'white'
                             }}
                             />
                 {/* <svg

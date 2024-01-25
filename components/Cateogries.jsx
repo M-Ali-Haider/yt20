@@ -42,10 +42,9 @@ export default function Categories({ onCategoryChange, selectedCategory }) {
                             <DownArrowIcon
                             className="DownArrow w-4 dark:color-white color-black"
                             sx={{
-                                height: isAboveTablet ? '20px !important' : '10px !important',
-                                width: isAboveTablet ? '20px !important' : '10px !important',
-                                marginLeft: isAboveTablet ? '' : '4px !important',
-                                // display: !isAboveTablet ? 'none' : ''
+                                height: isAboveTablet ? '20px' : '10px',
+                                width: isAboveTablet ? '20px' : '10px',
+                                marginLeft: isAboveTablet ? '' : '4px',
                             }}
                             />
                     </Menu.Button>
