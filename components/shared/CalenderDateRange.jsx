@@ -1,9 +1,11 @@
+'use Client'
 import CategoryIcon from '@/assets/icons/CategoryIcon'
 import useWindowDimensions from '@/utils/CustomHooks'
 import { transformDateFormat } from '@/utils/globalFunctions'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import DownArrowIcon from '@/assets/icons/DownArrowIcon'
 
 const CalendarDateRange = ({ startDate, setStartDate }) => {
     const { width: windowWidth } = useWindowDimensions()
@@ -64,14 +66,22 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
                 >
                     {!!selectedDate && isAboveTablet ? selectedDate.toDateString() : 'Date'}
                 </p>
-                <svg
+                <DownArrowIcon
+                            className="DownArrow w-4 dark:color-white color-black"
+                            sx={{
+                                height: isAboveTablet ? '20px !important' : '10px !important',
+                                width: isAboveTablet ? '20px !important' : '10px !important',
+                                // display: !isAboveTablet ? 'none' : ''
+                            }}
+                            />
+                {/* <svg
                     className="w-2.5 h-2.5 ms-3"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 10 6"
                     style={{
-                        display: !isAboveTablet ? 'none' : '',
+                        // display: !isAboveTablet ? 'none' : '',
                     }}
                 >
                     <path
@@ -81,7 +91,7 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
                         strokeWidth="2"
                         d="m1 1 4 4 4-4"
                     />
-                </svg>
+                </svg> */}
             </button>
 
             {isOpen && (

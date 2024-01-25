@@ -85,6 +85,7 @@ export default function Home() {
             >
                 <Banner />
 
+                {/* <p style={{color:'white'}}>Filters</p> */}
                 <div
                     style={{
                         backgroundColor:

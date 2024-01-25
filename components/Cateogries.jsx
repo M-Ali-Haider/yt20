@@ -1,3 +1,4 @@
+'use Client'
 import CategoryIcon from '@/assets/icons/CategoryIcon'
 import DownArrowIcon from '@/assets/icons/DownArrowIcon'
 import useWindowDimensions from '@/utils/CustomHooks'
@@ -27,8 +28,8 @@ export default function Categories({ onCategoryChange, selectedCategory }) {
                                 width: '100%',
                                 overflow: 'hidden',
                                 position: 'relative',
-                                margin: '0 5px 0 5px',
-                                textAlign: 'center',
+                                margin: isAboveTablet ? '0 5px 0 5px' : '0px',
+                                textAlign:'center',
                                 textDecoration: 'none',
                                 textOverflow: isAboveTablet ? 'ellipsis' : '',
                                 fontSize: !isAboveTablet ? '12px' : '',
@@ -41,9 +42,10 @@ export default function Categories({ onCategoryChange, selectedCategory }) {
                             <DownArrowIcon
                             className="DownArrow w-4 dark:color-white color-black"
                             sx={{
-                                height: '20px !important',
-                                width: '20px !important',
-                                display: !isAboveTablet ? 'none' : ''
+                                height: isAboveTablet ? '20px !important' : '10px !important',
+                                width: isAboveTablet ? '20px !important' : '10px !important',
+                                marginLeft: isAboveTablet ? '' : '4px !important',
+                                // display: !isAboveTablet ? 'none' : ''
                             }}
                             />
                     </Menu.Button>
