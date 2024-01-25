@@ -85,14 +85,15 @@ export default function Home() {
             >
                 <Banner />
 
+                {/* <p style={{color:'white'}}>Filters</p> */}
                 <div
                     style={{
                         backgroundColor:
                             'dark:bg-[#19191A] bg-[rgb(0 0 0 / var(--tw-text-opacity))] dark:text-white text-black',
                     }}
-                    className="Main flex tablet:gap-[1rem] gap-[0rem] justify-center mobile:flex-col md:flex-row w-full xl:px-4 xl:max-h-[65px] 2xl:max-h-[70px] md:my-2 lg:my-3 mobile:px-2 md:px-4   md:flex dark:bg-[#19191A] bg-white dark:text-[#99A2AD] text-[#737174]"
+                    className="Main flex flex-row px-4 gap-[1rem] tablet:gap-[1rem] justify-between mobileL:justify-center  tablet:justify-center tablet:flex-row w-full  xl:max-h-[65px] 2xl:max-h-[70px] md:my-2 lg:my-3   md:flex dark:bg-[#19191A] bg-white dark:text-[#99A2AD] text-[#737174]"
                 >
-                    <Categories onCategoryChange={handleCategoryChange} selectedCategory={selectedCategory} />
+                    <Categories selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} />
                     <Region selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} />
                     <CalendarDateRange 
                         startDate={startDate}

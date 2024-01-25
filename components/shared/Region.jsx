@@ -1,11 +1,15 @@
+'use Client'
 import CategoryIcon from '@/assets/icons/CategoryIcon'
 import DownArrowIcon from '@/assets/icons/DownArrowIcon'
+import useWindowDimensions from '@/utils/CustomHooks'
 import { useDebounce } from '@/utils/globalFunctions'
 import { useGetRegions } from '@/utils/http'
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 
 export default function Region({ selectedRegion, setSelectedRegion, country }) {
+    const { width: windowWidth } = useWindowDimensions()
+    const isAboveTablet = windowWidth > 768;
     const [search, setSearch] = useState('')
     const searchString = useDebounce(search, 100)
 
@@ -25,16 +29,16 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
     }
 
     return (
-        <div className="z-100 top-16 w-full md:w-72 text-right mobile:px-2 md:px-0  min-w-[250px]">
+        <div className="z-100 top-16 text-right md:px-0 ">
             <Menu as="div" className="relative text-left">
-                <div>
                     <Menu.Button
                         style={{
                             color: 'white',
                         }}
-                        className="d-flex items-center h-[36px] tablet:h-[46px] z-100 bg-red-500 inline-flex w-full justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 min-w-max"
+                        // className="d-flex items-center h-[36px] tablet:h-[46px] z-100 bg-red-500 inline-flex w-full justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 min-w-max"
+                        className="d-flex items-center z-100 h-[36px] tablet:h-[46px] bg-red-500 inline-flex w-[90px] tablet:w-[240px]  justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
                     >
-                        <CategoryIcon />
+                        {isAboveTablet ? <CategoryIcon /> : ''}
                         <p
                             // className="Text font-bold"
                             className="Text font-bold text-clip overflow-hidden "
@@ -42,27 +46,26 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
                                 width: '100%',
                                 overflow: 'hidden',
                                 position: 'relative',
-                                margin: '0 5px 0 5px',
-                                textAlign: 'center',
+                                margin: isAboveTablet ? '0 5px 0 5px' : '0px',
+                                textAlign:'center',
                                 textDecoration: 'none',
-                                textOverflow: 'ellipsis',
+                                textOverflow: isAboveTablet ? 'ellipsis' : '',
+                                fontSize: !isAboveTablet ? '12px' : '',
                                 whiteSpace: 'nowrap',
                             }}
                         >
                             {' '}
                             {/* Region */}
-                            {!!selectedRegion ? `Region: ${selectedRegion}` : ''}
+                            {!!selectedRegion && isAboveTablet ? `Region: ${selectedRegion}` : 'Region'}
                         </p>
-                        <DownArrowIcon
-                            className="DownArrow w-4 dark:color-white color-black"
-                            sx={{
-                                height: '20px !important',
-                                width: '20px !important',
-                                // transform: 'rotate(180deg)',
-                            }}
-                        />
+                            <DownArrowIcon
+                                className="DownArrow w-4 dark:color-white color-black"
+                                sx={{
+                                    height: isAboveTablet ? '20px' : '10px',
+                                    width: isAboveTablet ? '20px' : '10px',
+                                }}
+                            />
                     </Menu.Button>
-                </div>
                 <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
