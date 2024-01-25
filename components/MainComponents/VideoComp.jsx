@@ -258,7 +258,7 @@ const VideoComp = ({ videoData = [], isLoading, selectedCategoryNumber, selected
                 ) : (
                     <div
                         style={{ marginBottom: '10rem' }}
-                        className="w-ful dark:shadow grid grid-cols-2 sm:grid-cols-4 middle:grid-cols-5 laptopL:grid-cols-6 4k:grid-cols-8 gap-4 mb-4"
+                        className="w-ful dark:shadow grid grid-cols-2 sm:grid-cols-4 middle:grid-cols-5 laptopL:grid-cols-6 4k:grid-cols-8 gap-4 mb-4 my-4 mx-4"
                     >
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => {
                             return <VideoSkeleton key={item} />

@@ -1,24 +1,26 @@
 import CategoryIcon from '@/assets/icons/CategoryIcon'
 import DownArrowIcon from '@/assets/icons/DownArrowIcon'
+import useWindowDimensions from '@/utils/CustomHooks'
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useContext } from 'react'
-import { ThemeContext } from './Context/ThemeContext'
+import { Fragment } from 'react'
 
 export default function Categories({ onCategoryChange, selectedCategory }) {
-    const { theme } = useContext(ThemeContext)
+    const { width: windowWidth } = useWindowDimensions()
+    const isAboveTablet = windowWidth > 768;
+
     const handleCategoryClick = (category) => {
         onCategoryChange(category)
     }
 
     return (
-        <div className="z-100 top-16 w-full md:w-72 text-right mobile:px-2 md:px-0 min-w-[250px] ">
+        <div className="z-100 top-16 text-right md:px-0 ">
             <Menu as="div" className="relative text-left">
                 <div>
                     <Menu.Button
                         style={{ color: 'white' }}
-                        className="d-flex items-center z-100 h-[36px] tablet:h-[46px] bg-red-500 inline-flex w-[100%] justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                        className="d-flex items-center z-100 h-[36px] tablet:h-[46px] bg-red-500 inline-flex w-[90px] tablet:w-[240px]  justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
                     >
-                        <CategoryIcon />
+                        {isAboveTablet ? <CategoryIcon /> : ''}
                         <p
                             className="Text font-bold text-clip overflow-hidden "
                             style={{
@@ -28,22 +30,24 @@ export default function Categories({ onCategoryChange, selectedCategory }) {
                                 margin: '0 5px 0 5px',
                                 textAlign: 'center',
                                 textDecoration: 'none',
-                                textOverflow: 'ellipsis',
+                                textOverflow: isAboveTablet ? 'ellipsis' : '',
+                                fontSize: !isAboveTablet ? '12px' : '',
                                 whiteSpace: 'nowrap',
                             }}
                         >
                             {' '}
-                            {!!selectedCategory ? `Category : ${selectedCategory}` : 'Category'}
+                            {!!selectedCategory && isAboveTablet ? `Category : ${selectedCategory}` : 'Category'}
                         </p>
-                        <DownArrowIcon
+                            <DownArrowIcon
                             className="DownArrow w-4 dark:color-white color-black"
                             sx={{
                                 height: '20px !important',
                                 width: '20px !important',
+                                display: !isAboveTablet ? 'none' : ''
                             }}
-                        />
+                            />
                     </Menu.Button>
-                </div>
+                        </div>
                 <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
