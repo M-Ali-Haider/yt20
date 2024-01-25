@@ -29,8 +29,8 @@ const DownArrowIcon = ({ className, sx }) => {
                         y2="19.4382"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                 </defs>
             </svg>

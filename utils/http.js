@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import { get } from './axios'
 
 export const useRegionGlobal = (category = '0', region = 'Global', startDate = '') => {
-    const withStartDate = `/data?region=${!!region && region !== undefined ? region : 'Global'}&category=${category}&start_date=${startDate}`;
-    const withOutStartDate = `/data?region=${!!region && region !== undefined ? region : 'Global'}&category=${category}`;
+    // const withStartDate = `/data?region=${!!region && region !== undefined ? region : 'Global'}&category=${category}&start_date=${startDate}`;
+    // const withOutStartDate = `/data?region=${!!region && region !== undefined ? region : 'Global'}&category=${category}`;
     const { data, isLoading, refetch } = useQuery({
         queryKey: ['AllVideos', category, region, startDate],
-        queryFn: () => get(`${!!startDate && startDate.length > 0 ? withStartDate : withOutStartDate}`),
+        // queryFn: () => get(`${!!startDate && startDate.length > 0 ? withStartDate : withOutStartDate}`),
+        queryFn: () => get(`/data?region=${!!region && region !== undefined ? region : 'Global'}&category=${category}&start_date=${startDate}`),
         enabled: !!region && !!category,
     })
     return { data, isLoading, refetch }

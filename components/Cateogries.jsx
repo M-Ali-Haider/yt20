@@ -3,11 +3,11 @@ import CategoryIcon from '@/assets/icons/CategoryIcon'
 import DownArrowIcon from '@/assets/icons/DownArrowIcon'
 import useWindowDimensions from '@/utils/CustomHooks'
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, useMemo } from 'react'
 
 export default function Categories({ onCategoryChange, selectedCategory }) {
     const { width: windowWidth } = useWindowDimensions()
-    const isAboveTablet = windowWidth > 768;
+    const isAboveTablet = useMemo(() => windowWidth > 768, [windowWidth]);
 
     const handleCategoryClick = (category) => {
         onCategoryChange(category)
@@ -21,23 +21,22 @@ export default function Categories({ onCategoryChange, selectedCategory }) {
                         style={{ color: 'white' }}
                         className="d-flex items-center z-100 h-[36px] tablet:h-[46px] bg-red-500 inline-flex w-[90px] tablet:w-[240px]  justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
                     >
-                        {isAboveTablet ? <CategoryIcon /> : ''}
-                        <p
-                            className="Text font-bold text-clip overflow-hidden "
+                        <CategoryIcon 
+                        sx={{
+                            display: isAboveTablet ? '' : 'none',
+                        }} /> 
+                        <p className="Text font-bold my-0 mx-0 tablet:mx-[5px] tablet:text-ellipsis overflow-hidden font text-[12px] tablet:text-[16px]"
                             style={{
                                 width: '100%',
                                 overflow: 'hidden',
                                 position: 'relative',
-                                margin: isAboveTablet ? '0 5px 0 5px' : '0px',
                                 textAlign:'center',
                                 textDecoration: 'none',
-                                textOverflow: isAboveTablet ? 'ellipsis' : '',
-                                fontSize: !isAboveTablet ? '12px' : '',
                                 whiteSpace: 'nowrap',
                             }}
                         >
                             {' '}
-                            {!!selectedCategory && isAboveTablet ? `Category : ${selectedCategory}` : 'Category'}
+                            {!!selectedCategory || isAboveTablet ? `Category : ${selectedCategory}` : 'Category'}
                         </p>
                             <DownArrowIcon
                             className="DownArrow w-4 dark:color-white color-black"

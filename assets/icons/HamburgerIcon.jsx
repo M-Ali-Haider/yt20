@@ -10,8 +10,8 @@ const HamburgerIcon = ({ className }) => {
                 className={className}
             >
                 <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M6 6H26V8H6V6ZM6 14H26V16H6V14ZM26 22H6V24H26V22Z"
                     fill="currentColor"
                 />
