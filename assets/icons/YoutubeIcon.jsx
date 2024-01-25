@@ -154,8 +154,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.2716"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint1_linear_50_11052"
@@ -165,8 +165,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9327"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint2_linear_50_11052"
@@ -176,8 +176,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2418"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint3_linear_50_11052"
@@ -187,8 +187,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9322"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint4_linear_50_11052"
@@ -198,8 +198,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2413"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint5_linear_50_11052"
@@ -209,8 +209,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9326"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint6_linear_50_11052"
@@ -220,8 +220,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2416"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint7_linear_50_11052"
@@ -231,8 +231,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9322"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint8_linear_50_11052"
@@ -242,8 +242,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2413"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint9_linear_50_11052"
@@ -253,8 +253,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9326"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint10_linear_50_11052"
@@ -264,8 +264,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2416"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint11_linear_50_11052"
@@ -275,8 +275,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9327"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint12_linear_50_11052"
@@ -286,8 +286,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2418"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint13_linear_50_11052"
@@ -297,8 +297,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9327"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint14_linear_50_11052"
@@ -308,8 +308,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2416"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint15_linear_50_11052"
@@ -319,8 +319,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9327"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint16_linear_50_11052"
@@ -330,8 +330,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2418"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint17_linear_50_11052"
@@ -341,8 +341,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9322"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint18_linear_50_11052"
@@ -352,8 +352,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2413"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                     <linearGradient
                         id="paint19_linear_50_11052"
@@ -363,8 +363,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="22.9325"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#F41B3B" />
-                        <stop offset="1" stop-color="#1884F7" />
+                        <stop stopColor="#F41B3B" />
+                        <stop offset="1" stopColor="#1884F7" />
                     </linearGradient>
                     <linearGradient
                         id="paint20_linear_50_11052"
@@ -374,8 +374,8 @@ const YoutubeIcon = ({ className }) => {
                         y2="23.2416"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#E72825" />
-                        <stop offset="1" stop-color="#F37F1F" />
+                        <stop stopColor="#E72825" />
+                        <stop offset="1" stopColor="#F37F1F" />
                     </linearGradient>
                 </defs>
             </svg>

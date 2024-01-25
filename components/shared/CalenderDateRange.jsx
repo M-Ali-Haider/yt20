@@ -55,11 +55,12 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
                 }}
             >
                 {/* <FilterDateIcon /> */}
-                {isAboveTablet ? <CategoryIcon /> : ''}
-                <p className="SelectADateDiv font-bold text-white"
+                <CategoryIcon 
+                        sx={{
+                            display: isAboveTablet ? '' : 'none',
+                        }} /> 
+                <p className="Text text-white font-bold my-0 mx-0 tablet:mx-[5px] tablet:text-ellipsis overflow-hidden font text-[12px] tablet:text-[16px]"
                     style={{
-                        textOverflow: isAboveTablet ? 'ellipsis' : '',
-                        fontSize: !isAboveTablet ? '12px' : '',
                         textAlign:'center',
                         width:'100%'
                     }}

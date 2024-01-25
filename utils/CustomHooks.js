@@ -1,3 +1,4 @@
+'use Client'
 import { useState, useEffect } from 'react'
 
 function getWindowDimensions() {

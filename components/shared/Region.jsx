@@ -16,16 +16,12 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
     const { data, isLoading } = useGetRegions(searchString)
     const regions = data?.data
 
-    // console.log('search', search)
-    // console.log('Regions', regions)
     const handleRegionClick = (region) => {
-        // console.log('region clicked', region)
         if (region === selectedRegion) {
             setSelectedRegion('Global')
         } else {
             setSelectedRegion(region)
         }
-        // onCategoryChange(category)
     }
 
     return (
@@ -35,28 +31,39 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
                         style={{
                             color: 'white',
                         }}
-                        // className="d-flex items-center h-[36px] tablet:h-[46px] z-100 bg-red-500 inline-flex w-full justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 min-w-max"
                         className="d-flex items-center z-100 h-[36px] tablet:h-[46px] bg-red-500 inline-flex w-[90px] tablet:w-[240px]  justify-between rounded-md px-4 py-2 text-[17px] font-medium  bg-gradient-to-r from-[#E72825] to-[#F37F1F]  dark:text-white text-black  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
                     >
-                        {isAboveTablet ? <CategoryIcon /> : ''}
+                         <CategoryIcon sx={{
+                            display: isAboveTablet ? '' : 'none',
+                        }} /> 
                         <p
-                            // className="Text font-bold"
-                            className="Text font-bold text-clip overflow-hidden "
+                            className="Text hidden tablet:block font-bold my-0 mx-0 tablet:mx-[5px] tablet:text-ellipsis overflow-hidden font text-[12px] tablet:text-[16px]"
                             style={{
                                 width: '100%',
                                 overflow: 'hidden',
                                 position: 'relative',
-                                margin: isAboveTablet ? '0 5px 0 5px' : '0px',
                                 textAlign:'center',
                                 textDecoration: 'none',
-                                textOverflow: isAboveTablet ? 'ellipsis' : '',
-                                fontSize: !isAboveTablet ? '12px' : '',
                                 whiteSpace: 'nowrap',
                             }}
                         >
                             {' '}
                             {/* Region */}
-                            {!!selectedRegion && isAboveTablet ? `Region: ${selectedRegion}` : 'Region'}
+                                {!!selectedRegion ? `Region: ${selectedRegion}` : 'Region'}
+                        </p>
+                        <p
+                            className="Text block tablet:hidden font-bold my-0 mx-0 tablet:mx-[5px] tablet:text-ellipsis overflow-hidden font text-[12px] tablet:text-[16px]"
+                            style={{
+                                width: '100%',
+                                overflow: 'hidden',
+                                position: 'relative',
+                                textAlign:'center',
+                                textDecoration: 'none',
+                                whiteSpace: 'nowrap',
+                            }}
+                        >
+                            {' '}
+                            Region
                         </p>
                             <DownArrowIcon
                                 className="DownArrow w-4 dark:color-white color-black"
@@ -82,7 +89,7 @@ export default function Region({ selectedRegion, setSelectedRegion, country }) {
                             maxHeight: '220px',
                             overflow: 'hidden scroll',
                             maxWidth: '100%',
-                            WebkitOverflowScrolling: 'touch', // For smooth scrolling on iOS
+                            WebkitOverflowScrolling: 'touch',
                             WebkitScrollbar: {
                                 display: 'none',
                             },
