@@ -1,11 +1,13 @@
 'use Client'
 import CategoryIcon from '@/assets/icons/CategoryIcon'
+import DownArrowIcon from '@/assets/icons/DownArrowIcon'
 import useWindowDimensions from '@/utils/CustomHooks'
 import { transformDateFormat } from '@/utils/globalFunctions'
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
+import InsertInvitationIcon from '@mui/icons-material/InsertInvitation'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import DownArrowIcon from '@/assets/icons/DownArrowIcon'
 
 const CalendarDateRange = ({ startDate, setStartDate }) => {
     const { width: windowWidth } = useWindowDimensions()
@@ -18,7 +20,7 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
     
     // Calculate 7 days before today
     const tempMinDate = new Date(today)
-    const minDate = tempMinDate.setDate(today.getDate() - 7)
+    const minDate = tempMinDate.setDate(today.getDate() - 6)
 
     // Calculate 7 days after today
     const tempMaxDate = new Date(today)
@@ -38,6 +40,8 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
         setStartDate(newStartDate)
         closeDropdown()
     }
+
+    const withHoverClass = `flex flex-row items-center justify-between mb-[4px] ${!!selectedDate ? 'cursor-pointer' : ''} bg-[#1769aa] ${!!selectedDate ? 'hover:bg-opacity-95' : ''}  rounded p-[4px] transition-background duration-200 ease-in-out`
 
     return (
         <div className="relative inline-block text-left tablet:px-0"
@@ -68,39 +72,44 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
                     {!!selectedDate && isAboveTablet ? selectedDate.toDateString() : 'Date'}
                 </p>
                 <DownArrowIcon
-                            className="DownArrow w-4 dark:color-white color-black"
+                            className="DownArrow w-4 color-white"
                             sx={{
                                 height: isAboveTablet ? '20px' : '10px',
                                 width: isAboveTablet ? '20px' : '10px',
                                 color: 'white'
                             }}
                             />
-                {/* <svg
-                    className="w-2.5 h-2.5 ms-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                    style={{
-                        // display: !isAboveTablet ? 'none' : '',
-                    }}
-                >
-                    <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 1 4 4 4-4"
-                    />
-                </svg> */}
             </button>
 
             {isOpen && (
                 <div
                     id="dropdownAvatarName"
-                    className="z-100 absolute right-0 mt-2 dark:bg-[#19191A] bg-white dark:text-white text-black  rounded-md"
-                    style={{ zIndex: '10' }}
+                    className="z-100 absolute right-0 mt-2 bg-[#f0f0f0] dark:text-white text-black  rounded-md"
+                    style={{ zIndex: '10'}}
                 >
+                    <div 
+                        className={withHoverClass}
+                        onClick={() =>{
+                            if(!!selectedDate){
+                                setSelectedDate(null)
+                                setStartDate('')
+                            }
+                            }}
+                    >
+                        <p style={{
+                            fontSize: '10px',
+                            color: 'white',
+                            width: '100%',
+                            marginLeft:'0.5rem'
+                        }}> {!!selectedDate ? 'Clear Date' : 'Select a Date'} </p>
+                    {!!selectedDate ? (
+                        <>
+                            <CalendarTodayIcon fontSize='large' style={{cursor:'pointer', color:'white'}} />
+                        </>
+                    ): (<>
+                            <InsertInvitationIcon fontSize='large' style={{cursor:'pointer', color:'white'}} />
+                    </>)}
+                    </div>
                     <DatePicker
                         wrapperClassName="DatePickerComp w-full"
                         onChange={handleDateChange}
@@ -111,6 +120,8 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
                         startDate={selectedDate}
                         minDate={minDate}
                         maxDate={maxDate}
+                        isClearable={true}
+                        placeholderText='Date'
                     />
                   
                 </div>
