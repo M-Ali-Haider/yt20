@@ -21,3 +21,28 @@ export const useDebounce = (value, milliSeconds) => {
     }, [value, milliSeconds])
     return debouncedValue
 }
+
+export const checkFirstIndex = (objects) => {
+    for (const objKey in objects) {
+        if (objects.hasOwnProperty(objKey)) {
+            const indexValues = objects[objKey]
+            if (indexValues && Object.values(indexValues).some((value) => value && value.length > 0)) {
+                return true
+            }
+        }
+    }
+    return false
+}
+
+export const getDataWithNonEmptyIndex = (objects) => {
+    const resultData = {}
+    for (const objKey in objects) {
+        if (objects.hasOwnProperty(objKey)) {
+            const indexValues = objects[objKey]
+            if (indexValues && Object.values(indexValues).some((value) => value && value.length > 0)) {
+                resultData[objKey] = Object.values(indexValues)[0]
+            }
+        }
+    }
+    return resultData
+}

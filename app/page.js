@@ -6,9 +6,12 @@ import Banner from '@/components/Banner'
 import Categories from '@/components/Cateogries'
 import VideoComp from '@/components/MainComponents/VideoComp'
 import Region from '@/components/shared/Region'
+import VideoSkeleton from '@/components/shared/VideoSkeleton'
+import { checkFirstIndex, getDataWithNonEmptyIndex } from '@/utils/globalFunctions'
 import { useRegionGlobal } from '@/utils/http'
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
 import { useParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { setRegion } from 'react-geocode'
 import CalendarDateRange from '../components/shared/CalenderDateRange'
 
@@ -50,6 +53,23 @@ export default function Home() {
     const { data, isLoading } = useRegionGlobal(eNum[selectedCategory], selectedRegion, startDate)
     const { top_20_videos, hot_20_videos, top_20_shorts, hot_20_shorts } = data || {}
 
+    const isAllDataHere = checkFirstIndex({
+        "top_20_videos": data?.top_20_videos,
+        "hot_20_videos": data?.hot_20_videos,
+        "top_20_shorts": data?.top_20_shorts,
+        "hot_20_shorts": data?.hot_20_shorts,
+    });
+
+    const mainData = useMemo(()=>{
+        const tempData = getDataWithNonEmptyIndex({
+            "top_20_videos": data?.top_20_videos,
+            "hot_20_videos": data?.hot_20_videos,
+            "top_20_shorts": data?.top_20_shorts,
+            "hot_20_shorts": data?.hot_20_shorts,
+        })
+        return tempData
+    },[data])
+
     const handleCategoryChange = (category) => {
         if (category === selectedCategory) {
             setSelectedCategory('Now')
@@ -83,7 +103,6 @@ export default function Home() {
             >
                 <Banner />
 
-                {/* <p style={{color:'white'}}>Filters</p> */}
                 <div
                     style={{
                         backgroundColor:
@@ -99,64 +118,85 @@ export default function Home() {
                     />
                 </div>
             </div>
+            
+            {!isLoading ? (
+               <>
+               {mainData !== null && mainData !== undefined && isAllDataHere ? (
+               <div className="Main_Videos_Div">
+                   <VideoComp
+                       videoData={mainData?.top_20_videos}
+                       isLoading={isLoading}
+                       selectedCategoryNumber={
+                           top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
+                       }
+                       selectedRegion={selectedRegion}
+                       selectedTitle="Top20Videos"
+                       isAllDataHere={isAllDataHere}
+                   />
+   
+                   <VideoComp
+                       videoData={mainData?.hot_20_videos}
+                       isLoading={isLoading}
+                       selectedCategoryNumber={
+                           hot_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
+                       }
+                       selectedRegion={selectedRegion}
+                       selectedTitle="Hot20Videos"
+                   />
+   
+                   <VideoComp
+                       videoData={mainData?.top_20_shorts}
+                       isLoading={isLoading}
+                       selectedCategoryNumber={
+                           top_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
+                       }
+                       selectedRegion={selectedRegion}
+                       selectedTitle="Top20Shorts"
+                   />
+   
+                   <VideoComp
+                       videoData={mainData?.hot_20_shorts}
+                       isLoading={isLoading}
+                       selectedCategoryNumber={
+                           hot_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
+                       }
+                       selectedRegion={selectedRegion}
+                       selectedTitle="Hot20Shorts"
+                   />
+               </div>
+               ) : <div style={{
+                color: 'white',
+                height: '200px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '30px',
+                display:'flex',
+                flexDirection:'row',
+                gap:'1rem'
+               }}>
+                <ErrorOutlineOutlinedIcon style={{fontSize:'larger'}} />
+                No Data Found!
+            </div>}
+               </>
 
-            <div className="Main_Videos_Div">
-                <VideoComp
-                    videoData={
-                        top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                            ? top_20_videos[`${eNum[selectedCategory]}`]
-                            : []
-                    }
-                    isLoading={isLoading}
-                    selectedCategoryNumber={
-                        top_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
-                    }
-                    selectedRegion={selectedRegion}
-                    selectedTitle="Top20Videos"
-                />
-
-                <VideoComp
-                    videoData={
-                        hot_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                            ? hot_20_videos[`${eNum[selectedCategory]}`]
-                            : []
-                    }
-                    isLoading={isLoading}
-                    selectedCategoryNumber={
-                        hot_20_videos?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
-                    }
-                    selectedRegion={selectedRegion}
-                    selectedTitle="Hot20Videos"
-                />
-
-                <VideoComp
-                    videoData={
-                        top_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                            ? top_20_shorts[`${eNum[selectedCategory]}`]
-                            : []
-                    }
-                    isLoading={isLoading}
-                    selectedCategoryNumber={
-                        top_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
-                    }
-                    selectedRegion={selectedRegion}
-                    selectedTitle="Top20Shorts"
-                />
-
-                <VideoComp
-                    videoData={
-                        hot_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`)
-                            ? hot_20_shorts[`${eNum[selectedCategory]}`]
-                            : []
-                    }
-                    isLoading={isLoading}
-                    selectedCategoryNumber={
-                        hot_20_shorts?.hasOwnProperty(`${eNum[selectedCategory]}`) ? `${eNum[selectedCategory]}` : ''
-                    }
-                    selectedRegion={selectedRegion}
-                    selectedTitle="Hot20Shorts"
-                />
-            </div>
+            ) : (
+                <Skeleton />
+            )
+            }
         </main>
+    )
+}
+
+const Skeleton = () => {
+    return(
+        <div
+        style={{ marginBottom: '10rem' }}
+        className="w-ful dark:shadow grid grid-cols-2 sm:grid-cols-4 middle:grid-cols-5 laptopL:grid-cols-6 4k:grid-cols-8 gap-4 mb-4 my-4 mx-4"
+    >
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => {
+            return <VideoSkeleton key={item} />
+        })}
+    </div>
     )
 }

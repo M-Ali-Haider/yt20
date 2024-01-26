@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-const VideoComp = ({ videoData = [], isLoading, selectedCategoryNumber, selectedRegion, selectedTitle }) => {
+const VideoComp = ({ videoData, isLoading, selectedCategoryNumber, selectedRegion, selectedTitle, isAllDataHere }) => {
     const includeVideos = selectedTitle?.includes('Videos')
     const pathName = usePathname()
     const includePlayVideo = pathName?.includes('videoPage')
@@ -53,7 +53,7 @@ const VideoComp = ({ videoData = [], isLoading, selectedCategoryNumber, selected
     return (
         <>
             <div className="TopVideo_Container">
-                {videoData.length > 0 ? (
+                {!!videoData && !isLoading && videoData.length > 0  ? (
                     <>
                         <div
                             style={{ marginBottom: '1rem' }}
@@ -255,18 +255,11 @@ const VideoComp = ({ videoData = [], isLoading, selectedCategoryNumber, selected
                             </>
                         </div>
                     </>
-                ) : (
-                    <div
-                        style={{ marginBottom: '10rem' }}
-                        className="w-ful dark:shadow grid grid-cols-2 sm:grid-cols-4 middle:grid-cols-5 laptopL:grid-cols-6 4k:grid-cols-8 gap-4 mb-4 my-4 mx-4"
-                    >
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => {
-                            return <VideoSkeleton key={item} />
-                        })}
-                    </div>
+                ) : (''
+                   
                 )}
             </div>
-            {!includePlayVideo && selectedTitle !== 'Hot20Shorts' ? (
+            {!includePlayVideo && selectedTitle !== 'Hot20Shorts' && isAllDataHere ? (
                 <div
                     style={{ backgroundColor: '#EF4444' }}
                     className=" h-[0.75px] bg-[#DDD] rounded-3xl my-4 md:mx-4 mobile:mx-2 "
