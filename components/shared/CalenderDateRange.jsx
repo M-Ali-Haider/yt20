@@ -93,6 +93,7 @@ const CalendarDateRange = ({ startDate, setStartDate }) => {
                             if(!!selectedDate){
                                 setSelectedDate(null)
                                 setStartDate('')
+                                setIsOpen(false)
                             }
                             }}
                     >
