@@ -67,18 +67,18 @@ const Video = ({ id }) => {
             >
                 <div className="max-w-[1100px] 2xl:max-w-[1440px] px-[10px] md:px-[40px] w-full pb-[100px]">
                     <div className="flex flex-col items-center">
-                        <div className="mt-[50px] w-full aspect-[16/9]">
-                            <YouTube
-                                videoId={id}
-                                opts={opts}
-                                iframeClassName="w-full h-full rounded-tl-[6px] rounded-tr-[6px]"
-                                className="w-full h-full rounded-tl-[6px] rounded-tr-[6px]"
-                            />
-                        </div>
                         {isVideoDataLoading ? (
                             <VideoPageSkeleton />
                         ) : (
                             <>
+                                <div className="mt-[50px] w-full aspect-[16/9]">
+                                    <YouTube
+                                        videoId={id}
+                                        opts={opts}
+                                        iframeClassName="w-full h-full rounded-tl-[6px] rounded-tr-[6px]"
+                                        className="w-full h-full rounded-tl-[6px] rounded-tr-[6px]"
+                                    />
+                                </div>
                                 <div className="dark:bg-darkVidDetail w-full">
                                     <VidDetailsInfo data={videoData.video} />
                                     <VidDetailsOptions setOption={setOption} option={option} options={options} />
