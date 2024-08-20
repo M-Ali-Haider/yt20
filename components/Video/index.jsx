@@ -6,9 +6,12 @@ import YouTube from 'react-youtube'
 import { VidDetailsInfo } from './detailsInfo'
 import { VidDetailsOptions } from './detailsOptions'
 import RelatedVideos from './relatedVideos'
+import VideoDetails from './details'
+import VideoAbout from './about'
+import { useSearchParams } from 'next/navigation'
 const Video = ({ id }) => {
-    const [option, setOption] = useState(0)
-    const options = ['Related Videos', 'Video Details', 'About']
+    const searchParams = useSearchParams()
+    const videoType = searchParams.get('videoType')
     const opts = {
         playerVars: {
             autoplay: 1,
@@ -26,7 +29,7 @@ const Video = ({ id }) => {
         queryKey: ['videoData'],
         queryFn: () =>
             fetch(
-                `https://savvy-folio-406713.uc.r.appspot.com/api/video-detail?video_id=${id}&video_type=top_video`
+                `https://savvy-folio-406713.uc.r.appspot.com/api/video-detail?video_id=${id}&video_type=${videoType}`
             ).then((res) => res.json()),
     })
 
@@ -43,9 +46,15 @@ const Video = ({ id }) => {
             ),
     })
 
-    useEffect(() => {
-        console.log(relatedData)
-    }, [relatedData])
+    const [option, setOption] = useState(0)
+    const options = [
+        {
+            title: 'Related Videos',
+            comp: <RelatedVideos isRelatedDataLoading={isRelatedDataLoading} data={relatedData} />,
+        },
+        { title: 'Video Details', comp: <VideoDetails data={videoData} /> },
+        { title: 'About', comp: <VideoAbout data={videoData} /> },
+    ]
 
     if (isVideoDataError) return <div className="mt-[76px]">Error Loading Video Content + {videoDataError}</div>
     return (
@@ -74,9 +83,7 @@ const Video = ({ id }) => {
                                 </div>
                             </>
                         )}
-                        <div className="border border-solid border-purple-500 w-full min-h-[324px] mt-7">
-                            <RelatedVideos isRelatedDataLoading={isRelatedDataLoading} data={relatedData} />
-                        </div>
+                        <div className="w-full min-h-[324px] mt-7">{options[option].comp}</div>
                     </div>
                 </div>
             </main>

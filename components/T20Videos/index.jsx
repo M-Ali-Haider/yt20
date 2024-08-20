@@ -3,7 +3,7 @@ import HeadingAndViewMore from '../ViewMore'
 import Top20VidsGrid from './grid'
 import Top20VidsSwiper from './swiper'
 
-const Top20Videos = ({ data, heading }) => {
+const Top20Videos = ({ data, heading, videoType }) => {
     const [isViewMore, setViewMore] = useState(false)
     return (
         <>
@@ -14,7 +14,11 @@ const Top20Videos = ({ data, heading }) => {
                     setViewMore={setViewMore}
                     isViewMore={isViewMore}
                 />
-                {isViewMore ? <Top20VidsGrid data={data} /> : <Top20VidsSwiper data={data} />}
+                {isViewMore ? (
+                    <Top20VidsGrid data={data} videoType={videoType} />
+                ) : (
+                    <Top20VidsSwiper data={data} videoType={videoType} />
+                )}
             </div>
         </>
     )

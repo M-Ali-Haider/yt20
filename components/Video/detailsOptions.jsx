@@ -10,7 +10,7 @@ export function VidDetailsOptions({ setOption, option, options }) {
                             index === option ? 'text-[#E72825]' : 'text-[#99A2AD]'
                         } md:uppercase font-normal text-center text-xs md:text-sm w-[176px] cursor-pointer pb-5 select-none transition-all duration-300 ease-custom-ease`}
                     >
-                        {item}
+                        {item.title}
                     </div>
                 ))}
             </div>

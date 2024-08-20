@@ -3,7 +3,7 @@ import SwiperButton from '../T20Videos/swiperButton'
 import ShortSwiperPage from './swiperPage'
 import { useMediaQuery } from 'react-responsive'
 
-const T20ShortsSwiper = ({ data }) => {
+const T20ShortsSwiper = ({ data, videoType }) => {
     const isXs = useMediaQuery({ query: '(min-width: 550px)' })
     const isMd = useMediaQuery({ query: '(min-width: 768px)' })
     const isXl = useMediaQuery({ query: '(min-width: 1280px)' })
@@ -37,6 +37,7 @@ const T20ShortsSwiper = ({ data }) => {
                     >
                         {[...Array(totalPages + 1)].map((_, index) => (
                             <ShortSwiperPage
+                                videoType={videoType}
                                 key={index}
                                 data={data['0'].slice(slidesPerPage * index, slidesPerPage * index + slidesPerPage)}
                             />

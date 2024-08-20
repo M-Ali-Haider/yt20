@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive'
 import SwiperButton from './swiperButton'
 import SwiperPage from './swiperPage'
 
-const Top20VidsSwiper = ({ data }) => {
+const Top20VidsSwiper = ({ data, videoType }) => {
     const isXs = useMediaQuery({ query: '(min-width: 550px)' })
     const isMd = useMediaQuery({ query: '(min-width: 768px)' })
     const isXl = useMediaQuery({ query: '(min-width: 1280px)' })
@@ -37,6 +37,7 @@ const Top20VidsSwiper = ({ data }) => {
                         {[...Array(totalPages + 1)].map((_, index) => (
                             <SwiperPage
                                 key={index}
+                                videoType={videoType}
                                 data={data['0'].slice(slidesPerPage * index, slidesPerPage * index + slidesPerPage)}
                             />
                         ))}

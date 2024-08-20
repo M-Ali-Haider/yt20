@@ -49,8 +49,7 @@ module.exports = {
                 '2xl': '1563px',
             },
             backgroundImage: {
-                swiperButton:
-                    'linear-gradient(0deg, #E72825, #E72825), linear-gradient(90deg, #E72825 0%, #F37F1F 100%)',
+                swiperButton: 'linear-gradient(90deg, #E72825 0%, #F37F1F 100%)',
                 darkVidCard: 'linear-gradient(180deg, rgba(246, 246, 246, 0.08) 18.75%, rgba(246, 246, 246, 0) 100%)',
                 darkVidDetail: 'linear-gradient(180deg, rgba(246, 246, 246, 0.08) 18.75%, rgba(246, 246, 246, 0) 100%)',
                 cloudSvg: 'linear-gradient(90deg, #E72825 0%, #F37F1F 100%)',

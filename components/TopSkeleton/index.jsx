@@ -28,13 +28,29 @@ const Top = () => {
             {isLoading && <TopSkeleton />}
             {!isLoading && (
                 <>
-                    <Top20Videos data={homeData.top_20_videos} heading={'Top 20 Videos for you'} />
+                    <Top20Videos
+                        data={homeData.top_20_videos}
+                        heading={'Top 20 Videos for you'}
+                        videoType={'top_video'}
+                    />
                     <TopLine />
-                    <Top20Shorts data={homeData.top_20_shorts} heading={'Top 20 Shorts for you'} />
+                    <Top20Shorts
+                        data={homeData.top_20_shorts}
+                        heading={'Top 20 Shorts for you'}
+                        videoType={'top_short'}
+                    />
                     <TopLine />
-                    <Top20Videos data={homeData.hot_20_videos} heading={'Hot 20 Videos for you'} />
+                    <Top20Videos
+                        data={homeData.hot_20_videos}
+                        heading={'Hot 20 Videos for you'}
+                        videoType={'hot_video'}
+                    />
                     <TopLine />
-                    <Top20Shorts data={homeData.hot_20_shorts} heading={'Hot 20 Shorts for you'} />
+                    <Top20Shorts
+                        data={homeData.hot_20_shorts}
+                        heading={'Hot 20 Shorts for you'}
+                        videoType={'hot_short'}
+                    />
                 </>
             )}
         </>

@@ -3,7 +3,7 @@ import HeadingAndViewMore from '../ViewMore'
 import T20ShortsGrid from './grid'
 import T20ShortsSwiper from './swiper'
 
-const Top20Shorts = ({ data, heading }) => {
+const Top20Shorts = ({ data, heading, videoType }) => {
     const [isViewMore, setViewMore] = useState(false)
     return (
         <>
@@ -14,7 +14,11 @@ const Top20Shorts = ({ data, heading }) => {
                     setViewMore={setViewMore}
                     isViewMore={isViewMore}
                 />
-                {isViewMore ? <T20ShortsGrid data={data} /> : <T20ShortsSwiper data={data} />}
+                {isViewMore ? (
+                    <T20ShortsGrid videoType={videoType} data={data} />
+                ) : (
+                    <T20ShortsSwiper videoType={videoType} data={data} />
+                )}
             </div>
         </>
     )
