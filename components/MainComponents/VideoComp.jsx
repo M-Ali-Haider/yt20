@@ -53,7 +53,7 @@ const VideoComp = ({ videoData, isLoading, selectedCategoryNumber, selectedRegio
     return (
         <>
             <div className="TopVideo_Container">
-                {!!videoData && !isLoading && videoData.length > 0  ? (
+                {!!videoData && !isLoading && videoData.length > 0 ? (
                     <>
                         <div
                             style={{ marginBottom: '1rem' }}
@@ -72,12 +72,12 @@ const VideoComp = ({ videoData, isLoading, selectedCategoryNumber, selectedRegio
                                             {selectedTitle === 'Top20Videos'
                                                 ? 'Top 20 Videos for you'
                                                 : selectedTitle === 'Hot20Videos'
-                                                ? 'Hot 20 Videos for you'
-                                                : selectedTitle === 'Top20Shorts'
-                                                ? 'Top 20 Shorts for you'
-                                                : selectedTitle === 'Hot20Shorts'
-                                                ? 'Hot 20 Shorts for you'
-                                                : ''}
+                                                  ? 'Hot 20 Videos for you'
+                                                  : selectedTitle === 'Top20Shorts'
+                                                    ? 'Top 20 Shorts for you'
+                                                    : selectedTitle === 'Hot20Shorts'
+                                                      ? 'Hot 20 Shorts for you'
+                                                      : ''}
                                         </h1>
                                         <ViewMoreBtn
                                             className={
@@ -236,14 +236,15 @@ const VideoComp = ({ videoData, isLoading, selectedCategoryNumber, selectedRegio
                                             </>
                                         ) : (
                                             <>
-                                                <CaroselSlider
+                                                <div>Carousel Slider</div>
+                                                {/* <CaroselSlider
                                                     slidesArray={videoData}
                                                     selectedCategoryNumber={selectedCategoryNumber}
                                                     selectedRegion={selectedRegion}
                                                     selectedTitle={selectedTitle}
                                                     // for="Videos"
                                                     for={includeVideos ? 'Videos' : 'Shorts'}
-                                                />
+                                                /> */}
                                             </>
                                         )}
                                     </>
@@ -255,8 +256,8 @@ const VideoComp = ({ videoData, isLoading, selectedCategoryNumber, selectedRegio
                             </>
                         </div>
                     </>
-                ) : (''
-                   
+                ) : (
+                    ''
                 )}
             </div>
             {!includePlayVideo && selectedTitle !== 'Hot20Shorts' && isAllDataHere ? (
