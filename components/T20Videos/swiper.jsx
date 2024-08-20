@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import SwiperButton from './swiperButton'
 import SwiperPage from './swiperPage'
@@ -10,7 +10,7 @@ const Top20VidsSwiper = ({ data }) => {
     const slidesPerPage = isXl ? 4 : isMd ? 3 : isXs ? 2 : 1
 
     const [currentSlide, setCurrentSlide] = useState(0)
-    const totalPages = Math.ceil(20 / slidesPerPage) - 1
+    const totalPages = Math.ceil(data['0'].length / slidesPerPage) - 1
 
     const nextSlide = () => {
         if (currentSlide === totalPages) {

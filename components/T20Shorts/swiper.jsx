@@ -10,7 +10,7 @@ const T20ShortsSwiper = ({ data }) => {
     const slidesPerPage = isXl ? 8 : isMd ? 5 : isXs ? 4 : 2
 
     const [currentSlide, setCurrentSlide] = useState(0)
-    const totalPages = Math.ceil(20 / slidesPerPage) - 1
+    const totalPages = Math.ceil(data['0'].length / slidesPerPage) - 1
 
     const nextSlide = () => {
         if (currentSlide === totalPages) {

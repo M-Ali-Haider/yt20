@@ -4,6 +4,7 @@ import Top20Shorts from '../T20Shorts'
 import Top20Videos from '../T20Videos'
 import TopSkeleton from './skeleton'
 import TopLine from './line'
+import { useEffect } from 'react'
 const Top = () => {
     const {
         data: homeData,
@@ -27,9 +28,13 @@ const Top = () => {
             {isLoading && <TopSkeleton />}
             {!isLoading && (
                 <>
-                    <Top20Videos data={homeData.top_20_videos} />
+                    <Top20Videos data={homeData.top_20_videos} heading={'Top 20 Videos for you'} />
                     <TopLine />
-                    <Top20Shorts data={homeData.top_20_shorts} />
+                    <Top20Shorts data={homeData.top_20_shorts} heading={'Top 20 Shorts for you'} />
+                    <TopLine />
+                    <Top20Videos data={homeData.hot_20_videos} heading={'Hot 20 Videos for you'} />
+                    <TopLine />
+                    <Top20Shorts data={homeData.hot_20_shorts} heading={'Hot 20 Shorts for you'} />
                 </>
             )}
         </>
