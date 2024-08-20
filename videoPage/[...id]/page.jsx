@@ -89,18 +89,18 @@ const VideoPage = () => {
                                         windowWidth < 425
                                             ? '200px'
                                             : windowWidth < 600
-                                            ? '400px'
-                                            : windowWidth < 900
-                                            ? '500px'
-                                            : windowWidth < 1024
-                                            ? '500px'
-                                            : windowWidth < 1440
-                                            ? '600px'
-                                            : windowWidth < 1600
-                                            ? '750px'
-                                            : windowWidth < 2560
-                                            ? '1200px'
-                                            : '1000px',
+                                              ? '400px'
+                                              : windowWidth < 900
+                                                ? '500px'
+                                                : windowWidth < 1024
+                                                  ? '500px'
+                                                  : windowWidth < 1440
+                                                    ? '600px'
+                                                    : windowWidth < 1600
+                                                      ? '750px'
+                                                      : windowWidth < 2560
+                                                        ? '1200px'
+                                                        : '1000px',
                                     width: '100%',
                                     playerVars: {
                                         autoplay: 0,

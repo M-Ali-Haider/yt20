@@ -1,11 +1,14 @@
 'use client'
 import { useQuery } from '@tanstack/react-query'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import VideoPageSkeleton from './skeleton'
-import VideoMain from './main'
 import YouTube from 'react-youtube'
-import VideoDetails from './details'
+import { VidDetailsInfo } from './detailsInfo'
+import { VidDetailsOptions } from './detailsOptions'
+import RelatedVideos from './relatedVideos'
 const Video = ({ id }) => {
+    const [option, setOption] = useState(0)
+    const options = ['Related Videos', 'Video Details', 'About']
     const opts = {
         playerVars: {
             autoplay: 1,
@@ -16,9 +19,9 @@ const Video = ({ id }) => {
     }, [])
     const {
         data: videoData,
-        isLoading,
-        isError,
-        error,
+        isLoading: isVideoDataLoading,
+        isError: isVideoDataError,
+        error: videoDataError,
     } = useQuery({
         queryKey: ['videoData'],
         queryFn: () =>
@@ -26,7 +29,25 @@ const Video = ({ id }) => {
                 `https://savvy-folio-406713.uc.r.appspot.com/api/video-detail?video_id=${id}&video_type=top_video`
             ).then((res) => res.json()),
     })
-    if (isError) return <div className="mt-[76px]">Error Loading Video Content + {error}</div>
+
+    const {
+        data: relatedData,
+        isLoading: isRelatedDataLoading,
+        isError: isRelatedDataError,
+        error: relatedDataError,
+    } = useQuery({
+        queryKey: ['homeData'],
+        queryFn: () =>
+            fetch(`https://savvy-folio-406713.uc.r.appspot.com/api/data?region=Global&category=0&start_date=`).then(
+                (res) => res.json()
+            ),
+    })
+
+    useEffect(() => {
+        console.log(relatedData)
+    }, [relatedData])
+
+    if (isVideoDataError) return <div className="mt-[76px]">Error Loading Video Content + {videoDataError}</div>
     return (
         <>
             <main
@@ -42,8 +63,19 @@ const Video = ({ id }) => {
                                 iframeClassName="w-full h-full rounded-tl-[6px] rounded-tr-[6px]"
                                 className="w-full h-full rounded-tl-[6px] rounded-tr-[6px]"
                             />
-                            {isLoading && <VideoPageSkeleton />}
-                            {!isLoading && <VideoDetails data={videoData.video} />}
+                        </div>
+                        {isVideoDataLoading ? (
+                            <VideoPageSkeleton />
+                        ) : (
+                            <>
+                                <div className="dark:bg-darkVidDetail w-full">
+                                    <VidDetailsInfo data={videoData.video} />
+                                    <VidDetailsOptions setOption={setOption} option={option} options={options} />
+                                </div>
+                            </>
+                        )}
+                        <div className="border border-solid border-purple-500 w-full min-h-[324px] mt-7">
+                            <RelatedVideos isRelatedDataLoading={isRelatedDataLoading} data={relatedData} />
                         </div>
                     </div>
                 </div>
@@ -53,8 +85,3 @@ const Video = ({ id }) => {
 }
 
 export default Video
-
-{
-    /* https://savvy-folio-406713.uc.r.appspot.com/api/video-detail?video_id=UPrkC1LdlLY&video_type=top_video
-                https://savvy-folio-406713.uc.r.appspot.com/api/video-detail?video_id=rPkvQCvCDKU&video_type=top_short */
-}
