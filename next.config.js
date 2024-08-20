@@ -2,6 +2,7 @@
 const nextConfig = {
     // basePath: '',
     // distDir: 'build',
+    basePath: '',
     images: {
         remotePatterns: [
             {
