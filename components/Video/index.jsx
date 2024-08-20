@@ -51,7 +51,7 @@ const Video = ({ id }) => {
         {
             title: 'Related Videos',
             comp: (
-                <RelatedVideos isRelatedDataLoading={isRelatedDataLoading} data={relatedData} videoType={videoType} />
+                <RelatedVideos isRelatedDataLoading={isRelatedDataLoading} data={relatedData} videoType={'top_video'} />
             ),
         },
         { title: 'Video Details', comp: <VideoDetails data={videoData} /> },
