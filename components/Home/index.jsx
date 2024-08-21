@@ -1,4 +1,4 @@
-import Filterbar from '../FilterBar'
+// import Filterbar from '../FilterBar'
 // import Filterbox from '../Filterbox'
 import GoToTop from '../GoToTop'
 import Top from '../TopSkeleton'
@@ -11,7 +11,7 @@ const Home = () => {
                 className="min-h-screen mt-[76px] w-full flex flex-col items-center dark:bg-[#0a0a0a] bg-[#edeef0] text-[#0a0a0a] dark:text-white"
             >
                 <div className="max-w-[1552px] px-[10px] md:px-[40px] w-full pb-[100px] mt-[40px]">
-                    <Filterbar />
+                    {/* <Filterbar /> */}
                     {/* <Discover />
                     <Filterbox /> */}
                     <Top />
