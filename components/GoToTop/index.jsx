@@ -44,8 +44,10 @@ const GoToTop = () => {
             ref={toTopButton}
             onClick={() => handleToTop()}
             className="
-                bg-swiperButton flex items-center justify-center
-                w-12 h-12 rounded-md fixed bottom-6 right-6
+                flex fixed
+                bg-swiperButton items-center justify-center
+                w-9 h-9 md:w-12 md:h-12 rounded-md 
+                bottom-[6px] right-[6px] md:bottom-6 md:right-6
                 scale-0 z-50"
         >
             <UpArrowSVG />
@@ -56,7 +58,15 @@ const GoToTop = () => {
 export default GoToTop
 
 const UpArrowSVG = (props) => (
-    <svg width={32} height={32} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+        width={32}
+        height={32}
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+        className="w-[18px] h-[18px] md:w-8 md:h-8"
+    >
         <path
             fillRule="evenodd"
             clipRule="evenodd"

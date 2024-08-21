@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import SwiperButton from './swiperButton'
 import SwiperPage from './swiperPage'
@@ -43,9 +43,12 @@ const Top20VidsSwiper = ({ data, videoType }) => {
                         ))}
                     </div>
                 </div>
-                <SwiperButton className={'right-0 md:-right-[20px] xs:top-[78px]'} handleClick={nextSlide} />
                 <SwiperButton
-                    className={'left-0 md:-left-[20px] rotate-180 xs:top-[78px]'}
+                    className={'bottom-0 absolute right-0 md:-right-[20px] xs:top-[78px]'}
+                    handleClick={nextSlide}
+                />
+                <SwiperButton
+                    className={'bottom-0 absolute left-0 md:-left-[20px] rotate-180 xs:top-[78px]'}
                     handleClick={previousSlide}
                 />
             </div>

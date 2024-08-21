@@ -44,11 +44,16 @@ const T20ShortsSwiper = ({ data, videoType }) => {
                         ))}
                     </div>
                 </div>
-                <SwiperButton className={'right-0 md:-right-[20px] xs:top-[112px]'} handleClick={nextSlide} />
-                <SwiperButton
-                    className={'left-0 md:-left-[20px] rotate-180 xs:top-[112px]'}
-                    handleClick={previousSlide}
-                />
+                <div className="flex items-center justify-center xs:block gap-4 mt-2">
+                    <SwiperButton
+                        className={'bottom-0 xs:absolute left-0 md:-left-[20px] rotate-180 xs:top-[112px]'}
+                        handleClick={previousSlide}
+                    />
+                    <SwiperButton
+                        className={'bottom-0 xs:absolute right-0 md:-right-[20px] xs:top-[112px]'}
+                        handleClick={nextSlide}
+                    />
+                </div>
             </div>
         </>
     )

@@ -8,7 +8,7 @@ const T20ShortsSkeleton = () => {
                 className={'tracking-[-0.014em] sm:font-medium sm:text-2xl sm:leading-[40px] lg:text-[32px]'}
             />
             <div
-                className="mt-[25px] grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-8 gap-4
+                className="mt-[25px] grid grid-cols-2 xs:grid-cols-4 md:grid-cols-5 xl:grid-cols-8 gap-4
                         relative
                         before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent
                         before:via-white/10
