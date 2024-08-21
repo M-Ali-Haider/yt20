@@ -12,7 +12,7 @@ const T20VidCard = ({ data, className, videoType }) => {
                     pathname: `/video/${data.video.video_id}`,
                     query: { videoType: videoType },
                 }}
-                className={`pb-[10px] cursor-pointer aspect-[370/326.15] ${className}`}
+                className={`pb-[10px] cursor-pointer aspect-[370/326.15] select-none ${className}`}
             >
                 <div className="aspect-[16/9] w-full relative rounded-lg overflow-hidden dark:bg-[#3f3f3f] bg-[#e5e5e5]">
                     <Image

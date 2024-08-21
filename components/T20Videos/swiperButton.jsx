@@ -4,7 +4,7 @@ const SwiperButton = ({ className, handleClick }) => {
             <div
                 onClick={handleClick}
                 className={`bg-swiperButton z-30
-                flex items-center justify-center rounded-[4px] 
+                items-center justify-center rounded-[4px] 
                 md:w-[40px] md:h-[40px] w-[32px] h-[32px] 
                 cursor-pointer ${className}`}
             >

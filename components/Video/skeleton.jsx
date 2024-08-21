@@ -2,13 +2,13 @@ const VideoPageSkeleton = () => {
     return (
         <>
             <div
-                className="w-full 
+                className="w-full mt-[50px] 
                         relative
                         before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent
                         before:via-white/5
                         before:animate-[shimmerX_1.5s_infinite] overflow-hidden"
             >
-                <div className="mt-[50px] w-full aspect-[16/9] dark:bg-[#3f3f3f] bg-[#e5e5e5] rounded-lg" />
+                <div className="w-full aspect-[16/9] dark:bg-[#3f3f3f] bg-[#e5e5e5] rounded-lg" />
                 <div className="dark:bg-darkVidDetail w-full">
                     <div className="flex flex-col md:flex-row flex-wrap w-full gap-2">
                         <div className="flex-1 pt-10 px-2 xs:px-10">

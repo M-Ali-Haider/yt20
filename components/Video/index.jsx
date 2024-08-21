@@ -9,9 +9,16 @@ import RelatedVideos from './relatedVideos'
 import VideoDetails from './details'
 import VideoAbout from './about'
 import { useSearchParams } from 'next/navigation'
+import { VidGridSkeleton } from '../T20Videos/skeleton'
 const Video = ({ id }) => {
     const searchParams = useSearchParams()
     const videoType = searchParams.get('videoType')
+    const relatedKeyMap = {
+        top_video: 'top_20_videos',
+        hot_video: 'hot_20_videos',
+        top_short: 'top_20_shorts',
+        hot_short: 'hot_20_shorts',
+    }
     const opts = {
         playerVars: {
             autoplay: 1,
@@ -51,7 +58,12 @@ const Video = ({ id }) => {
         {
             title: 'Related Videos',
             comp: (
-                <RelatedVideos isRelatedDataLoading={isRelatedDataLoading} data={relatedData} videoType={'top_video'} />
+                <RelatedVideos
+                    videoData={videoData}
+                    data={relatedData}
+                    videoType={videoType}
+                    relatedKey={relatedKeyMap[videoType]}
+                />
             ),
         },
         { title: 'Video Details', comp: <VideoDetails data={videoData} /> },
@@ -85,7 +97,13 @@ const Video = ({ id }) => {
                                 </div>
                             </>
                         )}
-                        <div className="w-full min-h-[324px] mt-7">{options[option].comp}</div>
+                        <div className="w-full min-h-[324px] mt-7">
+                            {isVideoDataLoading || isRelatedDataLoading ? (
+                                <VidGridSkeleton />
+                            ) : (
+                                <>{options[option].comp}</>
+                            )}
+                        </div>
                     </div>
                 </div>
             </main>
