@@ -27,7 +27,7 @@ const LibSwiper = ({ data, videoType, isShorts }) => {
     return (
         <>
             <div className="mt-[25px] relative">
-                <div className="w-full h-full relative flex items-center">
+                <div className="w-full h-full relative">
                     <Swiper
                         slidesPerView={slidesPerPage}
                         slidesPerGroup={slidesPerPage}
@@ -55,18 +55,20 @@ const LibSwiper = ({ data, videoType, isShorts }) => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    <SwiperButton
-                        className={`${
-                            isNextDisabled ? 'scale-0' : 'scale-100'
-                        } flex bottom-0 absolute right-0 md:-right-[20px] xs:top-[78px] transition-all ease-custom-ease duration-[400ms]`}
-                        handleClick={() => swiperRef.current?.slideNext()}
-                    />
-                    <SwiperButton
-                        className={`${
-                            isPrevDisabled ? 'scale-0' : 'scale-100'
-                        } flex bottom-0 absolute left-0 md:-left-[20px] rotate-180 xs:top-[78px] transition-all ease-custom-ease duration-[400ms]`}
-                        handleClick={() => swiperRef.current?.slidePrev()}
-                    />
+                    <div className={`${isShorts && 'flex items-center justify-center xs:block gap-4 mt-4'}`}>
+                        <SwiperButton
+                            className={`${isPrevDisabled ? 'scale-0' : 'scale-100'} ${
+                                isShorts ? 'xs:top-[112px] xs:absolute' : 'xs:top-[78px] absolute'
+                            } flex bottom-0 xs:bottom-auto left-0 md:-left-[20px] rotate-180 transition-all ease-custom-ease duration-[400ms]`}
+                            handleClick={() => swiperRef.current?.slidePrev()}
+                        />
+                        <SwiperButton
+                            className={`${isNextDisabled ? 'scale-0' : 'scale-100'} ${
+                                isShorts ? 'xs:top-[112px] xs:absolute' : 'xs:top-[78px] absolute'
+                            } flex bottom-0 xs:bottom-auto right-0 md:-right-[20px] transition-all ease-custom-ease duration-[400ms]`}
+                            handleClick={() => swiperRef.current?.slideNext()}
+                        />
+                    </div>
                 </div>
             </div>
         </>

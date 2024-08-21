@@ -1,14 +1,16 @@
+import styles from '@/components/style.module.css'
 const SwiperButton = ({ className, handleClick }) => {
     return (
         <>
             <div
                 onClick={handleClick}
-                className={`bg-swiperButton z-30
-                items-center justify-center rounded-[4px] 
+                className={`z-30
                 md:w-[40px] md:h-[40px] w-[32px] h-[32px] 
-                cursor-pointer hidden md:flex ${className}`}
+                cursor-pointer ${className}`}
             >
-                <SwiperArrowSVG />
+                <div className={`${styles.swiperButton} w-full h-full rounded-[4px] flex items-center justify-center`}>
+                    <SwiperArrowSVG />
+                </div>
             </div>
         </>
     )
