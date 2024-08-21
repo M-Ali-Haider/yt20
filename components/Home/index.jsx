@@ -1,4 +1,5 @@
 import Filterbox from '../Filterbox'
+import GoToTop from '../GoToTop'
 import Top from '../TopSkeleton'
 import Discover from './discover'
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
                     <Top />
                 </div>
             </main>
+            <GoToTop />
         </>
     )
 }
