@@ -15,11 +15,12 @@ const VideoPageSkeleton = () => {
                             <div className="h-7 md:h-8 dark:bg-[#3f3f3f] bg-[#e5e5e5] w-full rounded-full" />
                             <div className="flex flex-wrap items-center gap-4 text-[#99A2AD] text-sm mt-3">
                                 <div className="dark:bg-[#3f3f3f] bg-[#e5e5e5] h-[24px] rounded-full" />
-                                <div className="flex flex-wrap">
-                                    {[...Array(4)].map((_, index) => (
-                                        <div key={index} className="capitalize">
-                                            <span className="h-[20px] dark:bg-[#3f3f3f] bg-[#e5e5e5] rounded-full" />
-                                        </div>
+                                <div className="flex flex-wrap gap-4">
+                                    {[...Array(3)].map((_, index) => (
+                                        <div
+                                            key={index}
+                                            className="h-[20px] w-[111px] dark:bg-[#3f3f3f] bg-[#e5e5e5] rounded-full"
+                                        />
                                     ))}
                                 </div>
                                 <div className="dark:bg-[#3f3f3f] bg-[#e5e5e5] h-[20px] rounded-full" />
@@ -39,7 +40,7 @@ const VideoPageSkeleton = () => {
                             <div
                                 onClick={() => setOption(index)}
                                 key={index}
-                                className={`md:uppercase font-normal text-center dark:bg-[#3f3f3f] bg-[#e5e5e5] text-xs md:text-sm w-[176px] cursor-pointer pb-5 select-none transition-all duration-300 ease-custom-ease`}
+                                className={`md:uppercase rounded-full font-normal text-center dark:bg-[#3f3f3f] bg-[#e5e5e5] text-xs md:text-sm w-[176px] cursor-pointer pb-5 select-none transition-all duration-300 ease-custom-ease`}
                             />
                         ))}
                     </div>
