@@ -6,7 +6,7 @@ const SwiperButton = ({ className, handleClick }) => {
                 className={`bg-swiperButton z-30
                 items-center justify-center rounded-[4px] 
                 md:w-[40px] md:h-[40px] w-[32px] h-[32px] 
-                cursor-pointer ${className}`}
+                cursor-pointer hidden md:flex ${className}`}
             >
                 <SwiperArrowSVG />
             </div>

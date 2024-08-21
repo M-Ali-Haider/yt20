@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import HeadingAndViewMore from '../ViewMore'
 import Top20VidsGrid from './grid'
-import Top20VidsSwiper from './swiper'
+import LibSwiper from '../Swiper/libSwiper'
 
 const Top20Videos = ({ data, heading, videoType }) => {
     const [isViewMore, setViewMore] = useState(false)
@@ -17,7 +17,7 @@ const Top20Videos = ({ data, heading, videoType }) => {
                 {isViewMore ? (
                     <Top20VidsGrid data={data} videoType={videoType} />
                 ) : (
-                    <Top20VidsSwiper data={data} videoType={videoType} />
+                    <LibSwiper data={data} videoType={videoType} isShorts={false} />
                 )}
             </div>
         </>

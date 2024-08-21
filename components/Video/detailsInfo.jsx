@@ -21,24 +21,24 @@ export function VidDetailsInfo({ data }) {
                         </>
                     )}
                     <div className="h-[22px] w-[1px] hidden md:flex bg-[#99A2AD]" />
-                    <div className="text-[#E72825]">+ Follow Mentor</div>
+                    {/* <div className="text-[#E72825]">+ Follow Mentor</div> */}
                 </div>
             </div>
-            <div className="w-[140px] pl-10 md:pl-0 md pt-3 md:pt-[60px] flex items-center gap-[22px]">
+            {/* <div className="w-[140px] pl-10 md:pl-0 md pt-3 md:pt-[60px] flex items-center gap-[22px]">
                 <VidDetailsButton
                     SvgComp={WatchlaterSVG}
                     className={`border border-solid dark:border-[#E2E2EA] border-black`}
                 />
                 <VidDetailsButton SvgComp={CloudSVG} className={`bg-cloudSvg`} />
-            </div>
+            </div> */}
         </div>
     )
 }
 
-function VidDetailsButton({ SvgComp, className }) {
-    return (
-        <button className={`${className} w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer`}>
-            <SvgComp />
-        </button>
-    )
-}
+// function VidDetailsButton({ SvgComp, className }) {
+//     return (
+//         <button className={`${className} w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer`}>
+//             <SvgComp />
+//         </button>
+//     )
+// }

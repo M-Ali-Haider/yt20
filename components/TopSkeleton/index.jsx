@@ -2,9 +2,8 @@
 import { useQuery } from '@tanstack/react-query'
 import Top20Shorts from '../T20Shorts'
 import Top20Videos from '../T20Videos'
-import TopSkeleton from './skeleton'
 import TopLine from './line'
-import { useEffect } from 'react'
+import TopSkeleton from './skeleton'
 const Top = () => {
     const {
         data: homeData,
