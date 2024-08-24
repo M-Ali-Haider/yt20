@@ -4,7 +4,7 @@ const HeadingAndViewMore = ({ heading, className, setViewMore, isViewMore }) => 
             <div className="flex items-center justify-between">
                 <div
                     className={`text-base font-medium 
-                 text-[#0A0A0A] dark:text-white transition-all duration-500 ease-custom-ease ${className}`}
+                 text-[#0A0A0A] dark:text-white transition-all duration-500 ease-custom-ease ${className} select-none`}
                 >
                     {heading}
                 </div>
@@ -12,7 +12,7 @@ const HeadingAndViewMore = ({ heading, className, setViewMore, isViewMore }) => 
                     onClick={() => setViewMore(!isViewMore)}
                     className="w-[97px] h-[30px] md:w-[127px] active:scale-75 md:h-[39px] border-none bg-white dark:bg-[#19191A] flex items-center justify-center gap-[6px] md:gap-[10px] rounded-full transition-all duration-[400ms] ease-custom-ease"
                 >
-                    <span className="font-light text-[10px] leading-[12.21px] md:text-sm md:leading-[17.09px] text-[#0A0A0A] dark:text-white">
+                    <span className="select-none font-light text-[10px] leading-[12.21px] md:text-sm md:leading-[17.09px] text-[#0A0A0A] dark:text-white">
                         {isViewMore ? 'View Less' : 'View More'}
                     </span>
                     <ViewMoreSVG />

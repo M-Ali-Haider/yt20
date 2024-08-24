@@ -6,8 +6,10 @@ import T20VidCard from '../T20Videos/card'
 import { useRef, useState } from 'react'
 import SwiperButton from './swiperButton'
 import T20ShortCard from '../T20Shorts/card'
+import { useSelector } from 'react-redux'
 
 const LibSwiper = ({ data, videoType, isShorts }) => {
+    const categoryValue = useSelector((state) => state.filters.category)
     const isXs = useMediaQuery({ query: '(min-width: 550px)' })
     const isMd = useMediaQuery({ query: '(min-width: 768px)' })
     const isXl = useMediaQuery({ query: '(min-width: 1280px)' })
@@ -45,7 +47,7 @@ const LibSwiper = ({ data, videoType, isShorts }) => {
                         }}
                         onSlideChange={handleSlideChange}
                     >
-                        {data['0'].map((item, index) => (
+                        {data[categoryValue].map((item, index) => (
                             <SwiperSlide key={index}>
                                 {isShorts ? (
                                     <T20ShortCard data={item} videoType={videoType} />

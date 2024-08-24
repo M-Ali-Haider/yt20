@@ -33,7 +33,7 @@ const T20VidCard = ({ data, className, videoType }) => {
                     </div>
                 </div>
                 <div className="flex gap-4 pt-6">
-                    <div className="min-h-[36px] min-w-[36px] max-h-[36px] max-w-[36px] rounded-full overflow-hidden relative dark:bg-[#3f3f3f] bg-[#e5e5e5]">
+                    <div className="min-h-[36px] min-w-[36px] max-h-[36px] max-w-[36px] rounded-full overflow-hidden relative dark:bg-[#3f3f3f] bg-[#e5e5e5] transition-all duration-300 ease-custom-ease">
                         {/* <Image fill /> */}
                     </div>
                     <div className="w-[calc(100%-36px)]">

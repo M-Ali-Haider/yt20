@@ -4,18 +4,28 @@ import Top20Shorts from '../T20Shorts'
 import Top20Videos from '../T20Videos'
 import TopLine from './line'
 import TopSkeleton from './skeleton'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { loadFromLocalStorage } from '@/store/slice'
 const Top = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(loadFromLocalStorage())
+    }, [dispatch])
+
+    const { category, region, date } = useSelector((state) => state.filters)
+
     const {
         data: homeData,
         isLoading,
         isError,
         error,
     } = useQuery({
-        queryKey: ['homeData'],
+        queryKey: ['homeData', category, region, date],
         queryFn: () =>
-            fetch(`https://savvy-folio-406713.uc.r.appspot.com/api/data?region=Global&category=0&start_date=`).then(
-                (res) => res.json()
-            ),
+            fetch(
+                `https://savvy-folio-406713.uc.r.appspot.com/api/data?region=${region}&category=${category}&start_date=${date}`
+            ).then((res) => res.json()),
     })
 
     if (isError) {

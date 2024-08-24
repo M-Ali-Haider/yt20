@@ -7,6 +7,7 @@ import Header from '@/components/Header'
 import ReactQueryProvider from '@/providers/ReactQueryProvider'
 import NextThemeProvider from '@/providers/NextThemeProvider'
 import { TWKEverett, inter, SFProText } from './fonts/fonts'
+import { ReduxStoreProvider } from '@/providers/ReduxStoreProvider'
 
 export const metadata = {
     title: 'YouTubeTop 20',
@@ -19,8 +20,10 @@ export default function RootLayout({ children }) {
             <body className={`${TWKEverett.variable} ${inter.variable} ${SFProText.variable} font-everett`}>
                 <NextThemeProvider>
                     <ReactQueryProvider>
-                        <Header />
-                        {children}
+                        <ReduxStoreProvider>
+                            <Header />
+                            {children}
+                        </ReduxStoreProvider>
                     </ReactQueryProvider>
                 </NextThemeProvider>
             </body>

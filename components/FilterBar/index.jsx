@@ -1,41 +1,35 @@
-// import CalendarSVG from '@/assets/FilterBar/calendar'
-// import CategorySVG from '@/assets/FilterBar/category'
-// import RegionSVG from '@/assets/FilterBar/region'
-// import styles from '@/components/style.module.css'
-// const Filterbar = () => {
-//     const options = [
-//         { title: 'Top 20 Videos', id: '' },
-//         { title: 'Top 20 Short Videos', id: '' },
-//         { title: 'Hot 20 Videos', id: '' },
-//         { title: 'Hot 20 Short Videos', id: '' },
-//     ]
+'use client'
+import CategoryDropDown from '../Dropdowns/category'
+import DateDropDown from '../Dropdowns/date'
+import RegionDropDown from '../Dropdowns/region'
+import FilterOption from './option'
 
-//     const filters = [<CategorySVG />, <CalendarSVG />, <RegionSVG />]
+const Filterbar = () => {
+    const options = [
+        { title: 'Top 20 Videos', id: '#top20videos' },
+        { title: 'Top 20 Short Videos', id: '#top20shorts' },
+        { title: 'Hot 20 Videos', id: '#hot20shorts' },
+        { title: 'Hot 20 Short Videos', id: '#hot20shorts' },
+    ]
+    return (
+        <>
+            <div className="w-full flex justify-between">
+                <div className={`hidden filterBarDim:flex items-center rounded-full lg:rounded-[10px] overflow-hidden`}>
+                    {options.map(({ title }, index) => (
+                        <FilterOption key={index} title={title} />
+                    ))}
+                </div>
 
-//     return (
-//         <>
-//             <div className="w-full flex justify-between">
-//                 <div className={`flex items-center rounded-[10px] overflow-hidden`}>
-//                     {options.map((item, index) => (
-//                         <div
-//                             key={index}
-//                             className={`${styles.gradientButton} text-base cursor-pointer
-//                             py-3 px-6`}
-//                         >
-//                             {item.title}
-//                         </div>
-//                     ))}
-//                 </div>
-//                 <div className="flex items-center">
-//                     {filters.map((item, index) => (
-//                         <div key={index}>
-//                             <div key={index}>{item}</div>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </>
-//     )
-// }
+                <div className="flex items-center gap-[15px]">
+                    <DateDropDown />
+                    <CategoryDropDown />
+                    <RegionDropDown />
+                </div>
+            </div>
+        </>
+    )
+}
 
-// export default Filterbar
+export default Filterbar
+
+const FilterDropDown = ({ Component }) => <Component />

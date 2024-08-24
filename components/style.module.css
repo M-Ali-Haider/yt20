@@ -1,15 +1,6 @@
-/* .gradientButton {
-    background: #19191a;
-    transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-}
-.gradientButton:hover {
-    background: linear-gradient(90deg, #e72825 0%, #f37f1f 100%);
-} */
-
 @media (min-width: 768px) {
     .swiperButton {
         position: relative;
-        background: #19191a;
         transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
         overflow: hidden;
         z-index: 1;
@@ -38,10 +29,13 @@
     }
 }
 
+.swiperButton:hover svg path {
+    stroke: white;
+}
+
 .gradientButton {
     position: relative;
-    background: #19191a;
-    transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: all 0.2s cubic-bezier(0.76, 0, 0.24, 1);
     overflow: hidden;
     z-index: 1;
 }
@@ -54,11 +48,21 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, #e72825 0%, #f37f1f 100%);
-    transition: opacity 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: opacity 0.2s cubic-bezier(0.76, 0, 0.24, 1);
     z-index: -1;
     opacity: 0;
 }
 
 .gradientButton:hover::before {
     opacity: 1;
+}
+.gradientButton:hover {
+    color: white;
+}
+
+.activeButton {
+    background: linear-gradient(90deg, #e72825 0%, #f37f1f 100%);
+}
+.activeButton svg {
+    fill: white;
 }

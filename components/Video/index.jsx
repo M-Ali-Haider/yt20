@@ -10,6 +10,7 @@ import VideoDetails from './details'
 import VideoAbout from './about'
 import { useSearchParams } from 'next/navigation'
 import { VidGridSkeleton } from '../T20Videos/skeleton'
+import { useSelector } from 'react-redux'
 const Video = ({ id }) => {
     const searchParams = useSearchParams()
     const videoType = searchParams.get('videoType')
@@ -19,6 +20,7 @@ const Video = ({ id }) => {
         top_short: 'top_20_shorts',
         hot_short: 'hot_20_shorts',
     }
+    const { category, region, date } = useSelector((state) => state.filters)
     const opts = {
         playerVars: {
             autoplay: 1,
@@ -46,11 +48,11 @@ const Video = ({ id }) => {
         isError: isRelatedDataError,
         error: relatedDataError,
     } = useQuery({
-        queryKey: ['homeData'],
+        queryKey: ['homeData', category, region, date],
         queryFn: () =>
-            fetch(`https://savvy-folio-406713.uc.r.appspot.com/api/data?region=Global&category=0&start_date=`).then(
-                (res) => res.json()
-            ),
+            fetch(
+                `https://savvy-folio-406713.uc.r.appspot.com/api/data?region=${region}&category=${category}&start_date=${date}`
+            ).then((res) => res.json()),
     })
 
     const [option, setOption] = useState(0)

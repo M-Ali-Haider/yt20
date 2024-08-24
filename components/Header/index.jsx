@@ -1,6 +1,5 @@
-import React from 'react'
 import HeaderLogo from './logo'
-import HeaderLinks from './links'
+// import HeaderLinks from './links'
 import ThemeToggle from './themeToggle'
 import BurgerMenu from './burgerMenu'
 
@@ -17,7 +16,7 @@ const Header = () => {
                     bg-[#ffffff] dark:bg-[#19191a] transition-all ease-custom-ease duration-500"
             >
                 <HeaderLogo />
-                <HeaderLinks />
+                {/* <HeaderLinks /> */}
                 <div className="flex-1 hidden md:flex items-center justify-end">
                     <ThemeToggle />
                 </div>

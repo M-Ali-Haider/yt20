@@ -42,6 +42,7 @@ module.exports = {
                 '4k': '1920px',
                 sm: '640px',
                 md: '768px',
+                filterBarDim: '850px',
                 middle: '900px',
                 lg: '1024px',
                 gridBig: '1176px',
