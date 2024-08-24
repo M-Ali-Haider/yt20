@@ -25,6 +25,11 @@
         scrollbar-width: auto; /* Firefox */
     }
 }
+
+.no-scroll {
+    overflow-y: hidden;
+}
+
 /* :root {
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;

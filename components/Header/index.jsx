@@ -17,7 +17,7 @@ const Header = () => {
             >
                 <HeaderLogo />
                 {/* <HeaderLinks /> */}
-                <div className="flex-1 hidden md:flex items-center justify-end">
+                <div className="flex-1 hidden filterBarDim:flex items-center justify-end">
                     <ThemeToggle />
                 </div>
                 <BurgerMenu />

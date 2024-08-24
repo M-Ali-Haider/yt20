@@ -28,7 +28,7 @@ const SwiperArrowSVG = (props) => (
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
-        className="dark:stroke-white stroke-black"
+        className="stroke-white sm:dark:stroke-white sm:stroke-black"
     >
         <path d="M2 15.5L8 9L2 2.5" strokeWidth={2} strokeLinejoin="round" />
     </svg>

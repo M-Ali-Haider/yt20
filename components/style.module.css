@@ -35,7 +35,7 @@
 
 .gradientButton {
     position: relative;
-    transition: all 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: all 0.2s linear;
     overflow: hidden;
     z-index: 1;
 }
@@ -48,7 +48,7 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, #e72825 0%, #f37f1f 100%);
-    transition: opacity 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: opacity 0.2s linear;
     z-index: -1;
     opacity: 0;
 }

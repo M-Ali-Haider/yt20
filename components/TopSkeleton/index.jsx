@@ -41,24 +41,28 @@ const Top = () => {
                         data={homeData.top_20_videos}
                         heading={'Top 20 Videos for you'}
                         videoType={'top_video'}
+                        id={'top20videos'}
                     />
                     <TopLine />
                     <Top20Shorts
                         data={homeData.top_20_shorts}
                         heading={'Top 20 Shorts for you'}
                         videoType={'top_short'}
+                        id={'top20shorts'}
                     />
                     <TopLine />
                     <Top20Videos
                         data={homeData.hot_20_videos}
                         heading={'Hot 20 Videos for you'}
                         videoType={'hot_video'}
+                        id={'hot20videos'}
                     />
                     <TopLine />
                     <Top20Shorts
                         data={homeData.hot_20_shorts}
                         heading={'Hot 20 Shorts for you'}
                         videoType={'hot_short'}
+                        id={'hot20shorts'}
                     />
                 </>
             )}
