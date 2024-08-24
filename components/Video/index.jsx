@@ -73,6 +73,7 @@ const Video = ({ id }) => {
     ]
 
     if (isVideoDataError) return <div className="mt-[76px]">Error Loading Video Content + {videoDataError}</div>
+    if (isRelatedDataError) return <div className="mt-[76px]">Error Loading Related Videos + {relatedDataError}</div>
     return (
         <>
             <main

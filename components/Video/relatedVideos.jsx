@@ -7,7 +7,7 @@ const RelatedVideos = ({ videoData, data, videoType, relatedKey }) => {
     const filteredData = data[relatedKey][categoryValue].filter((video) => video.video_id !== videoIdToRemove)
 
     const isShorts = relatedKey.includes('shorts')
-    const swiperData = { 0: filteredData }
+    const swiperData = { [categoryValue]: filteredData }
 
     return <LibSwiper data={swiperData} videoType={videoType} isShorts={isShorts} />
 }
