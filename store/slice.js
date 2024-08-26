@@ -1,3 +1,4 @@
+import { getLast7Days } from '@/utils/getLast7Days'
 import { createSlice } from '@reduxjs/toolkit'
 import { format } from 'date-fns'
 
@@ -21,11 +22,21 @@ export const filtersSlice = createSlice({
         },
         setDate: (state, action) => {
             state.date = action.payload
-            // localStorage.setItem('date', action.payload)
+            localStorage.setItem('date', action.payload)
         },
         loadFromLocalStorage: (state) => {
             state.category = localStorage.getItem('category') || 0
             state.region = localStorage.getItem('region') || 'Global'
+
+            const savedDate = localStorage.getItem('date')
+            const last7Days = getLast7Days()
+            const dateOptions = last7Days.map((date) => date.value)
+
+            if (savedDate && dateOptions.includes(savedDate)) {
+                state.date = savedDate
+            } else {
+                state.date = format(new Date(), 'yyyy-MM-dd')
+            }
         },
     },
 })

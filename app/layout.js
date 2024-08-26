@@ -8,6 +8,7 @@ import ReactQueryProvider from '@/providers/ReactQueryProvider'
 import NextThemeProvider from '@/providers/NextThemeProvider'
 import { TWKEverett, inter, SFProText } from './fonts/fonts'
 import { ReduxStoreProvider } from '@/providers/ReduxStoreProvider'
+import LoadFromLocal from '@/providers/LoadFromLocal'
 
 export const metadata = {
     title: 'YouTubeTop 20',
@@ -21,8 +22,10 @@ export default function RootLayout({ children }) {
                 <NextThemeProvider>
                     <ReactQueryProvider>
                         <ReduxStoreProvider>
-                            <Header />
-                            {children}
+                            <LoadFromLocal>
+                                <Header />
+                                {children}
+                            </LoadFromLocal>
                         </ReduxStoreProvider>
                     </ReactQueryProvider>
                 </NextThemeProvider>

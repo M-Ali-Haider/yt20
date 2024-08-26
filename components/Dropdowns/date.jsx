@@ -1,9 +1,9 @@
 import CalendarSVG from '@/assets/FilterBar/calendar'
-import { useEffect, useRef, useState } from 'react'
-import { format } from 'date-fns'
 import styles from '@/components/style.module.css'
-import { useDispatch, useSelector } from 'react-redux'
 import { setDate } from '@/store/slice'
+import { getLast7Days } from '@/utils/getLast7Days'
+import { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import DropDownIcon from './Icon'
 import DropdownWrapper from './dropdown'
 
@@ -11,27 +11,18 @@ const DateDropDown = () => {
     const dispatch = useDispatch()
     const dateValue = useSelector((state) => state.filters.date)
     const [selectedDate, setSelectedDate] = useState(dateValue)
+
+    useEffect(() => {
+        if (dateValue !== selectedDate) {
+            setSelectedDate(dateValue)
+        }
+    }, [dateValue])
+
     const [isDropDownOpen, setDropDownStatus] = useState(false)
     const dropdownRef = useRef(null)
 
     const closeDropDown = () => {
         setDropDownStatus(false)
-    }
-
-    const getLast7Days = () => {
-        const dates = []
-        for (let i = 0; i < 7; i++) {
-            const date = new Date()
-            date.setDate(date.getDate() - i)
-            const day = format(date, 'EE').slice(0, 2)
-            const formattedDay = day === 'Sa' ? 'Sat' : day
-            dates.unshift({
-                day: formattedDay,
-                dateNumber: format(date, 'd'),
-                value: format(date, 'yyyy-MM-dd'),
-            })
-        }
-        return dates
     }
 
     const handleApply = () => {

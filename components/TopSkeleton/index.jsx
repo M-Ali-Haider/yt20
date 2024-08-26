@@ -8,11 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { loadFromLocalStorage } from '@/store/slice'
 const Top = () => {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(loadFromLocalStorage())
-    }, [dispatch])
-
     const { category, region, date } = useSelector((state) => state.filters)
 
     const {
