@@ -1,3 +1,4 @@
+import { formatNumberWithCommas } from '@/utils/commaNumbers'
 import { useMemo } from 'react'
 
 const VideoDetails = ({ data }) => {
@@ -38,16 +39,16 @@ const VideoDetails = ({ data }) => {
         { heading: 'Region', value: region },
         { heading: 'Channel', value: video_channelTitle },
         { heading: 'Duration', value: convertDuration },
-        { heading: 'Total Comments', value: video_commentCount },
-        { heading: 'Likes', value: video_likeCount },
+        { heading: 'Total Comments', value: formatNumberWithCommas(video_commentCount) },
+        { heading: 'Likes', value: formatNumberWithCommas(video_likeCount) },
         { heading: 'Dislikes', value: video_dislikeCount },
-        { heading: 'Views Per Day', value: per_day_views },
+        { heading: 'Views Per Day', value: formatNumberWithCommas(per_day_views) },
     ]
 
     return (
         <div>
             <div className="flex gap-4">
-                <div>{video_viewCount} views</div>
+                <div>{formatNumberWithCommas(video_viewCount)} views</div>
                 <div>{formattedDate}</div>
             </div>
 
