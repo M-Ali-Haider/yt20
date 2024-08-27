@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ThemeToggle from '../Header/themeToggle'
 
-const Sidebar = () => {
+const Sidebar = ({ isHomepage }) => {
     const dispatch = useDispatch()
     const isSidebarOpen = useSelector((state) => state.sidebar.isSidebarOpen)
 
@@ -42,17 +42,19 @@ const Sidebar = () => {
                 transition-all ease-custom-ease duration-500 z-[80]`}
             >
                 <div className="px-[10px] py-6 flex justify-end items-center">
-                    <div onClick={() => dispatch(closeSidebar())} className="h-[30px] w-8">
+                    <div onClick={() => dispatch(closeSidebar())} className="h-[30px] w-8 cursor-pointer">
                         <CrossSVG className={'dark:fill-white fill-[#0A0A0A]'} />
                     </div>
                 </div>
-                <div className="pl-[30px] flex flex-col gap-6 text-2xl mt-[40px]">
-                    {options.map((item, index) => (
-                        <div key={index} onClick={() => handleSidebarLink(item.id)}>
-                            {item.title}
-                        </div>
-                    ))}
-                </div>
+                {isHomepage && (
+                    <div className="pl-[30px] flex flex-col gap-6 text-2xl mt-[40px]">
+                        {options.map((item, index) => (
+                            <div key={index} onClick={() => handleSidebarLink(item.id)} className="cursor-pointer">
+                                {item.title}
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <div className="pl-[30px] mt-6 w-min">
                     <ThemeToggle />
                 </div>

@@ -11,6 +11,7 @@ import VideoAbout from './about'
 import { useSearchParams } from 'next/navigation'
 import { VidGridSkeleton } from '../T20Videos/skeleton'
 import { useSelector } from 'react-redux'
+import Sidebar from '../Sidebar'
 const Video = ({ id }) => {
     const searchParams = useSearchParams()
     const videoType = searchParams.get('videoType')
@@ -76,6 +77,7 @@ const Video = ({ id }) => {
     if (isRelatedDataError) return <div className="mt-[76px]">Error Loading Related Videos + {relatedDataError}</div>
     return (
         <>
+            <Sidebar isHomepage={false} />
             <main
                 style={{ transition: 'background-color 0.5s cubic-bezier(0.76,0,0.24,1)' }}
                 className="min-h-screen mt-[76px] w-full flex flex-col items-center dark:bg-[#0a0a0a] bg-[#edeef0] text-[#0a0a0a] dark:text-white"
