@@ -8,7 +8,7 @@ import FilterOption from './option'
 const Filterbar = () => {
     return (
         <>
-            <div className="w-full flex justify-between">
+            <div className="px-[10px] md:px-[40px] w-full flex justify-between filterBarDim:sticky py-6 mt-4 mb-6 filterBarDim:top-0 filterBarDim:z-50 dark:bg-[#0a0a0a] bg-[#edeef0]">
                 <div className={`hidden filterBarDim:flex items-center rounded-full lg:rounded-[10px] overflow-hidden`}>
                     {options.map((item, index) => (
                         <div key={index} onClick={() => handleFilterOption(item.id)}>

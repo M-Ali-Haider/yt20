@@ -7,7 +7,7 @@ const Top20Videos = ({ data, heading, videoType, id }) => {
     const [isViewMore, setViewMore] = useState(false)
     return (
         <>
-            <div id={id ? id : ''} className="mt-8 md:mt-10 lg:mt-12">
+            <div id={id ? id : ''} className="">
                 <HeadingAndViewMore
                     heading={heading}
                     className={'tracking-[-0.014em] sm:font-bold sm:text-2xl sm:leading-[40px] lg:text-[32px]'}

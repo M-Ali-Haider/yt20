@@ -80,7 +80,7 @@ const Video = ({ id }) => {
             <Sidebar isHomepage={false} />
             <main
                 style={{ transition: 'background-color 0.5s cubic-bezier(0.76,0,0.24,1)' }}
-                className="min-h-screen mt-[76px] w-full flex flex-col items-center dark:bg-[#0a0a0a] bg-[#edeef0] text-[#0a0a0a] dark:text-white"
+                className="min-h-screen filterBarDim:mt-0 mt-[76px] w-full flex flex-col items-center dark:bg-[#0a0a0a] bg-[#edeef0] text-[#0a0a0a] dark:text-white"
             >
                 <div className="max-w-[1100px] 2xl:max-w-[1440px] px-[10px] md:px-[40px] w-full pb-[100px]">
                     <div className="flex flex-col items-center">

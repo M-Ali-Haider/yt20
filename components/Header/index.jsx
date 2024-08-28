@@ -7,10 +7,10 @@ const Header = () => {
     return (
         <>
             <header
-                className="h-[76px] 
-                    fixed 
+                className="h-[76px]
+                    fixed filterBarDim:static
+                    top-0 left-0 right-0 z-50
                     py-6 md:py-[30px] lg:py-8 
-                    top-0 left-0 right-0 z-50 
                     px-[10px] md:px-[20px] lg:px-16 
                     flex items-center justify-between 
                     bg-[#ffffff] dark:bg-[#19191a] transition-all ease-custom-ease duration-500"
@@ -27,3 +27,11 @@ const Header = () => {
 }
 
 export default Header
+
+// className="h-[76px]
+//                     fixed
+//                     py-6 md:py-[30px] lg:py-8
+//                     top-0 left-0 right-0 z-50
+//                     px-[10px] md:px-[20px] lg:px-16
+//                     flex items-center justify-between
+//                     bg-[#ffffff] dark:bg-[#19191a] transition-all ease-custom-ease duration-500"
