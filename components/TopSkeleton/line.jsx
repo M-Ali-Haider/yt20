@@ -2,11 +2,12 @@ const TopLine = () => {
     return (
         <>
             <div
-                className="h-[1px] 
-            bg-[#DDDDDD] 
-            mt-[60px] md:mt-[40px] mb-[40px]
+                className="h-[1px]  
+            pt-[60px] md:pt-[40px] pb-[40px]
             hidden sm:block"
-            />
+            >
+                <div className="h-[1px] bg-[#DDDDDD] w-full" />
+            </div>
         </>
     )
 }

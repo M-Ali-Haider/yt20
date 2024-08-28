@@ -1,15 +1,16 @@
 'use client'
+import { onLeaveBack, setActiveLink } from '@/store/activeLink'
+import { options } from '@/utils/filterbar'
 import { useQuery } from '@tanstack/react-query'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Top20Shorts from '../T20Shorts'
 import Top20Videos from '../T20Videos'
-import TopLine from './line'
-import TopSkeleton from './skeleton'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { loadFromLocalStorage } from '@/store/slice'
 const Top = () => {
+    const dispatch = useDispatch()
     const { category, region, date } = useSelector((state) => state.filters)
-
     const {
         data: homeData,
         isLoading,
@@ -23,44 +24,59 @@ const Top = () => {
             ).then((res) => res.json()),
     })
 
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger)
+        const triggers = options.map((option) => {
+            return ScrollTrigger.create({
+                trigger: option.id,
+                start: 'top top+=97px',
+                end: 'bottom top+=97px',
+                onEnter: () => dispatch(setActiveLink(option.title)),
+                onLeaveBack: () => dispatch(onLeaveBack()),
+                markers: true,
+            })
+        })
+
+        return () => {
+            triggers.forEach((trigger) => trigger.kill())
+        }
+    }, [isLoading])
+
     if (isError) {
         return <div>Error loading Home data + {error}</div>
     }
-
     return (
         <>
-            {isLoading && <TopSkeleton />}
-            {!isLoading && (
-                <>
-                    <Top20Videos
-                        data={homeData.top_20_videos}
-                        heading={'Top 20 Videos for you'}
-                        videoType={'top_video'}
-                        id={'top20videos'}
-                    />
-                    <TopLine />
-                    <Top20Shorts
-                        data={homeData.top_20_shorts}
-                        heading={'Top 20 Shorts for you'}
-                        videoType={'top_short'}
-                        id={'top20shorts'}
-                    />
-                    <TopLine />
-                    <Top20Videos
-                        data={homeData.hot_20_videos}
-                        heading={'Hot 20 Videos for you'}
-                        videoType={'hot_video'}
-                        id={'hot20videos'}
-                    />
-                    <TopLine />
-                    <Top20Shorts
-                        data={homeData.hot_20_shorts}
-                        heading={'Hot 20 Shorts for you'}
-                        videoType={'hot_short'}
-                        id={'hot20shorts'}
-                    />
-                </>
-            )}
+            <>
+                <Top20Videos
+                    isLoading={isLoading}
+                    data={homeData}
+                    heading={'Top 20 Videos for you'}
+                    videoType={'top_video'}
+                    id={'top20videos'}
+                />
+                <Top20Shorts
+                    isLoading={isLoading}
+                    data={homeData}
+                    heading={'Top 20 Shorts for you'}
+                    videoType={'top_short'}
+                    id={'top20shorts'}
+                />
+                <Top20Videos
+                    isLoading={isLoading}
+                    data={homeData}
+                    heading={'Hot 20 Videos for you'}
+                    videoType={'hot_video'}
+                    id={'hot20videos'}
+                />
+                <Top20Shorts
+                    isLoading={isLoading}
+                    data={homeData}
+                    heading={'Hot 20 Shorts for you'}
+                    videoType={'hot_short'}
+                    id={'hot20shorts'}
+                />
+            </>
         </>
     )
 }

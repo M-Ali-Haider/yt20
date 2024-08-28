@@ -1,12 +1,6 @@
-import HeadingAndViewMore from '../ViewMore'
-
 const T20ShortsSkeleton = () => {
     return (
         <div className="mt-8 md:mt-10 lg:mt-12">
-            <HeadingAndViewMore
-                heading={'Top 20 Shorts for you'}
-                className={'tracking-[-0.014em] sm:font-medium sm:text-2xl sm:leading-[40px] lg:text-[32px]'}
-            />
             <div
                 className="mt-[25px] grid grid-cols-2 xs:grid-cols-4 md:grid-cols-5 xl:grid-cols-8 gap-4
                         relative

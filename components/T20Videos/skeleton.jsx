@@ -1,12 +1,6 @@
-import HeadingAndViewMore from '../ViewMore'
-
 const T20VideosSkeleton = () => {
     return (
         <div className="mt-8 md:mt-10 lg:mt-12">
-            <HeadingAndViewMore
-                heading={'Top 20 Videos for you'}
-                className={'tracking-[-0.014em] sm:font-bold sm:text-2xl sm:leading-[40px] lg:text-[32px]'}
-            />
             <VidGridSkeleton />
         </div>
     )

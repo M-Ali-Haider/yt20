@@ -2,23 +2,36 @@ import { useState } from 'react'
 import HeadingAndViewMore from '../ViewMore'
 import Top20VidsGrid from './grid'
 import LibSwiper from '../Swiper/libSwiper'
+import T20VideosSkeleton from './skeleton'
+import TopLine from '../TopSkeleton/line'
 
-const Top20Videos = ({ data, heading, videoType, id }) => {
+const Top20Videos = ({ isLoading, data, heading, videoType, id }) => {
     const [isViewMore, setViewMore] = useState(false)
+    const keyMap = {
+        top_video: 'top_20_videos',
+        hot_video: 'hot_20_videos',
+    }
     return (
         <>
-            <div id={id ? id : ''} className="">
+            <div id={id}>
                 <HeadingAndViewMore
                     heading={heading}
                     className={'tracking-[-0.014em] sm:font-bold sm:text-2xl sm:leading-[40px] lg:text-[32px]'}
                     setViewMore={setViewMore}
                     isViewMore={isViewMore}
                 />
-                {isViewMore ? (
-                    <Top20VidsGrid data={data} videoType={videoType} />
+                {isLoading ? (
+                    <T20VideosSkeleton />
                 ) : (
-                    <LibSwiper data={data} videoType={videoType} isShorts={false} />
+                    <>
+                        {isViewMore ? (
+                            <Top20VidsGrid data={data[keyMap[videoType]]} videoType={videoType} />
+                        ) : (
+                            <LibSwiper data={data[keyMap[videoType]]} videoType={videoType} isShorts={false} />
+                        )}
+                    </>
                 )}
+                <TopLine />
             </div>
         </>
     )
