@@ -14,7 +14,9 @@ const Filterbar = () => {
     return (
         <>
             <div className="max-w-[1552px] px-[10px] md:px-[40px] w-full flex justify-between filterBarDim:sticky filterBarDim:my-0 py-6 mt-4 mb-6 filterBarDim:top-0 filterBarDim:z-50 dark:bg-[#0a0a0a] bg-[#edeef0]">
-                <div className={`hidden filterBarDim:flex items-center rounded-full lg:rounded-[10px] overflow-hidden`}>
+                <div
+                    className={`hidden filterBarDim:flex items-center rounded-full lg:rounded-[10px] overflow-hidden dark:bg-[#19191a] bg-white`}
+                >
                     {options.map((item, index) => (
                         <div key={index} onClick={() => handleOnClick(item)}>
                             <FilterOption title={item.title} />

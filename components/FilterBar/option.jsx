@@ -4,11 +4,9 @@ const FilterOption = ({ title }) => {
     const activeLink = useSelector((state) => state.activeLink.activeLink)
     return (
         <div
-            className={`${
-                activeLink === title ? `${styles.activeLink} bg-swiperButton text-white` : `dark:bg-[#19191a] bg-white`
-            }
+            className={`${styles.toSectionButton} ${activeLink === title ? `before:opacity-100` : `before:opacity-0`}
             text-xs lg:text-base cursor-pointer select-none
-            py-3 px-5 lg:px-6 ${styles.toSectionButton}`}
+            py-3 px-5 lg:px-6`}
         >
             {title}
         </div>
