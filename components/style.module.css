@@ -66,3 +66,36 @@
 .activeButton svg {
     fill: white;
 }
+
+.toSectionButton {
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.toSectionButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #e72825 0%, #f37f1f 100%);
+    transition: opacity 0.5s ease-in-out;
+    z-index: -1;
+    opacity: 0;
+}
+
+.toSectionButton:hover::before {
+    opacity: 1;
+}
+.toSectionButton:hover {
+    color: white;
+}
+
+.activeLink {
+    transition:
+        background-color 0.5s ease-out,
+        color 0.5s ease-out;
+}

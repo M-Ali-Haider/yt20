@@ -2,12 +2,13 @@ import CategorySVG from '@/assets/FilterBar/category'
 import styles from '@/components/style.module.css'
 import { setCategory } from '@/store/slice'
 import { useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import DropDownIcon from './Icon'
 import DropdownWrapper from './dropdown'
 
 const CategoryDropDown = () => {
     const [isDropDownOpen, setDropDownStatus] = useState(false)
+    const categoryValue = useSelector((state) => state.filters.category)
     const dispatch = useDispatch()
     const dropdownRef = useRef(null)
     const categories = ['All', 'Now', 'Music', 'Gaming', 'Movies']
@@ -53,7 +54,9 @@ const CategoryDropDown = () => {
                         <DropdownWrapper className={`flex flex-col pt-3`} closeDropDown={closeDropDown}>
                             {categories.map((item, index) => (
                                 <div
-                                    className={`pl-[26px] py-[13px] select-none w-[191px] cursor-pointer before:rounded-md ${styles.gradientButton}`}
+                                    className={`${
+                                        index === categoryValue ? `bg-swiperButton` : `${styles.gradientButton}`
+                                    } pl-[26px] py-[13px] select-none w-[191px] cursor-pointer before:rounded-md rounded-md`}
                                     onClick={() => handleOptionClick(index)}
                                     key={index}
                                 >

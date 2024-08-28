@@ -5,7 +5,7 @@ import LibSwiper from '../Swiper/libSwiper'
 import T20VideosSkeleton from './skeleton'
 import TopLine from '../TopSkeleton/line'
 
-const Top20Videos = ({ isLoading, data, heading, videoType, id }) => {
+const Top20Videos = ({ isLine, isLoading, data, heading, videoType, id }) => {
     const [isViewMore, setViewMore] = useState(false)
     const keyMap = {
         top_video: 'top_20_videos',

@@ -1,5 +1,5 @@
 'use client'
-import { onLeaveBack, setActiveLink } from '@/store/activeLink'
+import { onEnter, onLeaveBack, setActiveLink } from '@/store/activeLink'
 import { options } from '@/utils/filterbar'
 import { useQuery } from '@tanstack/react-query'
 import gsap from 'gsap'
@@ -30,10 +30,9 @@ const Top = () => {
             return ScrollTrigger.create({
                 trigger: option.id,
                 start: 'top top+=97px',
-                end: 'bottom top+=97px',
-                onEnter: () => dispatch(setActiveLink(option.title)),
-                onLeaveBack: () => dispatch(onLeaveBack()),
-                markers: true,
+                end: 'bottom center',
+                onEnter: () => dispatch(onEnter(option.title)),
+                onEnterBack: () => dispatch(onLeaveBack()),
             })
         })
 
@@ -47,13 +46,14 @@ const Top = () => {
     }
     return (
         <>
-            <>
+            <div className="flex flex-col gap-1">
                 <Top20Videos
                     isLoading={isLoading}
                     data={homeData}
                     heading={'Top 20 Videos for you'}
                     videoType={'top_video'}
                     id={'top20videos'}
+                    isLine={true}
                 />
                 <Top20Shorts
                     isLoading={isLoading}
@@ -61,6 +61,7 @@ const Top = () => {
                     heading={'Top 20 Shorts for you'}
                     videoType={'top_short'}
                     id={'top20shorts'}
+                    isLine={true}
                 />
                 <Top20Videos
                     isLoading={isLoading}
@@ -68,6 +69,7 @@ const Top = () => {
                     heading={'Hot 20 Videos for you'}
                     videoType={'hot_video'}
                     id={'hot20videos'}
+                    isLine={true}
                 />
                 <Top20Shorts
                     isLoading={isLoading}
@@ -75,8 +77,9 @@ const Top = () => {
                     heading={'Hot 20 Shorts for you'}
                     videoType={'hot_short'}
                     id={'hot20shorts'}
+                    isLine={false}
                 />
-            </>
+            </div>
         </>
     )
 }

@@ -1,21 +1,19 @@
 'use client'
 import { handleFilterOption, options } from '@/utils/filterbar'
+import { useDispatch } from 'react-redux'
 import CategoryDropDown from '../Dropdowns/category'
 import DateDropDown from '../Dropdowns/date'
 import RegionDropDown from '../Dropdowns/region'
 import FilterOption from './option'
-import { useDispatch } from 'react-redux'
-import { setActiveLink } from '@/store/activeLink'
 
 const Filterbar = () => {
     const dispatch = useDispatch()
     const handleOnClick = (item) => {
-        dispatch(setActiveLink(item.title))
         handleFilterOption(item.id)
     }
     return (
         <>
-            <div className="max-w-[1552px] px-[10px] md:px-[40px] w-full flex justify-between filterBarDim:sticky py-6 mt-4 mb-6 filterBarDim:top-0 filterBarDim:z-50 dark:bg-[#0a0a0a] bg-[#edeef0]">
+            <div className="max-w-[1552px] px-[10px] md:px-[40px] w-full flex justify-between filterBarDim:sticky filterBarDim:my-0 py-6 mt-4 mb-6 filterBarDim:top-0 filterBarDim:z-50 dark:bg-[#0a0a0a] bg-[#edeef0]">
                 <div className={`hidden filterBarDim:flex items-center rounded-full lg:rounded-[10px] overflow-hidden`}>
                     {options.map((item, index) => (
                         <div key={index} onClick={() => handleOnClick(item)}>

@@ -14,11 +14,15 @@ export const activeLinkSlice = createSlice({
     },
     reducers: {
         setActiveLink: (state, action) => {
+            state.activeLink = action.payload
+        },
+        onEnter: (state, action) => {
             if (action.payload !== state.activeLink) {
                 state.activeLink = action.payload
             }
         },
         onLeaveBack: (state) => {
+            console.log('OnLeaveBack Triggered: ' + keyMap[state.activeLink])
             state.activeLink = keyMap[state.activeLink]
         },
         resetActiveLink: (state) => {
@@ -28,5 +32,5 @@ export const activeLinkSlice = createSlice({
     },
 })
 
-export const { setActiveLink, onLeaveBack, resetActiveLink } = activeLinkSlice.actions
+export const { setActiveLink, onLeaveBack, resetActiveLink, onEnter } = activeLinkSlice.actions
 export default activeLinkSlice.reducer

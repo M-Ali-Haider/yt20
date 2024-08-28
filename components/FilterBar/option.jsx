@@ -5,12 +5,10 @@ const FilterOption = ({ title }) => {
     return (
         <div
             className={`${
-                activeLink === title
-                    ? 'bg-swiperButton text-white'
-                    : `dark:bg-[#19191a] bg-white ${styles.gradientButton}`
+                activeLink === title ? `${styles.activeLink} bg-swiperButton text-white` : `dark:bg-[#19191a] bg-white`
             }
-            text-xs lg:text-base cursor-pointer 
-            py-3 px-5 lg:px-6`}
+            text-xs lg:text-base cursor-pointer select-none
+            py-3 px-5 lg:px-6 ${styles.toSectionButton}`}
         >
             {title}
         </div>

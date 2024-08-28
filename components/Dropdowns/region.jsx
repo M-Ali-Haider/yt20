@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 import { setRegion } from '@/store/slice'
 import { regions } from '@/utils/regions'
@@ -10,6 +10,7 @@ import DropdownWrapper from './dropdown'
 const RegionDropDown = () => {
     const [isDropDownOpen, setDropDownStatus] = useState(false)
     const dispatch = useDispatch()
+    const regionValue = useSelector((state) => state.filters.region)
     const [searchTerm, setSearchTerm] = useState('')
     const dropdownRef = useRef(null)
 
@@ -60,7 +61,7 @@ const RegionDropDown = () => {
                         <input
                             type="search"
                             className="w-full min-w-fit border-[#FFFFFF4D] border h-[47px] pl-4 py-3 rounded-2xl focus:outline-none"
-                            placeholder="Search"
+                            placeholder={regionValue === 'Global' ? 'Search' : regionValue}
                             value={searchTerm}
                             onChange={handleSearch}
                         />
