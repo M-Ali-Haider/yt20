@@ -33,7 +33,7 @@ const Top = () => {
                 end: 'bottom center',
                 onEnter: () => dispatch(onEnter(option.title)),
                 onEnterBack: () => dispatch(onLeaveBack()),
-                markers: true,
+                // markers: true,
             })
         })
 
@@ -47,7 +47,7 @@ const Top = () => {
     }
     return (
         <>
-            <div className="flex flex-col gap-1 2xl:pb-28">
+            <div className="flex flex-col gap-1">
                 <Top20Videos
                     isLoading={isLoading}
                     data={homeData}
@@ -82,7 +82,7 @@ const Top = () => {
                     videoType={'hot_short'}
                     id={'hot20shorts'}
                     isLine={true}
-                    className={``}
+                    className={`pb-28`}
                 />
             </div>
         </>
