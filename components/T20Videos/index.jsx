@@ -1,12 +1,10 @@
-import { useState } from 'react'
 import HeadingAndViewMore from '../ViewMore'
 import Top20VidsGrid from './grid'
 import LibSwiper from '../Swiper/libSwiper'
 import T20VideosSkeleton from './skeleton'
 import TopLine from '../TopSkeleton/line'
 
-const Top20Videos = ({ isLine, isLoading, data, heading, videoType, id, className }) => {
-    const [isViewMore, setViewMore] = useState(false)
+const Top20Videos = ({ isLine, isLoading, data, heading, videoType, id, className, isViewMore, setViewMore }) => {
     const keyMap = {
         top_video: 'top_20_videos',
         hot_video: 'hot_20_videos',

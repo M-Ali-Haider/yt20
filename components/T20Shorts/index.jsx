@@ -1,12 +1,10 @@
-import { useState } from 'react'
 import LibSwiper from '../Swiper/libSwiper'
 import HeadingAndViewMore from '../ViewMore'
 import T20ShortsGrid from './grid'
 import T20ShortsSkeleton from './skeleton'
 import TopLine from '../TopSkeleton/line'
 
-const Top20Shorts = ({ isLine, isLoading, data, heading, videoType, id, className }) => {
-    const [isViewMore, setViewMore] = useState(false)
+const Top20Shorts = ({ isLine, isLoading, data, heading, videoType, id, className, isViewMore, setViewMore }) => {
     const keyMap = {
         top_short: 'top_20_shorts',
         hot_short: 'hot_20_shorts',
