@@ -53,7 +53,8 @@ const Top = () => {
                     heading={'Top 20 Videos for you'}
                     videoType={'top_video'}
                     id={'top20videos'}
-                    isLine={true}
+                    isLine={false}
+                    className={`pt-[40px]`}
                 />
                 <Top20Shorts
                     isLoading={isLoading}
@@ -62,6 +63,7 @@ const Top = () => {
                     videoType={'top_short'}
                     id={'top20shorts'}
                     isLine={true}
+                    className={``}
                 />
                 <Top20Videos
                     isLoading={isLoading}
@@ -70,6 +72,7 @@ const Top = () => {
                     videoType={'hot_video'}
                     id={'hot20videos'}
                     isLine={true}
+                    className={``}
                 />
                 <Top20Shorts
                     isLoading={isLoading}
@@ -77,7 +80,8 @@ const Top = () => {
                     heading={'Hot 20 Shorts for you'}
                     videoType={'hot_short'}
                     id={'hot20shorts'}
-                    isLine={false}
+                    isLine={true}
+                    className={``}
                 />
             </div>
         </>

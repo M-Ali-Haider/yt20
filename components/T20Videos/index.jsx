@@ -5,7 +5,7 @@ import LibSwiper from '../Swiper/libSwiper'
 import T20VideosSkeleton from './skeleton'
 import TopLine from '../TopSkeleton/line'
 
-const Top20Videos = ({ isLine, isLoading, data, heading, videoType, id }) => {
+const Top20Videos = ({ isLine, isLoading, data, heading, videoType, id, className }) => {
     const [isViewMore, setViewMore] = useState(false)
     const keyMap = {
         top_video: 'top_20_videos',
@@ -13,7 +13,8 @@ const Top20Videos = ({ isLine, isLoading, data, heading, videoType, id }) => {
     }
     return (
         <>
-            <div id={id}>
+            <div id={id} className={`mb-[40px] ${className}`}>
+                {isLine && <TopLine />}
                 <HeadingAndViewMore
                     heading={heading}
                     className={'tracking-[-0.014em] sm:font-bold sm:text-2xl sm:leading-[40px] lg:text-[32px]'}
@@ -31,7 +32,6 @@ const Top20Videos = ({ isLine, isLoading, data, heading, videoType, id }) => {
                         )}
                     </>
                 )}
-                <TopLine />
             </div>
         </>
     )

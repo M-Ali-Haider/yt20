@@ -10,37 +10,40 @@ import { useEffect, useState } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import { setActiveLink } from '@/store/activeLink'
+import useScrollToSection from '@/hooks/useScrollToSection'
 
 const Filterbar = () => {
     const dispatch = useDispatch()
 
-    const [pointerEvents, setPointerEvents] = useState('pointer-events-auto')
+    const { pointerEvents, handleOptionClick } = useScrollToSection()
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
-    }, [])
+    // const [pointerEvents, setPointerEvents] = useState('pointer-events-auto')
 
-    const scrollToSection = (id) => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.disable())
-        const target = document.querySelector(id)
-        if (target) {
-            setPointerEvents('pointer-events-none cursor-wait')
-            gsap.to(window, {
-                scrollTo: { y: target, offsetY: 96 },
-                duration: 1,
-                ease: 'power2.inOut',
-                onComplete: () => {
-                    setPointerEvents('pointer-events-auto cursor-pointer')
-                    ScrollTrigger.getAll().forEach((trigger) => trigger.enable())
-                },
-            })
-        }
-    }
+    // useEffect(() => {
+    //     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+    // }, [])
 
-    const handleOptionClick = (item) => {
-        dispatch(setActiveLink(item.title))
-        scrollToSection(item.id)
-    }
+    // const scrollToSection = (id) => {
+    //     ScrollTrigger.getAll().forEach((trigger) => trigger.disable())
+    //     const target = document.querySelector(id)
+    //     if (target) {
+    //         setPointerEvents('pointer-events-none cursor-wait')
+    //         gsap.to(window, {
+    //             scrollTo: { y: target, offsetY: 96 },
+    //             duration: 1,
+    //             ease: 'power2.inOut',
+    //             onComplete: () => {
+    //                 setPointerEvents('pointer-events-auto cursor-pointer')
+    //                 ScrollTrigger.getAll().forEach((trigger) => trigger.enable())
+    //             },
+    //         })
+    //     }
+    // }
+
+    // const handleOptionClick = (item) => {
+    //     dispatch(setActiveLink(item.title))
+    //     scrollToSection(item.id)
+    // }
 
     return (
         <>

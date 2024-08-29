@@ -92,3 +92,26 @@
 /* .toSectionButton:hover {
     color: white;
 } */
+
+/* .gradientText {
+    background: transparent;
+    transition: all 0.5s ease-in-out;
+}
+
+.gradientText:hover {
+    background: -webkit-linear-gradient(90deg, #e72825 0%, #f37f1f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
+
+.gradientText {
+    background-image: linear-gradient(90deg, #e72825 0%, #f37f1f 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    display: block;
+    text-align: center;
+    transition: color 0.2s ease-in-out;
+}
+.gradientText:hover {
+    color: rgba(0, 0, 0, 0);
+}

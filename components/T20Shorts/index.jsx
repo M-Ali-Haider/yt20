@@ -5,7 +5,7 @@ import T20ShortsGrid from './grid'
 import T20ShortsSkeleton from './skeleton'
 import TopLine from '../TopSkeleton/line'
 
-const Top20Shorts = ({ isLine, isLoading, data, heading, videoType, id }) => {
+const Top20Shorts = ({ isLine, isLoading, data, heading, videoType, id, className }) => {
     const [isViewMore, setViewMore] = useState(false)
     const keyMap = {
         top_short: 'top_20_shorts',
@@ -13,7 +13,8 @@ const Top20Shorts = ({ isLine, isLoading, data, heading, videoType, id }) => {
     }
     return (
         <>
-            <div id={id} className="">
+            <div id={id} className={`mb-[40px] ${className}`}>
+                {isLine && <TopLine />}
                 <HeadingAndViewMore
                     heading={heading}
                     className={'tracking-[-0.014em] sm:font-medium sm:text-2xl sm:leading-[40px] lg:text-[32px]'}
@@ -31,7 +32,6 @@ const Top20Shorts = ({ isLine, isLoading, data, heading, videoType, id }) => {
                         )}
                     </>
                 )}
-                {isLine && <TopLine />}
             </div>
         </>
     )
