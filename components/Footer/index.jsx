@@ -3,7 +3,7 @@ import FooterLinks from './links'
 
 const Footer = () => {
     return (
-        <footer className="mt-[40px] px-[20px]  sm:px-20 py-16 pb-20 w-full flex flex-col filterBarDim:flex-row flex-wrap justify-between gap-14 border-t-2 border-[#FFFFFF4D]">
+        <footer className="mt-[40px] px-[20px]  sm:px-20 py-16 2xl:py-32 w-full flex flex-col filterBarDim:flex-row flex-wrap justify-between gap-14 border-t-2 border-[#FFFFFF4D]">
             <div className="w-[233.73px] h-[40px] filterBarDim:w-[298px] filterBarDim:h-[51px]">
                 <FooterLogoSVG className={`w-[233.73px] h-[40px] filterBarDim:w-[298px] filterBarDim:h-[51px]`} />
             </div>

@@ -46,7 +46,7 @@ const Top = () => {
     }
     return (
         <>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 2xl:pb-28">
                 <Top20Videos
                     isLoading={isLoading}
                     data={homeData}
