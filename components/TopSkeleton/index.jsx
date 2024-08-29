@@ -30,7 +30,7 @@ const Top = () => {
             return ScrollTrigger.create({
                 trigger: option.id,
                 start: 'top top+=97px',
-                end: 'bottom center-=97px',
+                end: 'bottom top+=97px',
                 onEnter: () => dispatch(onEnter(option.title)),
                 onEnterBack: () => dispatch(onLeaveBack()),
                 // markers: true,

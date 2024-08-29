@@ -13,7 +13,7 @@ const Top20Videos = ({ isLine, isLoading, data, heading, videoType, id, classNam
     }
     return (
         <>
-            <div id={id} className={`mb-[40px] ${className}`}>
+            <div id={id} className={`pb-[40px] ${className}`}>
                 {isLine && <TopLine />}
                 <HeadingAndViewMore
                     heading={heading}
