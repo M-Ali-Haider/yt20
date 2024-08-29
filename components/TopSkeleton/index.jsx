@@ -33,6 +33,7 @@ const Top = () => {
                 end: 'bottom center',
                 onEnter: () => dispatch(onEnter(option.title)),
                 onEnterBack: () => dispatch(onLeaveBack()),
+                markers: true,
             })
         })
 
