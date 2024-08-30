@@ -45,7 +45,7 @@ const Top = () => {
                 end: 'bottom top+=97px',
                 onEnter: () => dispatch(onEnter(option.title)),
                 onEnterBack: () => dispatch(onLeaveBack()),
-                markers: true,
+                // markers: true,
             })
         })
 
