@@ -39,7 +39,7 @@ const Sidebar = ({ isHomepage }) => {
                     isSidebarOpen ? `right-0` : `-right-[320px]`
                 } dark:bg-[#19191A] bg-white filterBarDim:hidden 
                 h-screen w-[320px] fixed top-0
-                transition-all ease-custom-ease duration-500 z-[80]`}
+                transition-[right] ease-custom-ease duration-500 z-[80]`}
             >
                 <div className="px-[10px] py-6 flex justify-end items-center">
                     <div onClick={() => dispatch(closeSidebar())} className="h-[30px] w-8 cursor-pointer">

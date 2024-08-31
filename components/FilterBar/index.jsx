@@ -47,7 +47,7 @@ const Filterbar = () => {
 
     return (
         <>
-            <div className="max-w-[1552px] px-[10px] md:px-[40px] w-full flex justify-between filterBarDim:sticky filterBarDim:my-0 pt-6 filterBarDim:py-6 mt-4 filterBarDim:mb-6 filterBarDim:top-0 filterBarDim:z-50 dark:bg-[#0a0a0a] bg-[#edeef0]">
+            <div className="max-w-[1552px] px-[10px] md:px-[40px] w-full flex justify-between filterBarDim:sticky filterBarDim:my-0 pt-6 filterBarDim:py-6 mt-4 filterBarDim:mb-6 filterBarDim:top-0 filterBarDim:z-50 dark:bg-[#0a0a0a] bg-[#edeef0] transition-[background-color] duration-500 ease-custom-ease">
                 <div
                     className={`hidden filterBarDim:flex items-center rounded-full lg:rounded-[10px] overflow-hidden dark:bg-[#19191a] bg-white`}
                 >
