@@ -54,16 +54,36 @@ const Sidebar = ({ isHomepage }) => {
                                 onClick={() => handleSidebarLink(item.id)}
                                 className="cursor-pointer flex items-center gap-3 h-10"
                             >
-                                <div className="h-[25px] w-[25px] flex items-center justify-center">
-                                    <item.SvgComp />
+                                <div className={`flex items-center gap-3 overflow-hidden`}>
+                                    <div
+                                        style={{
+                                            transition:
+                                                'transform 900ms cubic-bezier(0.76,0,0.24,1), opacity 900ms cubic-bezier(0.76,0,0.24,1)',
+                                        }}
+                                        className={`${
+                                            isSidebarOpen ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+                                        } h-[25px] w-[25px] flex items-center justify-center`}
+                                    >
+                                        <item.SvgComp />
+                                    </div>
+                                    <div
+                                        style={{
+                                            transition:
+                                                'transform 900ms cubic-bezier(0.76,0,0.24,1), opacity 900ms cubic-bezier(0.76,0,0.24,1)',
+                                        }}
+                                        className={`${
+                                            isSidebarOpen ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+                                        } text-lg`}
+                                    >
+                                        {item.altTitle}
+                                    </div>
                                 </div>
-                                <div className="text-lg">{item.altTitle}</div>
                             </div>
                         ))}
                     </div>
                 )}
                 <div className="px-8 w-full py-6">
-                    <div className="h-[1px] w-full dark:bg-white bg-[#19191A]" />
+                    <div className="h-[1px] w-full dark:bg-white dark:opacity-30 bg-[#19191A]" />
                 </div>
                 <div className="pl-8 w-min">
                     <ThemeToggle />
