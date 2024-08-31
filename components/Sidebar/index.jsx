@@ -28,12 +28,12 @@ const Sidebar = ({ isHomepage }) => {
 
     return (
         <>
-            {isSidebarOpen && (
-                <div
-                    onClick={() => dispatch(closeSidebar())}
-                    className="fixed top-0 left-0 right-0 bottom-0 flex z-[79] bg-black opacity-50 transition-all ease-custom-ease duration-500"
-                />
-            )}
+            <div
+                onClick={() => dispatch(closeSidebar())}
+                className={`fixed top-0 left-0 right-0 bottom-0 flex z-[79] bg-black ${
+                    isSidebarOpen ? 'opacity-50 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }  transition-all ease-custom-ease duration-500`}
+            />
             <div
                 className={`${
                     isSidebarOpen ? `right-0` : `-right-[320px]`
