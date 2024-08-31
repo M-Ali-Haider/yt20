@@ -62,10 +62,10 @@ const Sidebar = ({ isHomepage }) => {
                         ))}
                     </div>
                 )}
-                <div className="px-8 w-full pt-6">
+                <div className="px-8 w-full py-6">
                     <div className="h-[1px] w-full dark:bg-white bg-[#19191A]" />
                 </div>
-                <div className="pl-8 mt-6 w-min">
+                <div className="pl-8 w-min">
                     <ThemeToggle />
                 </div>
             </div>
