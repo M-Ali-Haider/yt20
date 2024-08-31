@@ -43,6 +43,9 @@ const CategoryDropDown = () => {
         } else {
             document.body.classList.remove('no-scroll')
         }
+        return () => {
+            document.body.classList.remove('no-scroll')
+        }
     }, [isDropDownOpen])
 
     return (

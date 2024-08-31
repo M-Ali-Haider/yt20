@@ -47,15 +47,25 @@ const Sidebar = ({ isHomepage }) => {
                     </div>
                 </div>
                 {isHomepage && (
-                    <div className="pl-[30px] flex flex-col gap-6 text-2xl mt-[40px]">
+                    <div className="pl-8 flex flex-col gap-6 mt-[40px]">
                         {options.map((item, index) => (
-                            <div key={index} onClick={() => handleSidebarLink(item.id)} className="cursor-pointer">
-                                {item.title}
+                            <div
+                                key={index}
+                                onClick={() => handleSidebarLink(item.id)}
+                                className="cursor-pointer flex items-center gap-3 h-10"
+                            >
+                                <div className="h-[25px] w-[25px] flex items-center justify-center">
+                                    <item.SvgComp />
+                                </div>
+                                <div className="text-lg">{item.altTitle}</div>
                             </div>
                         ))}
                     </div>
                 )}
-                <div className="pl-[30px] mt-6 w-min">
+                <div className="px-4 w-full pt-6">
+                    <div className="h-[1px] w-full dark:bg-white bg-[#19191A]" />
+                </div>
+                <div className="pl-8 mt-6 w-min">
                     <ThemeToggle />
                 </div>
             </div>
