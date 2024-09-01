@@ -58,7 +58,7 @@ const Sidebar = ({ isHomepage }) => {
                                     <div
                                         style={{
                                             transition:
-                                                'transform 900ms cubic-bezier(0.76,0,0.24,1), opacity 900ms cubic-bezier(0.76,0,0.24,1)',
+                                                'transform 1500ms cubic-bezier(0.76,0,0.24,1), opacity 1500ms cubic-bezier(0.76,0,0.24,1)',
                                         }}
                                         className={`${
                                             isSidebarOpen ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
