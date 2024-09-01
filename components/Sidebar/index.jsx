@@ -58,7 +58,7 @@ const Sidebar = ({ isHomepage }) => {
                                     <div
                                         style={{
                                             transition:
-                                                'transform 1100ms cubic-bezier(0.76,0,0.24,1), opacity 1100ms cubic-bezier(0.76,0,0.24,1)',
+                                                'transform 1000ms cubic-bezier(0.76,0,0.24,1), opacity 1000ms cubic-bezier(0.76,0,0.24,1)',
                                         }}
                                         className={`${
                                             isSidebarOpen ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
@@ -69,7 +69,7 @@ const Sidebar = ({ isHomepage }) => {
                                     <div
                                         style={{
                                             transition:
-                                                'transform 1100ms cubic-bezier(0.76,0,0.24,1), opacity 1100ms cubic-bezier(0.76,0,0.24,1)',
+                                                'transform 1000ms cubic-bezier(0.76,0,0.24,1), opacity 1000ms cubic-bezier(0.76,0,0.24,1)',
                                         }}
                                         className={`${
                                             isSidebarOpen ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
